@@ -85,6 +85,14 @@ namespace Variables
             var userName = Console.ReadLine();
 
             Console.WriteLine($"It is a pleasure to meet you {userName}. Nice to meet you.");
+
+            Console.Write("What is your favorite number? ");
+            var favoriteNumberAsString = Console.ReadLine();
+
+            var favoriteNumber = int.Parse(favoriteNumberAsString);
+
+            var doubleYourNumber = favoriteNumber * 2;
+            Console.WriteLine($"Twice your favorite number is {doubleYourNumber}");
         }
     }
 }
