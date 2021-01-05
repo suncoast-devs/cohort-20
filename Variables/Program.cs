@@ -40,6 +40,8 @@ namespace Variables
             Console.WriteLine(firstLetter);
             Console.WriteLine(secondLetter);
             Console.WriteLine(thirdLetter);
+
+            Console.WriteLine("--------------------------");
         }
     }
 }
