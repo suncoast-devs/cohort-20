@@ -89,10 +89,19 @@ namespace Variables
             Console.Write("What is your favorite number? ");
             var favoriteNumberAsString = Console.ReadLine();
 
+            // Using int.Parse to turn a string into a number
             var favoriteNumber = int.Parse(favoriteNumberAsString);
 
             var doubleYourNumber = favoriteNumber * 2;
             Console.WriteLine($"Twice your favorite number is {doubleYourNumber}");
+
+            // using int.Parse inline
+            var doubleYourNumberInline = int.Parse(favoriteNumberAsString) * 2;
+            Console.WriteLine($"Twice your favorite number is {doubleYourNumberInline}");
+
+            // Advanced way of getting an int right away
+            Console.Write("What is your score? ");
+            int userScore = int.Parse(Console.ReadLine());
         }
     }
 }
