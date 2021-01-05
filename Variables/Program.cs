@@ -67,10 +67,24 @@ namespace Variables
             score = 3 + 2 * 5;
             Console.WriteLine(score);
 
+            // Blank lines
+            Console.WriteLine("");
+            Console.WriteLine();
+            Console.WriteLine("\n\n\n\n\n");
+
             // the firstLetterVariable isn't changed when we change the sentence variable
             Console.WriteLine(firstLetter);
             sentence = "Welcome to SDG";
             Console.WriteLine(firstLetter);
+
+            Console.WriteLine();
+            Console.WriteLine("Our program");
+            Console.WriteLine();
+
+            Console.Write("What is your name? ");
+            var userName = Console.ReadLine();
+
+            Console.WriteLine($"It is a pleasure to meet you {userName}. Nice to meet you.");
         }
     }
 }
