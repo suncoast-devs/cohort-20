@@ -42,6 +42,30 @@ namespace Variables
             Console.WriteLine(thirdLetter);
 
             Console.WriteLine("--------------------------");
+
+            // This prints 96, but leaves "score" alone, still 95
+            Console.WriteLine(score + 1);
+
+            // This still prints 95
+            Console.WriteLine(score);
+
+            score = score + 5;
+            // This should print 100
+            Console.WriteLine(score);
+
+            // This should print 145
+            score = 145;
+            Console.WriteLine(score);
+
+            // This makes score = 145 + 44 (189)
+            score = score + howLong;
+            Console.WriteLine(score);
+
+            // Understands order of parenthesis and multiplication  
+            score = 5 * (2 + 3);
+            Console.WriteLine(score);
+            score = 3 + 2 * 5;
+            Console.WriteLine(score);
         }
     }
 }
