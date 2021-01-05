@@ -66,6 +66,11 @@ namespace Variables
             Console.WriteLine(score);
             score = 3 + 2 * 5;
             Console.WriteLine(score);
+
+            // the firstLetterVariable isn't changed when we change the sentence variable
+            Console.WriteLine(firstLetter);
+            sentence = "Welcome to SDG";
+            Console.WriteLine(firstLetter);
         }
     }
 }
