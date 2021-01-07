@@ -39,6 +39,17 @@ namespace Methods
             return userInput;
         }
 
+        static int PromptForInteger(string prompt)
+        {
+            Console.Write(prompt);
+
+            var userInput = Console.ReadLine();
+
+            var userInputAsNumber = int.Parse(userInput);
+
+            return userInputAsNumber;
+        }
+
         static void Main(string[] args)
         {
             DisplayGreeting();
@@ -51,11 +62,13 @@ namespace Methods
             // var favoriteColor = Console.ReadLine();
             var favoriteColor = PromptForString("What is your favorite color? ");
 
-            Console.Write("What is your department number? ");
-            var department = int.Parse(Console.ReadLine());
+            // Console.Write("What is your department number? ");
+            // var department = int.Parse(Console.ReadLine());
+            var department = PromptForInteger("What is your department number? ");
 
-            Console.Write("What is your yearly salary (in dollars)? ");
-            var salary = int.Parse(Console.ReadLine());
+            // Console.Write("What is your yearly salary (in dollars)? ");
+            // var salary = int.Parse(Console.ReadLine());
+            var salary = PromptForInteger("What is your yearly salary (in dollars?) ");
 
             var salaryPerMonth = salary / 12;
             Console.WriteLine($"Hello, {name} you make {salaryPerMonth} a month.");
