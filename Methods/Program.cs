@@ -54,20 +54,12 @@ namespace Methods
         {
             DisplayGreeting();
 
-            // Console.Write("What is your name? ");
-            // var name = Console.ReadLine();
             var name = PromptForString("What is your name? ");
 
-            // Console.Write("What is your favorite color? ");
-            // var favoriteColor = Console.ReadLine();
             var favoriteColor = PromptForString("What is your favorite color? ");
 
-            // Console.Write("What is your department number? ");
-            // var department = int.Parse(Console.ReadLine());
             var department = PromptForInteger("What is your department number? ");
 
-            // Console.Write("What is your yearly salary (in dollars)? ");
-            // var salary = int.Parse(Console.ReadLine());
             var salary = PromptForInteger("What is your yearly salary (in dollars?) ");
 
             var salaryPerMonth = salary / 12;
