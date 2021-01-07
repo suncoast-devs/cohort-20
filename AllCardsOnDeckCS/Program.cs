@@ -37,12 +37,21 @@ namespace AllCardsOnDeckCS
                 deck[leftIndex] = rightCard;
             }
 
-            // - Get the first card in the deck and display it
+            // - Deal the first card in the deck and display it
             var firstCard = deck[0];
+            deck.Remove(firstCard);
             Console.WriteLine(firstCard);
 
-            // - Get the second card in the deck and display it
-            var secondCard = deck[1];
+            //      0      1     2      3
+            //      I      M     Q      V
+            // firstCard = "I"
+            // deck.remove(firstCard) 
+            //      0     1     2
+            //      M     Q      V
+
+            // - Deal the second card in the deck and display it
+            var secondCard = deck[0];
+            deck.Remove(secondCard);
             Console.WriteLine(secondCard);
 
         }
