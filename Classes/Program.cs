@@ -2,6 +2,14 @@
 
 namespace Methods
 {
+    class Employee
+    {
+        public string Name { get; set; }
+        public int Department { get; set; }
+        public int Salary { get; set; }
+        public int MonthlySalary { get; set; }
+    }
+
     class Program
     {
         // New Methods Go Here!!!!
