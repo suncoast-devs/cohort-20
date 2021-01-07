@@ -27,9 +27,14 @@ namespace AllCardsOnDeckCS
 
                 //   Now swap the values at rightIndex and leftIndex by doing this:
                 //     leftCard = the value from deck[leftIndex]
+                var leftCard = deck[leftIndex];
                 //     rightCard = the value from deck[rightIndex]
+                var rightCard = deck[rightIndex];
+
                 //     deck[rightIndex] = leftCard
+                deck[rightIndex] = leftCard;
                 //     deck[leftIndex] = rightCard
+                deck[leftIndex] = rightCard;
             }
             // - Get the first card in the deck and display it
             // - Get the second card in the deck and display it
