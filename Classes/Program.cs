@@ -71,6 +71,23 @@ namespace Methods
             var salary = PromptForInteger("What is your yearly salary (in dollars?) ");
 
             var salaryPerMonth = salary / 12;
+
+            // Longer method of creating and setting initial object values
+            //
+            // var newEmployee = new Employee();
+            // newEmployee.Name = name;
+            // newEmployee.Department = department;
+            // newEmployee.Salary = salary;
+            // newEmployee.MonthlySalary = salaryPerMonth;
+
+            var newEmployee = new Employee
+            {
+                Name = name,
+                Department = department,
+                Salary = salary,
+                MonthlySalary = salaryPerMonth
+            };
+
             Console.WriteLine($"Hello, {name} you make {salaryPerMonth} a month.");
         }
     }
