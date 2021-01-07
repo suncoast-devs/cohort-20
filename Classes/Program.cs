@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Methods
 {
@@ -7,7 +8,20 @@ namespace Methods
         public string Name { get; set; }
         public int Department { get; set; }
         public int Salary { get; set; }
-        public int MonthlySalary { get; set; }
+
+        // public int MonthlySalary { get; set; }
+
+        public int MonthlySalary()
+        {
+            var computedMonthlySalary = Salary / 12;
+
+            return computedMonthlySalary;
+        }
+
+        public void PrintDetails()
+        {
+            Console.WriteLine($"Hello, {Name} you make {MonthlySalary()} a month.");
+        }
     }
 
     class Program
@@ -64,13 +78,9 @@ namespace Methods
 
             var name = PromptForString("What is your name? ");
 
-            var favoriteColor = PromptForString("What is your favorite color? ");
-
             var department = PromptForInteger("What is your department number? ");
 
             var salary = PromptForInteger("What is your yearly salary (in dollars?) ");
-
-            var salaryPerMonth = salary / 12;
 
             // Longer method of creating and setting initial object values
             //
@@ -85,10 +95,24 @@ namespace Methods
                 Name = name,
                 Department = department,
                 Salary = salary,
-                MonthlySalary = salaryPerMonth
             };
 
-            Console.WriteLine($"Hello, {name} you make {salaryPerMonth} a month.");
+
+            name = PromptForString("What is your name? ");
+            department = PromptForInteger("What is your department number? ");
+            salary = PromptForInteger("What is your yearly salary (in dollars?) ");
+
+            var secondEmployee = new Employee
+            {
+                Name = name,
+                Department = department,
+                Salary = salary,
+            };
+
+            // Console.WriteLine($"Hello, {newEmployee.Name} you make {newEmployee.MonthlySalary()} a month.");
+            // Console.WriteLine($"Hello, {secondEmployee.Name} you make {secondEmployee.MonthlySalary()} a month.");
+            newEmployee.PrintDetails();
+            secondEmployee.PrintDetails();
         }
     }
 }
