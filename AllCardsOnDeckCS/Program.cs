@@ -36,8 +36,14 @@ namespace AllCardsOnDeckCS
                 //     deck[leftIndex] = rightCard
                 deck[leftIndex] = rightCard;
             }
+
             // - Get the first card in the deck and display it
+            var firstCard = deck[0];
+            Console.WriteLine(firstCard);
+
             // - Get the second card in the deck and display it
+            var secondCard = deck[1];
+            Console.WriteLine(secondCard);
 
         }
     }
