@@ -14,6 +14,23 @@ namespace AllCardsOnDeckCS
             //   - Approach 2: Use the list of suits and the list of ranks to **combine** that into a new list (saves a lot of typing)
 
             // - Shuffle the list. Hooray, we were given an algorithm for this.
+
+            // numberOfCards = length of our deck
+            var numberOfCards = deck.Count;
+
+            // for rightIndex from numberOfCards - 1 down to 1 do:
+            for (var rightIndex = deck.Count - 1; rightIndex >= 1; rightIndex--)
+            {
+                //   leftIndex = random integer that is greater than or equal to 0 and LESS than rightIndex. See the section "How do we get a random integer")
+                var randomNumberGenerator = new Random();
+                var leftIndex = randomNumberGenerator.Next(rightIndex);
+
+                //   Now swap the values at rightIndex and leftIndex by doing this:
+                //     leftCard = the value from deck[leftIndex]
+                //     rightCard = the value from deck[rightIndex]
+                //     deck[rightIndex] = leftCard
+                //     deck[leftIndex] = rightCard
+            }
             // - Get the first card in the deck and display it
             // - Get the second card in the deck and display it
 
