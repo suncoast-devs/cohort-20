@@ -86,10 +86,10 @@ These have the following STATE (properties) and BEHAVIOR (methods)
   - Behaviors:
     - The Value of the card according to the table in the "P"roblem part
 
-- Hand
+- Hand (class)
 
   - Properties: A list of individual Cards
-  - Behaviors:
+  - Behaviors(Methods):
     - TotalValue representing the sum of the individual Cards in the list.
     - Add a card to the hand
 

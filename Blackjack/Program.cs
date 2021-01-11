@@ -3,45 +3,59 @@ using System.Collections.Generic;
 
 namespace Blackjack
 {
-    class Program
+    class Hand
     {
-        class Card
+        // Property that is a list of cards this hand is holding!
+        public List<Card> CardsInHand { get; set; } = new List<Card>();
+
+        // cardToPlaceInHand is the name for the variable that receives
+        // whatever we send into the method.
+        public void PlaceInHand(Card cardToPlaceInHand)
         {
-            public string Suit { get; set; }
-            public string Face { get; set; }
+            CardsInHand.Add(cardToPlaceInHand);
+        }
+    }
 
-            // Value as a PROPERTY
-            // public int Value { get; set; }
+    class Card
+    {
+        public string Suit { get; set; }
+        public string Face { get; set; }
 
-            public int Value()
+        // Value as a PROPERTY
+        // public int Value { get; set; }
+
+        public int Value()
+        {
+            switch (Face)
             {
-                switch (Face)
-                {
-                    case "2":
-                    case "3":
-                    case "4":
-                    case "5":
-                    case "6":
-                    case "7":
-                    case "8":
-                    case "9":
-                        return int.Parse(Face);
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                    return int.Parse(Face);
 
-                    case "10":
-                    case "Jack":
-                    case "Queen":
-                    case "King":
-                        return 10;
+                case "10":
+                case "Jack":
+                case "Queen":
+                case "King":
+                    return 10;
 
-                    case "Ace":
-                        return 11;
+                case "Ace":
+                    return 11;
 
-                    default:
-                        // WTF?
-                        return 0;
-                }
+                default:
+                    // WTF?
+                    return 0;
             }
         }
+    }
+
+    class Program
+    {
 
         static void Main(string[] args)
         {
@@ -107,12 +121,34 @@ namespace Blackjack
             }
 
             // 3.  Create a player hand
+            var playerHand = new Hand();
+
             // 4.  Create a dealer hand
-            // 5.  Ask the deck for a card and place it in the player hand
-            // 6.  Ask the deck for a card and place it in the player hand
+            var dealerHand = new Hand();
+
+            // 5.  Ask the deck for a card
+            var firstPlayerCard = deck[0];
+            deck.Remove(firstPlayerCard);
+
+            // 5b. and place it in the player hand
+            //
+            // When this is method is run, the variable firstPlayerCard
+            // will be sent to the method and inside the method referred
+            // to as cardToPlaceInHand
+            playerHand.PlaceInHand(firstPlayerCard);
+
+            // 6.  Ask the deck for a card
+            var secondPlayerCard = deck[0];
+            deck.Remove(secondPlayerCard);
+
+            // 6b. and place it in the player hand
+            playerHand.PlaceInHand(secondPlayerCard);
+
             // 7.  Ask the deck for a card and place it in the dealer hand
             // 8.  Ask the deck for a card and place it in the dealer hand
+
             // 9.  Show the player the cards in their hand and the TotalValue of their Hand
+
             // 10. If they have BUSTED, then goto step 15
             // 11. Ask the player if they want to HIT or STAND
             // 12. If HIT
