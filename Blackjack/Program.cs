@@ -9,6 +9,7 @@ namespace Blackjack
         {
             public string Suit { get; set; }
             public string Face { get; set; }
+            public int Value { get; set; }
         }
 
         static void Main(string[] args)
@@ -23,7 +24,7 @@ namespace Blackjack
             //         Suits is a list of "Club", "Diamond", "Heart", or "Spade"
             var suits = new List<string>() { "Club", "Diamond", "Heart", "Spade" };
             //         Faces is a list of 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, or Ace
-            var faces = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
+            var faces = new List<string>() { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 
             //         ```
             //         Go through all of the suits one at a time and in order
@@ -41,6 +42,21 @@ namespace Blackjack
 
                     // This line of code uses the *SET* aspect of the Face property
                     newCard.Face = currentFace;
+
+                    if (currentFace == "2")
+                    {
+                        newCard.Value = 2;
+                    }
+
+                    if (currentFace == "3")
+                    {
+                        newCard.Value = 3;
+                    }
+
+                    if (currentFace == "J")
+                    {
+                        newCard.Value = 10;
+                    }
 
                     // This uses the *GET* aspect of the SUIT property
                     // Console.WriteLine(newCard.Suit);
