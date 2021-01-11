@@ -147,7 +147,23 @@ namespace Blackjack
             // 7.  Ask the deck for a card and place it in the dealer hand
             // 8.  Ask the deck for a card and place it in the dealer hand
 
-            // 9.  Show the player the cards in their hand and the TotalValue of their Hand
+            // 9.  Show the player the cards in their hand
+            //
+            // Problem: Have a list of cards and I want to print them all
+            // Example:    Card with Face="A" Suit="Club" , Card with Face="J" Suit="Diamond", ...
+            //             Output:
+            //             You have the A of Club
+            //             You have the J of Diamond
+            // D - List, Card, strings of Face and Suit
+            // A - for each card in our list of cards, do the following step
+            foreach (var cardInPlayerHand in playerHand.CardsInHand)
+            {
+                //     - print a string that looks like   You have the <PUT THE FACE HERE> of <PUT THE SUIT HER>
+                Console.WriteLine($"You have the {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
+                //
+            }
+
+            // 9b. and the TotalValue of their Hand
 
             // 10. If they have BUSTED, then goto step 15
             // 11. Ask the player if they want to HIT or STAND
