@@ -15,6 +15,15 @@ namespace Blackjack
             CardsInHand.Add(cardToPlaceInHand);
         }
 
+        public bool Busted()
+        {
+            // var theHandValue = TotalValue();
+            // var isBusted = theHandValue > 21;
+            // return isBusted;
+
+            return TotalValue() > 21;
+        }
+
         // Returns the sum of all the values of all the cards currently
         // in the list this object is holding.
         public int TotalValue()
@@ -36,6 +45,23 @@ namespace Blackjack
             }
             //   - When done, return the grand total
             return grandTotal;
+        }
+
+        public void ShowHand()
+        {
+            foreach (var cardInPlayerHand in CardsInHand)
+            {
+                //     - print a string that looks like   You have the <PUT THE FACE HERE> of <PUT THE SUIT HER>
+                Console.WriteLine($"The {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
+            }
+
+            // 9b. and the TotalValue of their Hand
+            // This asks the playerHand OBJECT (of class type Hand) to do it's TotalValue behavior
+            // which we expect to to return a number
+            var theTotalValue = TotalValue();
+
+            // Print that out!
+            Console.WriteLine($"Hand is worth {theTotalValue}");
         }
     }
 
@@ -182,28 +208,7 @@ namespace Blackjack
             // Starts a loop and does the lop AT LEAST *ONCE*
             do
             {
-                // 9.  Show the player the cards in their hand
-                //
-                // Problem: Have a list of cards and I want to print them all
-                // Example:    Card with Face="A" Suit="Club" , Card with Face="J" Suit="Diamond", ...
-                //             Output:
-                //             You have the A of Club
-                //             You have the J of Diamond
-                // D - List, Card, strings of Face and Suit
-                // A - for each card in our list of cards, do the following step
-                foreach (var cardInPlayerHand in playerHand.CardsInHand)
-                {
-                    //     - print a string that looks like   You have the <PUT THE FACE HERE> of <PUT THE SUIT HER>
-                    Console.WriteLine($"You have the {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
-                }
-
-                // 9b. and the TotalValue of their Hand
-                // This asks the playerHand OBJECT (of class type Hand) to do it's TotalValue behavior
-                // which we expect to to return a number
-                var thePlayerTotalValue = playerHand.TotalValue();
-
-                // Print that out!
-                Console.WriteLine($"Your hand is worth {thePlayerTotalValue}");
+                playerHand.ShowHand();
 
                 // 10. If they have BUSTED, then goto step 15
                 // 11. Ask the player if they want to HIT or STAND
@@ -222,14 +227,9 @@ namespace Blackjack
                 }
             } while (hitOrStand == "HIT" && playerHand.TotalValue() < 21);
 
-            if (playerHand.TotalValue() > 21)
+            if (playerHand.Busted())
             {
-                foreach (var cardInPlayerHand in playerHand.CardsInHand)
-                {
-                    //     - print a string that looks like   You have the <PUT THE FACE HERE> of <PUT THE SUIT HER>
-                    Console.WriteLine($"You have the {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
-                }
-                Console.WriteLine($"Your hand is worth {playerHand.TotalValue()}");
+                playerHand.ShowHand();
             }
             else
             {
@@ -249,21 +249,16 @@ namespace Blackjack
                 }
 
                 // 16. Show the dealer's hand TotalValue
-                Console.WriteLine();
-                foreach (var cardInDealerHand in dealerHand.CardsInHand)
-                {
-                    Console.WriteLine($"You have the {cardInDealerHand.Face} of {cardInDealerHand.Suit}");
-                }
-                Console.WriteLine($"The dealer has {dealerHand.TotalValue()}");
+                dealerHand.ShowHand();
             }
 
             // 17. If the player busted show "DEALER WINS"
-            if (playerHand.TotalValue() > 21)
+            if (playerHand.Busted())
             {
                 Console.WriteLine("DEALER WINS");
             }
             // 18. If the dealer busted show "PLAYER WINS"
-            else if (dealerHand.TotalValue() > 21)
+            else if (dealerHand.Busted())
             {
                 Console.WriteLine("PLAYER WINS");
             }
