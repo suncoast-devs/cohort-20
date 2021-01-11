@@ -14,6 +14,29 @@ namespace Blackjack
         {
             CardsInHand.Add(cardToPlaceInHand);
         }
+
+        // Returns the sum of all the values of all the cards currently
+        // in the list this object is holding.
+        public int TotalValue()
+        {
+            // Missing PEDAC!
+            // How do we total the cards in the hand?
+            // A
+            //   - Start with a grand total of 0
+            var grandTotal = 0;
+            //   - For each card in the hand do the following
+            foreach (var currentCardInHand in CardsInHand)
+            {
+                //     - Get the value of the current card
+                var currentCardValue = currentCardInHand.Value();
+
+                //     - Add that value to the grand total
+                grandTotal = grandTotal + currentCardValue;
+
+            }
+            //   - When done, return the grand total
+            return grandTotal;
+        }
     }
 
     class Card
@@ -164,6 +187,12 @@ namespace Blackjack
             }
 
             // 9b. and the TotalValue of their Hand
+            // This asks the playerHand OBJECT (of class type Hand) to do it's TotalValue behavior
+            // which we expect to to return a number
+            var thePlayerTotalValue = playerHand.TotalValue();
+
+            // Print that out!
+            Console.WriteLine($"Your hand is worth {thePlayerTotalValue}");
 
             // 10. If they have BUSTED, then goto step 15
             // 11. Ask the player if they want to HIT or STAND
