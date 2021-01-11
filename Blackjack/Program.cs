@@ -221,8 +221,20 @@ namespace Blackjack
                     // 6b. and place it in the player hand
                     playerHand.PlaceInHand(cardFromSelectingHitOption);
                 }
-            } while (hitOrStand == "HIT");
+            } while (hitOrStand == "HIT" && playerHand.TotalValue() < 21);
 
+            if (playerHand.TotalValue() > 21)
+            {
+                foreach (var cardInPlayerHand in playerHand.CardsInHand)
+                {
+                    //     - print a string that looks like   You have the <PUT THE FACE HERE> of <PUT THE SUIT HER>
+                    Console.WriteLine($"You have the {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
+                }
+                Console.WriteLine($"Your hand is worth {playerHand.TotalValue()}");
+                Console.WriteLine();
+                Console.WriteLine("You have busted");
+
+            }
             // 14. If the dealer has busted then goto step 17
             // 15. If the dealer has less than 17
             //     - Add a card to the dealer hand and go back to 14
