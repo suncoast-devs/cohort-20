@@ -285,8 +285,8 @@ namespace Blackjack
 
 
                 Console.Write("\n\nThat was fun. Play again? YES or NO ");
-                keepPlaying = Console.ReadLine();
-            } while (keepPlaying == "YES");
+                keepPlaying = Console.ReadLine().ToUpper();
+            } while (keepPlaying[0] == 'Y');
         }
     }
 }
