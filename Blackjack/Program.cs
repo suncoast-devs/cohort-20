@@ -231,18 +231,64 @@ namespace Blackjack
                     Console.WriteLine($"You have the {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
                 }
                 Console.WriteLine($"Your hand is worth {playerHand.TotalValue()}");
-                Console.WriteLine();
-                Console.WriteLine("You have busted");
-
             }
-            // 14. If the dealer has busted then goto step 17
-            // 15. If the dealer has less than 17
-            //     - Add a card to the dealer hand and go back to 14
-            // 16. Show the dealer's hand TotalValue
+            else
+            {
+                // 14. If the dealer has busted then goto step 17
+                // 15. If the dealer has less than 17
+                //     - Add a card to the dealer hand and go back to 14
+
+
+                // While the dealer's total hand value is less than 17 do this:
+                // - Pull a card from the deck
+                // - Add it to the dealer's hand
+                while (dealerHand.TotalValue() < 17)
+                {
+                    var cardDealtToDealer = deck[0];
+                    deck.Remove(cardDealtToDealer);
+                    dealerHand.PlaceInHand(cardDealtToDealer);
+                }
+
+                // 16. Show the dealer's hand TotalValue
+                Console.WriteLine();
+                foreach (var cardInDealerHand in dealerHand.CardsInHand)
+                {
+                    Console.WriteLine($"You have the {cardInDealerHand.Face} of {cardInDealerHand.Suit}");
+                }
+                Console.WriteLine($"The dealer has {dealerHand.TotalValue()}");
+            }
+
             // 17. If the player busted show "DEALER WINS"
+            if (playerHand.TotalValue() > 21)
+            {
+                Console.WriteLine("DEALER WINS");
+            }
             // 18. If the dealer busted show "PLAYER WINS"
-            // 19. If the dealer's hand is more than the player's hand then show "DEALER WINS", else show "PLAYER WINS"
-            // 20. If the value of the hands are even, show "DEALER WINS"
+            else if (dealerHand.TotalValue() > 21)
+            {
+                Console.WriteLine("PLAYER WINS");
+            }
+            // 19. If the dealer's hand is equal to or more than the player's hand then show "DEALER WINS", else show "PLAYER WINS"
+            else if (dealerHand.TotalValue() >= playerHand.TotalValue())
+            {
+                Console.WriteLine("DEALER WINS");
+            }
+            else
+            {
+                Console.WriteLine("PLAYER WINS");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
     }
