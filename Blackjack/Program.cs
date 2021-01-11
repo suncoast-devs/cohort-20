@@ -177,35 +177,52 @@ namespace Blackjack
             deck.Remove(secondDealerCard);
             dealerHand.PlaceInHand(secondDealerCard);
 
-            // 9.  Show the player the cards in their hand
-            //
-            // Problem: Have a list of cards and I want to print them all
-            // Example:    Card with Face="A" Suit="Club" , Card with Face="J" Suit="Diamond", ...
-            //             Output:
-            //             You have the A of Club
-            //             You have the J of Diamond
-            // D - List, Card, strings of Face and Suit
-            // A - for each card in our list of cards, do the following step
-            foreach (var cardInPlayerHand in playerHand.CardsInHand)
+            // Declare the variable early, and we have to specify
+            string hitOrStand;
+
+            // Starts a loop and does the lop AT LEAST *ONCE*
+            do
             {
-                //     - print a string that looks like   You have the <PUT THE FACE HERE> of <PUT THE SUIT HER>
-                Console.WriteLine($"You have the {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
+                // 9.  Show the player the cards in their hand
                 //
-            }
+                // Problem: Have a list of cards and I want to print them all
+                // Example:    Card with Face="A" Suit="Club" , Card with Face="J" Suit="Diamond", ...
+                //             Output:
+                //             You have the A of Club
+                //             You have the J of Diamond
+                // D - List, Card, strings of Face and Suit
+                // A - for each card in our list of cards, do the following step
+                foreach (var cardInPlayerHand in playerHand.CardsInHand)
+                {
+                    //     - print a string that looks like   You have the <PUT THE FACE HERE> of <PUT THE SUIT HER>
+                    Console.WriteLine($"You have the {cardInPlayerHand.Face} of {cardInPlayerHand.Suit}");
+                }
 
-            // 9b. and the TotalValue of their Hand
-            // This asks the playerHand OBJECT (of class type Hand) to do it's TotalValue behavior
-            // which we expect to to return a number
-            var thePlayerTotalValue = playerHand.TotalValue();
+                // 9b. and the TotalValue of their Hand
+                // This asks the playerHand OBJECT (of class type Hand) to do it's TotalValue behavior
+                // which we expect to to return a number
+                var thePlayerTotalValue = playerHand.TotalValue();
 
-            // Print that out!
-            Console.WriteLine($"Your hand is worth {thePlayerTotalValue}");
+                // Print that out!
+                Console.WriteLine($"Your hand is worth {thePlayerTotalValue}");
 
-            // 10. If they have BUSTED, then goto step 15
-            // 11. Ask the player if they want to HIT or STAND
-            // 12. If HIT
-            //     - Ask the deck for a card and place it in the player hand, repeat step 10
-            // 13. If STAND continue on
+                // 10. If they have BUSTED, then goto step 15
+                // 11. Ask the player if they want to HIT or STAND
+                Console.Write("What do you want? HIT or STAND? ");
+                hitOrStand = Console.ReadLine();
+
+                // 12. If HIT
+                if (hitOrStand == "HIT")
+                {
+                    //     - Ask the deck for a card and place it in the player hand, repeat step 10
+                    var cardFromSelectingHitOption = deck[0];
+                    deck.Remove(cardFromSelectingHitOption);
+
+                    // 6b. and place it in the player hand
+                    playerHand.PlaceInHand(cardFromSelectingHitOption);
+                }
+            } while (hitOrStand == "HIT");
+
             // 14. If the dealer has busted then goto step 17
             // 15. If the dealer has less than 17
             //     - Add a card to the dealer hand and go back to 14
