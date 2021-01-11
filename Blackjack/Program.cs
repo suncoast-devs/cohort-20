@@ -168,7 +168,14 @@ namespace Blackjack
             playerHand.PlaceInHand(secondPlayerCard);
 
             // 7.  Ask the deck for a card and place it in the dealer hand
+            var firstDealerCard = deck[0];
+            deck.Remove(firstDealerCard);
+            dealerHand.PlaceInHand(firstDealerCard);
+
             // 8.  Ask the deck for a card and place it in the dealer hand
+            var secondDealerCard = deck[0];
+            deck.Remove(secondDealerCard);
+            dealerHand.PlaceInHand(secondDealerCard);
 
             // 9.  Show the player the cards in their hand
             //
