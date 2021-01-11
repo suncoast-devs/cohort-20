@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Blackjack
 {
     class Program
     {
+        class Card
+        {
+            public string Suit { get; set; }
+            public string Face { get; set; }
+        }
+
         static void Main(string[] args)
         {
             // 1.  Create a new deck
@@ -11,22 +18,39 @@ namespace Blackjack
             //     Algorithm for making a list of 52 cards
 
             //         Make a blank list of cards
+            var deck = new List<Card>();
+
             //         Suits is a list of "Club", "Diamond", "Heart", or "Spade"
+            var suits = new List<string>() { "Club", "Diamond", "Heart", "Spade" };
             //         Faces is a list of 2, 3, 4, 5, 6, 7, 8, 9, 10, Jack, Queen, King, or Ace
+            var faces = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
+
             //         ```
             //         Go through all of the suits one at a time and in order
-            //         {
-            //             Get the current suit
-            //             Go through all of the faces one a time and in order
-            //             {
-            //                 Get the current face
+            foreach (var currentSuit in suits)
+            {
 
-            //                 With the current suit and the current face, make a new card
-            //                 Add that card to the list of cards
-            //             Go to the card and loop again
-            //             }
-            //         Go to the next suit and loop again
-            //         }
+                //             Go through all of the faces one a time and in order
+                foreach (var currentFace in faces)
+                {
+                    //                 With the current suit and the current face, make a new card
+                    var newCard = new Card();
+
+                    // This line of code uses the *SET* aspect of the Suit property
+                    newCard.Suit = currentSuit;
+
+                    // This line of code uses the *SET* aspect of the Face property
+                    newCard.Face = currentFace;
+
+                    // This uses the *GET* aspect of the SUIT property
+                    // Console.WriteLine(newCard.Suit);
+
+                    //                 Add that card to the list of cards
+                    deck.Add(newCard);
+                    //             Go to the card and loop again
+                    //         Go to the next suit and loop again
+                }
+            }
             //         ```
 
             // 2.  Ask the deck to make a new shuffled 52 cards
