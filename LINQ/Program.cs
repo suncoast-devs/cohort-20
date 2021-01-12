@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LINQ
 {
@@ -28,6 +29,28 @@ namespace LINQ
 
             // Print out the scores comma separated
             Console.WriteLine(String.Join(',', newScores));
+
+
+
+            // This ONE line does *ALL* the work our foreach loop did above
+            //
+            //                     list
+            //                      |      please transform yourself
+            //                      |      |        using this expression/process
+            //                      |      |        |
+            // var newScoresViaLINQ = scores.Select(eachElementFromScoresListOneAtTime => eachElementFromScoresListOneAtTime * 2);
+            var newScoresViaLINQ = scores.Select(score => score * 2);
+
+            // Print out the scores comma separated
+            Console.WriteLine(String.Join(',', newScoresViaLINQ));
+
+
+
+
+
+
+
+
         }
     }
 }
