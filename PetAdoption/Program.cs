@@ -38,37 +38,37 @@ namespace PetAdoption
             // | Species | Gender | Age | Name    | Color  | Size   |
             // | ------- | ------ | --- | ------- | ------ | ------ |
             // | Dog     | Female | 1   | Sadie   | Blonde | Medium |
-            // Delcares the pet
-            var sadie = new Pet();
-            // Initializes the properties one at a time
-            sadie.Color = "Blonde";
-            sadie.Gender = "Female";
-            sadie.Name = "Sadie";
-            sadie.Species = "Dog";
-            sadie.Age = 1;
-            sadie.Size = "Medium";
             // | Cat     | Male   | 3   | Russell | Black  | Small  |
-            // Delcare *AND* initialize the pet in one step
-            var russell = new Pet()
-            {
-                Age = 3,
-                Color = "Black",
-                Name = "Russell",
-                Species = "Cat",
-                Gender = "Male",
-                Size = "Small"
-            };
             // | Dog     | Male   | 3   | Kodak   | White  | Large  |
-            var kodak = new Pet()
-            {
-                Name = "Kodak",
-                Gender = "Male",
-                Species = "Dog",
-                Age = 3,
-                Color = "White",
-                Size = "Large",
+            var pets = new List<Pet>() {
+               new Pet()
+               {
+                   Color = "Blonde",
+                   Gender = "Female",
+                   Name = "Sadie",
+                   Species = "Dog",
+                   Age = 1,
+                   Size = "Medium",
+               },
+               new Pet()
+               {
+                  Age = 3,
+                  Color = "Black",
+                  Name = "Russell",
+                  Species = "Cat",
+                  Gender = "Male",
+                  Size = "Small"
+               },
+               new Pet()
+               {
+                  Name = "Kodak",
+                  Gender = "Male",
+                  Species = "Dog",
+                  Age = 3,
+                  Color = "White",
+                  Size = "Large",
+               }
             };
-            var pets = new List<Pet>() { sadie, russell, kodak };
 
             // Welcome the user to the application
             BannerMessage("Welcome to our Pet Adoption Agency");
