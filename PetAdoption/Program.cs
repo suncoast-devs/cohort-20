@@ -1,7 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PetAdoption
 {
+    class Pet
+    {
+        // - `Species` - string
+        public string Species { get; set; }
+        // - `Gender` - string
+        public string Gender { get; set; }
+        // - `Age` - int
+        public int Age { get; set; }
+        // - `Name` - string
+        public string Name { get; set; }
+        // - `Color` - string
+        public string Color { get; set; }
+        // - `Size` - string
+        public string Size { get; set; }
+    }
+
     class Program
     {
         //                        The method's input
@@ -18,6 +35,41 @@ namespace PetAdoption
 
         static void Main(string[] args)
         {
+            // | Species | Gender | Age | Name    | Color  | Size   |
+            // | ------- | ------ | --- | ------- | ------ | ------ |
+            // | Dog     | Female | 1   | Sadie   | Blonde | Medium |
+            // Delcares the pet
+            var sadie = new Pet();
+            // Initializes the properties one at a time
+            sadie.Color = "Blonde";
+            sadie.Gender = "Female";
+            sadie.Name = "Sadie";
+            sadie.Species = "Dog";
+            sadie.Age = 1;
+            sadie.Size = "Medium";
+            // | Cat     | Male   | 3   | Russell | Black  | Small  |
+            // Delcare *AND* initialize the pet in one step
+            var russell = new Pet()
+            {
+                Age = 3,
+                Color = "Black",
+                Name = "Russell",
+                Species = "Cat",
+                Gender = "Male",
+                Size = "Small"
+            };
+            // | Dog     | Male   | 3   | Kodak   | White  | Large  |
+            var kodak = new Pet()
+            {
+                Name = "Kodak",
+                Gender = "Male",
+                Species = "Dog",
+                Age = 3,
+                Color = "White",
+                Size = "Large",
+            };
+            var pets = new List<Pet>() { sadie, russell, kodak };
+
             // Welcome the user to the application
             BannerMessage("Welcome to our Pet Adoption Agency");
 
@@ -42,6 +94,24 @@ namespace PetAdoption
                 Console.WriteLine();
                 Console.Write("What is your choice? ");
                 var choice = Console.ReadLine().ToUpper().Trim();
+
+                if (choice == "SEE")
+                {
+
+                    // SEE - See all the pets
+                    //
+                    // Problem - we want to see all pets
+                    // E - See the PEDAC for Examples
+                    // D - List of pets
+                    // A - 
+                    //     for every pet in our collection of pets, do the following:
+                    foreach (var pet in pets)
+                    {
+                        //       console writeline the pet's name, age, species, gender, color, and size
+                        Console.WriteLine($"{pet.Name} is a {pet.Age} year old {pet.Gender} {pet.Species} that is {pet.Color} and {pet.Size}");
+                    }
+                }
+
 
 
                 //          if the user's choice is "QUIT", set the boolean to true
