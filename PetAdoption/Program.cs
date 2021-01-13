@@ -153,12 +153,30 @@ namespace PetAdoption
                     // A
                     //
                     // Ask the name
+                    Console.Write("What is the name? ");
+                    var newPetName = Console.ReadLine();
+
                     // Ask the gender
+                    Console.Write("What is the gender? ");
+                    var newPetGender = Console.ReadLine();
+
                     // Ask the species
+                    Console.Write("What is the species? ");
+                    var newPetSpecies = Console.ReadLine();
+
                     // Ask the age
+                    Console.Write("What is the age? ");
+                    var newPetAgeString = Console.ReadLine();
+                    var newPetAge = int.Parse(newPetAgeString);
+
                     // Ask the size
+                    Console.Write("What is the size? ");
+                    var newPetSize = Console.ReadLine();
+
                     // Ask the color
-                    //
+                    Console.Write("What is the color? ");
+                    var newPetColor = Console.ReadLine();
+
                     // Make new Pet object filling in all the properties
                     // Add that pet to the list of pets
                 }
