@@ -4,14 +4,22 @@ namespace PetAdoption
 {
     class Program
     {
+        //                        The method's input
+        //                        |
+        //                        v
+        static void BannerMessage(string message)
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine(message);
+            Console.WriteLine();
+            Console.WriteLine();
+        }
+
         static void Main(string[] args)
         {
             // Welcome the user to the application
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Welcome to our Pet Adoption Agency");
-            Console.WriteLine();
-            Console.WriteLine();
+            BannerMessage("Welcome to our Pet Adoption Agency");
 
             // While the user hasn't chosen to quit the application
             //   Show them a menu of options they can do:
@@ -22,12 +30,7 @@ namespace PetAdoption
             //     - Quit the applications
 
             // Say goodbye
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Goodbye");
-            Console.WriteLine();
-            Console.WriteLine();
-
+            BannerMessage("Goodbye");
         }
     }
 }
