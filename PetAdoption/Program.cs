@@ -222,6 +222,24 @@ namespace PetAdoption
 
 
                 //     - Input a name of a pet and update their size
+                if (choice == "UPDATE")
+                {
+                    // A
+                    //
+                    // ReadLine the name of the pet to UPDATE - call this "nameOfPet"
+                    Console.Write("What is the name? ");
+                    var nameOfPet = Console.ReadLine();
+
+                    // Using the name of the pet, find any pet object in our list that has the same name
+                    var foundPet = pets.Find(pet => pet.Name == nameOfPet);
+
+                    // ReadLine the size of the pet
+                    Console.Write("What is the new size? ");
+                    var newSize = Console.ReadLine();
+
+                    // update the found pet's size
+                    foundPet.Size = newSize;
+                }
 
                 //     - Quit the applications
                 //          if the user's choice is "QUIT", set the boolean to true
