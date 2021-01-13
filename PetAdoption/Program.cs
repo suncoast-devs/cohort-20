@@ -34,6 +34,28 @@ namespace PetAdoption
             Console.WriteLine();
         }
 
+        static string PromptForString(string prompt)
+        {
+            Console.Write(prompt);
+
+            var userInput = Console.ReadLine();
+
+            return userInput;
+        }
+
+        static Pet PromptAndFindPet(List<Pet> listOfPetsToSearch)
+        {
+            // Console.Write("What is the name of the pet you are looking for? ");
+            // var nameOfPet = Console.ReadLine();
+            var nameOfPet = PromptForString("What is the name of the pet you are looking for? ");
+
+            // Using the name of the pet, find any pet object in our list that has the same name
+            //
+            var foundPet = listOfPetsToSearch.Find(pet => pet.Name == nameOfPet);
+
+            return foundPet;
+        }
+
         static void Main(string[] args)
         {
             // | Species | Gender | Age | Name    | Color  | Size   |
@@ -206,12 +228,13 @@ namespace PetAdoption
                     //
                     //
                     // ReadLine the name of the pet to adopt - call this "nameOfPet"
-                    Console.Write("What is the name? ");
-                    var nameOfPet = Console.ReadLine();
+                    // Console.Write("What is the name? ");
+                    // var nameOfPet = Console.ReadLine();
 
                     // Using the name of the pet, find any pet object in our list that has the same name
                     //
-                    var foundPet = pets.Find(pet => pet.Name == nameOfPet);
+                    // var foundPet = pets.Find(pet => pet.Name == nameOfPet);
+                    var foundPet = PromptAndFindPet(pets);
 
                     // Show the user the details of the pet and ask for confirmation. "Are you sure?"
                     // Console.WriteLine, Console.Readline, if statements...
@@ -227,11 +250,12 @@ namespace PetAdoption
                     // A
                     //
                     // ReadLine the name of the pet to UPDATE - call this "nameOfPet"
-                    Console.Write("What is the name? ");
-                    var nameOfPet = Console.ReadLine();
+                    // Console.Write("What is the name? ");
+                    // var nameOfPet = Console.ReadLine();
 
                     // Using the name of the pet, find any pet object in our list that has the same name
-                    var foundPet = pets.Find(pet => pet.Name == nameOfPet);
+                    // var foundPet = pets.Find(pet => pet.Name == nameOfPet);
+                    var foundPet = PromptAndFindPet(pets);
 
                     // ReadLine the size of the pet
                     Console.Write("What is the new size? ");
