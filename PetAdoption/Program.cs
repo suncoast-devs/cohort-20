@@ -40,6 +40,39 @@ namespace PetAdoption
             // | Dog     | Female | 1   | Sadie   | Blonde | Medium |
             // | Cat     | Male   | 3   | Russell | Black  | Small  |
             // | Dog     | Male   | 3   | Kodak   | White  | Large  |
+
+
+            // // Delcares the pet
+            // var sadie = new Pet();
+            // // Initializes the properties one at a time
+            // sadie.Color = "Blonde";
+            // sadie.Gender = "Female";
+            // sadie.Name = "Sadie";
+            // sadie.Species = "Dog";
+            // sadie.Age = 1;
+            // sadie.Size = "Medium";
+
+            // // Delcare *AND* initialize the pet in one step
+            // var russell = new Pet()
+            // {
+            //     Age = 3,
+            //     Color = "Black",
+            //     Name = "Russell",
+            //     Species = "Cat",
+            //     Gender = "Male",
+            //     Size = "Small"
+            // };
+            // var kodak = new Pet()
+            // {
+            //     Name = "Kodak",
+            //     Gender = "Male",
+            //     Species = "Dog",
+            //     Age = 3,
+            //     Color = "White",
+            //     Size = "Large",
+            // };
+            // var pets = new List<Pet>() { sadie, russell, kodak };
+
             var pets = new List<Pet>() {
                new Pet()
                {
