@@ -22,6 +22,12 @@ namespace PetAdoption
             //     - Quit the applications
 
             // Say goodbye
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Goodbye");
+            Console.WriteLine();
+            Console.WriteLine();
+
         }
     }
 }
