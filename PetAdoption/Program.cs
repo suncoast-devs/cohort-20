@@ -178,7 +178,24 @@ namespace PetAdoption
                     var newPetColor = Console.ReadLine();
 
                     // Make new Pet object filling in all the properties
+                    // var newPet = new Pet();
+                    // newPet.Name = newPetName;
+                    // newPet.Gender = newPetGender;
+                    // newPet.Species = newPetSpecies;
+                    // newPet.Age = newPetAge;
+                    // newPet.Color = newPetColor;
+                    // newPet.Size = newPetSize;
+                    var newPet = new Pet()
+                    {
+                        Name = newPetName,
+                        Gender = newPetGender,
+                        Species = newPetSpecies,
+                        Age = newPetAge,
+                        Color = newPetColor,
+                        Size = newPetSize,
+                    };
                     // Add that pet to the list of pets
+                    pets.Add(newPet);
                 }
 
                 //     - Input a name of a pet that has been adopted to remove them from the list
