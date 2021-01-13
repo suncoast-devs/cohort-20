@@ -362,6 +362,16 @@ namespace LINQ
             Console.WriteLine();
             Console.WriteLine(String.Join("\n", movieNamesAndWhereTheyAreInTheList));
 
+            var jaws = new Movie { Name = "JAWS" };
+            var starWars = new Movie { Name = "Star Wars" };
+            var originalList = new List<Movie>() { jaws, starWars };
+
+            var newList = originalList.Where(movie => movie.Name.Length > 4);
+            Console.WriteLine(String.Join(", ", newList.Select(movie => movie.Name)));
+            starWars.Name = "Star Wars - A New Hope";
+            Console.WriteLine(String.Join(", ", newList.Select(movie => movie.Name)));
+
+
         }
     }
 }
