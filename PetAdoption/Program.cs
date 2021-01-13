@@ -30,6 +30,10 @@ namespace PetAdoption
             Console.WriteLine("ADOPT - Adopt a pet");
             Console.WriteLine("UPDATE - Update a pet");
             Console.WriteLine("QUIT - Quit the app");
+            Console.WriteLine();
+            Console.Write("What is your choice? ");
+            var choice = Console.ReadLine();
+
             //     - Add a new pet
             //     - See all the pets up for adoption
             //     - Input a name of a pet that has been adopted to remove them from the list
