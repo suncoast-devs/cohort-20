@@ -128,6 +128,7 @@ namespace PetAdoption
                 Console.Write("What is your choice? ");
                 var choice = Console.ReadLine().ToUpper().Trim();
 
+                //     - See all the pets up for adoption
                 if (choice == "SEE")
                 {
 
@@ -146,7 +147,26 @@ namespace PetAdoption
                 }
 
 
+                //     - Add a new pet
+                if (choice == "ADD")
+                {
+                    // A
+                    //
+                    // Ask the name
+                    // Ask the gender
+                    // Ask the species
+                    // Ask the age
+                    // Ask the size
+                    // Ask the color
+                    //
+                    // Make new Pet object filling in all the properties
+                    // Add that pet to the list of pets
+                }
 
+                //     - Input a name of a pet that has been adopted to remove them from the list
+                //     - Input a name of a pet and update their size
+
+                //     - Quit the applications
                 //          if the user's choice is "QUIT", set the boolean to true
                 if (choice == "QUIT")
                 {
@@ -154,11 +174,6 @@ namespace PetAdoption
                 }
             }
 
-            //     - Add a new pet
-            //     - See all the pets up for adoption
-            //     - Input a name of a pet that has been adopted to remove them from the list
-            //     - Input a name of a pet and update their size
-            //     - Quit the applications
 
             // Say goodbye
             BannerMessage("Goodbye");
