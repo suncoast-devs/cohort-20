@@ -23,6 +23,13 @@ namespace PetAdoption
 
             // While the user hasn't chosen to quit the application
             //   Show them a menu of options they can do:
+            Console.WriteLine();
+            Console.WriteLine("Menu:");
+            Console.WriteLine("ADD - Add a new pet");
+            Console.WriteLine("SEE - See all the pets");
+            Console.WriteLine("ADOPT - Adopt a pet");
+            Console.WriteLine("UPDATE - Update a pet");
+            Console.WriteLine("QUIT - Quit the app");
             //     - Add a new pet
             //     - See all the pets up for adoption
             //     - Input a name of a pet that has been adopted to remove them from the list
