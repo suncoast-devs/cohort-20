@@ -30,7 +30,9 @@ namespace NumberTracker
             //            |         |          as integers
             //            |         |          |
             //            |         |          |      and as a list
-            var numbers = csvReader.GetRecords<int>().ToList();
+            List<int> numbers = csvReader.GetRecords<int>().ToList();
+            // Before we read the "numbers" from the csvReader we have to initialize it to empty
+            // var numbers = new List<int>();
 
             // Close the file to say we are done reading information
             fileReader.Close();
