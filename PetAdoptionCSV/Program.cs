@@ -65,6 +65,7 @@ namespace PetAdoption
             var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
 
             var pets = csvReader.GetRecords<Pet>().ToList();
+            fileReader.Close();
 
 
             // Welcome the user to the application
