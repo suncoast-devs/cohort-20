@@ -1,19 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using CsvHelper;
 
 namespace PetAdoption
 {
     class Pet
     {
+        // - `Name` - string
+        public string Name { get; set; }
         // - `Species` - string
         public string Species { get; set; }
         // - `Gender` - string
         public string Gender { get; set; }
         // - `Age` - int
         public int Age { get; set; }
-        // - `Name` - string
-        public string Name { get; set; }
         // - `Color` - string
         public string Color { get; set; }
         // - `Size` - string
@@ -273,6 +276,10 @@ namespace PetAdoption
                 }
             }
 
+            var fileWriter = new StreamWriter("pets.csv");
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+            csvWriter.WriteRecords(pets);
+            fileWriter.Close();
 
             // Say goodbye
             BannerMessage("Goodbye");
