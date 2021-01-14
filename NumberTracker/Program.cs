@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using CsvHelper;
 
 namespace NumberTracker
 {
@@ -29,6 +32,41 @@ namespace NumberTracker
                     numbers.Add(number);
                 }
             }
+
+            // We get here when the user has quit.
+
+            // TIME TO WRITE THE FILE!
+
+            // Make our file writing stream
+            var fileWriter = new StreamWriter("numbers.csv");
+
+            //                  A new stream of CSV data
+            //                  |
+            //                  |         The stream to write to
+            //                  |         |
+            //                  |         |           Rules about formatting
+            //                  |         |           |
+            //                  |         |           |
+            //                  v         v           v
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+            //
+            //  Where to write as CSV
+            //  |
+            //  |                     What data to write
+            //  |                     |
+            //  v                     v
+            csvWriter.WriteRecords(numbers);
+
+            //
+            //  Tell the object that writes to the file
+            //  |
+            //  |         That we are done and close
+            //  |         |
+            //  v         v
+            fileWriter.Close();
+
+
         }
     }
 }
