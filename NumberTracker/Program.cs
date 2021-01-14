@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using CsvHelper;
 
 namespace NumberTracker
@@ -10,7 +11,29 @@ namespace NumberTracker
     {
         static void Main(string[] args)
         {
-            var numbers = new List<int>();
+            // This object will *READ* from our numbers.csv
+            var fileReader = new StreamReader("numbers.csv");
+
+            // This object will *READ* CSV information _FROM_ the fileReader
+            var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+
+            // Tell the reader not to interpret the first
+            // row as a "header" since it is just the
+            // first number.
+            csvReader.Configuration.HasHeaderRecord = false;
+
+            // ask
+            //            CSV Reader
+            //            |
+            //            |         Get all the data
+            //            |         |
+            //            |         |          as integers
+            //            |         |          |
+            //            |         |          |      and as a list
+            var numbers = csvReader.GetRecords<int>().ToList();
+
+            // Close the file to say we are done reading information
+            fileReader.Close();
 
             bool hasQuit = false;
             while (hasQuit == false)
