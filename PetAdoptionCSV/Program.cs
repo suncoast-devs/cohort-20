@@ -59,14 +59,17 @@ namespace PetAdoption
             return foundPet;
         }
 
+        static List<Pet> ReadPets(string nameOfFileToReadPetsFrom)
+        {
+            using var fileReader = new StreamReader(nameOfFileToReadPetsFrom);
+            using var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
+
+            return csvReader.GetRecords<Pet>().ToList();
+        }
+
         static void Main(string[] args)
         {
-            var fileReader = new StreamReader("pets.csv");
-            var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
-
-            var pets = csvReader.GetRecords<Pet>().ToList();
-            fileReader.Close();
-
+            List<Pet> pets = ReadPets("pets.csv");
 
             // Welcome the user to the application
             BannerMessage("Welcome to our Pet Adoption Agency");
@@ -215,10 +218,16 @@ namespace PetAdoption
                 }
             }
 
-            var fileWriter = new StreamWriter("pets.csv");
-            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
-            csvWriter.WriteRecords(pets);
-            fileWriter.Close();
+            using (var fileWriter = new StreamWriter("pets.csv"))
+            {
+                // Any variable we delcare above, will automatically be *DISPOSED* when the block is done.
+                var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+                csvWriter.WriteRecords(pets);
+            }
+
+            // imagine this is 1000s of lines of code
+            // --
+            // I *know* that my pets.csv is closed safe at this point
 
             // Say goodbye
             BannerMessage("Goodbye");
