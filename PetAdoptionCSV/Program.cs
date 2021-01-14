@@ -61,73 +61,11 @@ namespace PetAdoption
 
         static void Main(string[] args)
         {
-            // | Species | Gender | Age | Name    | Color  | Size   |
-            // | ------- | ------ | --- | ------- | ------ | ------ |
-            // | Dog     | Female | 1   | Sadie   | Blonde | Medium |
-            // | Cat     | Male   | 3   | Russell | Black  | Small  |
-            // | Dog     | Male   | 3   | Kodak   | White  | Large  |
+            var fileReader = new StreamReader("pets.csv");
+            var csvReader = new CsvReader(fileReader, CultureInfo.InvariantCulture);
 
+            var pets = csvReader.GetRecords<Pet>().ToList();
 
-            // // Delcares the pet
-            // var sadie = new Pet();
-            // // Initializes the properties one at a time
-            // sadie.Color = "Blonde";
-            // sadie.Gender = "Female";
-            // sadie.Name = "Sadie";
-            // sadie.Species = "Dog";
-            // sadie.Age = 1;
-            // sadie.Size = "Medium";
-
-            // // Delcare *AND* initialize the pet in one step
-            // var russell = new Pet()
-            // {
-            //     Age = 3,
-            //     Color = "Black",
-            //     Name = "Russell",
-            //     Species = "Cat",
-            //     Gender = "Male",
-            //     Size = "Small"
-            // };
-            // var kodak = new Pet()
-            // {
-            //     Name = "Kodak",
-            //     Gender = "Male",
-            //     Species = "Dog",
-            //     Age = 3,
-            //     Color = "White",
-            //     Size = "Large",
-            // };
-            // var pets = new List<Pet>() { sadie, russell, kodak };
-
-            var pets = new List<Pet>() {
-               new Pet()
-               {
-                   Color = "Blonde",
-                   Gender = "Female",
-                   Name = "Sadie",
-                   Species = "Dog",
-                   Age = 1,
-                   Size = "Medium",
-               },
-               new Pet()
-               {
-                  Age = 3,
-                  Color = "Black",
-                  Name = "Russell",
-                  Species = "Cat",
-                  Gender = "Male",
-                  Size = "Small"
-               },
-               new Pet()
-               {
-                  Name = "Kodak",
-                  Gender = "Male",
-                  Species = "Dog",
-                  Age = 3,
-                  Color = "White",
-                  Size = "Large",
-               }
-            };
 
             // Welcome the user to the application
             BannerMessage("Welcome to our Pet Adoption Agency");
