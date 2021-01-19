@@ -126,6 +126,21 @@ namespace FirstBankOfSuncoast
                 switch (choice)
                 {
                     case "DEPOSIT":
+                        var accountType = PromptForString("Which account, Savings or Checking? ");
+                        if (accountType == "Savings" || accountType == "Checking")
+                        {
+                            var amount = PromptForInteger("How much to deposit? ");
+
+                            var newTransaction = new Transaction
+                            {
+                                Type = "Deposit",
+                                Account = accountType,
+                                Amount = amount,
+                                TimeStamp = DateTime.Now
+                            };
+
+                            transactions.Add(newTransaction);
+                        }
                         break;
 
                     case "WITHDRAW":
