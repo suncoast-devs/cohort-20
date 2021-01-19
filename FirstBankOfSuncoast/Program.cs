@@ -109,31 +109,33 @@ namespace FirstBankOfSuncoast
                         var checkingBalance = 0;
                         var savingsBalance = 0;
 
-                        foreach (var transaction in transactions)
+                        // This list ONLY has transactions that are savings
+                        var savingsTransactions = transactions.Where(transaction => transaction.Account == "Savings");
+                        foreach (var transaction in savingsTransactions)
                         {
-                            if (transaction.Account == "Savings")
+                            if (transaction.Type == "Deposit")
                             {
-                                if (transaction.Type == "Deposit")
-                                {
-                                    savingsBalance += transaction.Amount;
-                                }
-                                else
-                                {
-                                    savingsBalance -= transaction.Amount;
-                                }
+                                savingsBalance += transaction.Amount;
                             }
                             else
                             {
-                                if (transaction.Type == "Deposit")
-                                {
-                                    checkingBalance += transaction.Amount;
-                                }
-                                else
-                                {
-                                    checkingBalance -= transaction.Amount;
-                                }
+                                savingsBalance -= transaction.Amount;
                             }
                         }
+
+                        var checkingTransactions = transactions.Where(transaction => transaction.Account == "Checking");
+                        foreach (var transaction in checkingTransactions)
+                        {
+                            if (transaction.Type == "Deposit")
+                            {
+                                checkingBalance += transaction.Amount;
+                            }
+                            else
+                            {
+                                checkingBalance -= transaction.Amount;
+                            }
+                        }
+
 
                         Console.WriteLine($"Your checking balance is {checkingBalance}");
                         Console.WriteLine($"Your savings balance is {savingsBalance}");
