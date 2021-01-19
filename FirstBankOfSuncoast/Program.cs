@@ -144,6 +144,30 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "WITHDRAW":
+                        var accountTypeForWithdraw = PromptForString("Which account, Savings or Checking? ");
+                        if (accountTypeForWithdraw == "Savings" || accountTypeForWithdraw == "Checking")
+                        {
+                            var amount = PromptForInteger("How much to withdraw? ");
+
+                            // If we aren't drawing more than we have (less than or equal)
+                            // AND the amount input is more than 0 dollars (withdrawing 0 doesn't make sense and don't allow negatives)
+                            if (amount > 0 && amount <= Balance(transactions, accountTypeForWithdraw))
+                            {
+                                var newTransaction = new Transaction
+                                {
+                                    Type = "Withdraw",
+                                    Account = accountTypeForWithdraw,
+                                    Amount = amount,
+                                    TimeStamp = DateTime.Now
+                                };
+
+                                transactions.Add(newTransaction);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Insufficient Funds!");
+                            }
+                        }
                         break;
 
                     case "TRANSFER":
