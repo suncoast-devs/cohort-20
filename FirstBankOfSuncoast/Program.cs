@@ -13,6 +13,12 @@ namespace FirstBankOfSuncoast
         public DateTime TimeStamp { get; set; }
         // -- Account (string - boolean TRUE if Checking, FALSE if Savings): Checking, Savings
         public string Account { get; set; }
+
+        public string Description()
+        {
+            var transactionDescription = $"On {TimeStamp}: ${Amount} {Type} to/from {Account}";
+            return transactionDescription;
+        }
     }
 
 
@@ -102,6 +108,10 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "HISTORY":
+                        foreach (var transaction in transactions)
+                        {
+                            Console.WriteLine(transaction.Description());
+                        }
                         break;
 
                     case "QUIT":
