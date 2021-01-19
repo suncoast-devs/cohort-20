@@ -2,6 +2,19 @@
 
 namespace FirstBankOfSuncoast
 {
+    class Transaction
+    {
+        // -- Amount (int): (how much is in the transaction)
+        public int Amount { get; set; }
+        // -- Type (string - boolean TRUE if Deposit, FALSE if Withdraw): Deposit, Withdraw 
+        public string Type { get; set; }
+        // -- TimeStamp (DateTime) 
+        public DateTime TimeStamp { get; set; }
+        // -- Account (string - boolean TRUE if Checking, FALSE if Savings): Checking, Savings
+        public string Account { get; set; }
+    }
+
+
     class Program
     {
         static string PromptForString(string prompt)
