@@ -111,31 +111,16 @@ namespace FirstBankOfSuncoast
 
                         // This list ONLY has transactions that are savings
                         var savingsTransactions = transactions.Where(transaction => transaction.Account == "Savings");
-                        foreach (var transaction in savingsTransactions)
-                        {
-                            if (transaction.Type == "Deposit")
-                            {
-                                savingsBalance += transaction.Amount;
-                            }
-                            else
-                            {
-                                savingsBalance -= transaction.Amount;
-                            }
-                        }
+                        var depositSavingsTransactions = savingsTransactions.Where(transaction => transaction.Type == "Deposit");
+                        var withdrawSavingsTransactions = savingsTransactions.Where(transaction => transaction.Type == "Withdraw");
 
-                        var checkingTransactions = transactions.Where(transaction => transaction.Account == "Checking");
-                        foreach (var transaction in checkingTransactions)
-                        {
-                            if (transaction.Type == "Deposit")
-                            {
-                                checkingBalance += transaction.Amount;
-                            }
-                            else
-                            {
-                                checkingBalance -= transaction.Amount;
-                            }
-                        }
+                        var depositSavingsAmounts = depositSavingsTransactions.Select(transaction => transaction.Amount);
+                        var withdrawSavingsAmounts = withdrawSavingsTransactions.Select(transaction => transaction.Amount);
 
+                        var depositSavingsTotal = depositSavingsAmounts.Sum();
+                        var withdrawSavingsTotal = withdrawSavingsAmounts.Sum();
+
+                        savingsBalance = depositSavingsTotal - withdrawSavingsTotal;
 
                         Console.WriteLine($"Your checking balance is {checkingBalance}");
                         Console.WriteLine($"Your savings balance is {savingsBalance}");
