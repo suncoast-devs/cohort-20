@@ -45,6 +45,25 @@ namespace FirstBankOfSuncoast
             return userInputAsNumber;
         }
 
+        static int Balance(List<Transaction> transactionList, string whichAccountType)
+        {
+            // Filter out all of the transactions for that type (Checking or Savings)
+            var foundTransactions = transactionList.Where(transaction => transaction.Account == whichAccountType);
+
+            // Total up the deposits
+            var depositTotalInOneStep = foundTransactions
+                                                  .Where(transaction => transaction.Type == "Deposit")
+                                                  .Sum(transaction => transaction.Amount);
+
+            // Total up the withdraw
+            var withdrawTotalInOneStep = foundTransactions.
+                                                  Where(transaction => transaction.Type == "Withdraw").
+                                                  Sum(transaction => transaction.Amount);
+
+            // Subtract them
+            return depositTotalInOneStep - withdrawTotalInOneStep;
+        }
+
         static void Main(string[] args)
         {
             var transactions = new List<Transaction>()
@@ -106,21 +125,8 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "BALANCE":
-                        var checkingBalance = 0;
-                        var savingsBalance = 0;
-
-                        // This list ONLY has transactions that are savings
-                        var savingsTransactions = transactions.Where(transaction => transaction.Account == "Savings");
-                        var depositSavingsTransactions = savingsTransactions.Where(transaction => transaction.Type == "Deposit");
-                        var withdrawSavingsTransactions = savingsTransactions.Where(transaction => transaction.Type == "Withdraw");
-
-                        var depositSavingsAmounts = depositSavingsTransactions.Select(transaction => transaction.Amount);
-                        var withdrawSavingsAmounts = withdrawSavingsTransactions.Select(transaction => transaction.Amount);
-
-                        var depositSavingsTotal = depositSavingsAmounts.Sum();
-                        var withdrawSavingsTotal = withdrawSavingsAmounts.Sum();
-
-                        savingsBalance = depositSavingsTotal - withdrawSavingsTotal;
+                        var checkingBalance = Balance(transactions, "Checking");
+                        var savingsBalance = Balance(transactions, "Savings");
 
                         Console.WriteLine($"Your checking balance is {checkingBalance}");
                         Console.WriteLine($"Your savings balance is {savingsBalance}");
