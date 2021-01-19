@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FirstBankOfSuncoast
 {
@@ -108,7 +109,8 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "HISTORY":
-                        foreach (var transaction in transactions)
+                        var transactionInOrder = transactions.OrderBy(transaction => transaction.TimeStamp);
+                        foreach (var transaction in transactionInOrder)
                         {
                             Console.WriteLine(transaction.Description());
                         }
