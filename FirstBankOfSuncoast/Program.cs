@@ -106,6 +106,37 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "BALANCE":
+                        var checkingBalance = 0;
+                        var savingsBalance = 0;
+
+                        foreach (var transaction in transactions)
+                        {
+                            if (transaction.Account == "Savings")
+                            {
+                                if (transaction.Type == "Deposit")
+                                {
+                                    savingsBalance += transaction.Amount;
+                                }
+                                else
+                                {
+                                    savingsBalance -= transaction.Amount;
+                                }
+                            }
+                            else
+                            {
+                                if (transaction.Type == "Deposit")
+                                {
+                                    checkingBalance += transaction.Amount;
+                                }
+                                else
+                                {
+                                    checkingBalance -= transaction.Amount;
+                                }
+                            }
+                        }
+
+                        Console.WriteLine($"Your checking balance is {checkingBalance}");
+                        Console.WriteLine($"Your savings balance is {savingsBalance}");
                         break;
 
                     case "HISTORY":
