@@ -47,21 +47,31 @@ namespace FirstBankOfSuncoast
 
         static int Balance(List<Transaction> transactionList, string whichAccountType)
         {
+
+
+            //            condition ? VALUE FOR TRUE : VALUE FOR FALSE
+            // var answer = transactionList.Count > 10 ? 42 : -42;
+
+
+
             // Filter out all of the transactions for that type (Checking or Savings)
-            var foundTransactions = transactionList.Where(transaction => transaction.Account == whichAccountType);
+            // var foundTransactions = transactionList.Where(transaction => transaction.Account == whichAccountType);
 
-            // Total up the deposits
-            var depositTotalInOneStep = foundTransactions
-                                                  .Where(transaction => transaction.Type == "Deposit")
-                                                  .Sum(transaction => transaction.Amount);
+            // // Total up the deposits
+            // var depositTotalInOneStep = foundTransactions
+            //                                       .Where(transaction => transaction.Type == "Deposit")
+            //                                       .Sum(transaction => transaction.Amount);
 
-            // Total up the withdraw
-            var withdrawTotalInOneStep = foundTransactions.
-                                                  Where(transaction => transaction.Type == "Withdraw").
-                                                  Sum(transaction => transaction.Amount);
-
+            // // Total up the withdraw
+            // var withdrawTotalInOneStep = foundTransactions.
+            //                                       Where(transaction => transaction.Type == "Withdraw").
+            //                                       Sum(transaction => transaction.Amount);
             // Subtract them
-            return depositTotalInOneStep - withdrawTotalInOneStep;
+            // return depositTotalInOneStep - withdrawTotalInOneStep;
+
+            return transactionList.
+                     Where(transaction => transaction.Account == whichAccountType).
+                     Sum(transaction => transaction.Type == "Deposit" ? +transaction.Amount : -transaction.Amount);
         }
 
         static void Main(string[] args)
@@ -122,6 +132,9 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "TRANSFER":
+                        // Make a withdraw
+                        // Make a deposit
+                        // Add both to the list
                         break;
 
                     case "BALANCE":
