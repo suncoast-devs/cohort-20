@@ -181,9 +181,36 @@ namespace FirstBankOfSuncoast
                         break;
 
                     case "TRANSFER":
-                        // Make a withdraw
-                        // Make a deposit
-                        // Add both to the list
+                        var accountTypeForTransfer = PromptForString("Which account to transfer FROM, Savings or Checking? ");
+                        if (accountTypeForTransfer == "Savings" || accountTypeForTransfer == "Checking")
+                        {
+                            var amountToTransfer = PromptForInteger("How much to transfer? ");
+
+                            // If we aren't drawing more than we have (less than or equal)
+                            // AND the amount input is more than 0 dollars (withdrawing 0 doesn't make sense and don't allow negatives)
+                            if (amountToTransfer > 0 && amountToTransfer <= Balance(transactions, accountTypeForTransfer))
+                            {
+                                MakeWithdraw(transactions, accountTypeForTransfer, amountToTransfer);
+
+                                // If going from Savings
+                                if (accountTypeForTransfer == "Savings")
+                                {
+                                    // Then we must be depositing in checking
+                                    MakeDeposit(transactions, "Checking", amountToTransfer);
+                                }
+
+                                // If going from Checking
+                                if (accountTypeForTransfer == "Checking")
+                                {
+                                    // Then we must be depositing in savings
+                                    MakeDeposit(transactions, "Savings", amountToTransfer);
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Insufficient Funds!");
+                            }
+                        }
                         break;
 
                     case "BALANCE":
