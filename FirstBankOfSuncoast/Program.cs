@@ -45,6 +45,32 @@ namespace FirstBankOfSuncoast
             return userInputAsNumber;
         }
 
+        static void MakeDeposit(List<Transaction> transactions, string accountType, int amount)
+        {
+            var newTransaction = new Transaction
+            {
+                Type = "Deposit",
+                Account = accountType,
+                Amount = amount,
+                TimeStamp = DateTime.Now
+            };
+
+            transactions.Add(newTransaction);
+        }
+
+        static void MakeWithdraw(List<Transaction> transactions, string accountType, int amount)
+        {
+            var newTransaction = new Transaction
+            {
+                Type = "Withdraw",
+                Account = accountType,
+                Amount = amount,
+                TimeStamp = DateTime.Now
+            };
+
+            transactions.Add(newTransaction);
+        }
+
         static int Balance(List<Transaction> transactionList, string whichAccountType)
         {
 
@@ -131,15 +157,7 @@ namespace FirstBankOfSuncoast
                         {
                             var amount = PromptForInteger("How much to deposit? ");
 
-                            var newTransaction = new Transaction
-                            {
-                                Type = "Deposit",
-                                Account = accountType,
-                                Amount = amount,
-                                TimeStamp = DateTime.Now
-                            };
-
-                            transactions.Add(newTransaction);
+                            MakeDeposit(transactions, accountType, amount);
                         }
                         break;
 
@@ -153,15 +171,7 @@ namespace FirstBankOfSuncoast
                             // AND the amount input is more than 0 dollars (withdrawing 0 doesn't make sense and don't allow negatives)
                             if (amount > 0 && amount <= Balance(transactions, accountTypeForWithdraw))
                             {
-                                var newTransaction = new Transaction
-                                {
-                                    Type = "Withdraw",
-                                    Account = accountTypeForWithdraw,
-                                    Amount = amount,
-                                    TimeStamp = DateTime.Now
-                                };
-
-                                transactions.Add(newTransaction);
+                                MakeWithdraw(transactions, accountTypeForWithdraw, amount);
                             }
                             else
                             {
