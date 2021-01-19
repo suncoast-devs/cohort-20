@@ -192,19 +192,12 @@ namespace FirstBankOfSuncoast
                             {
                                 MakeWithdraw(transactions, accountTypeForTransfer, amountToTransfer);
 
-                                // If going from Savings
-                                if (accountTypeForTransfer == "Savings")
-                                {
-                                    // Then we must be depositing in checking
-                                    MakeDeposit(transactions, "Checking", amountToTransfer);
-                                }
+                                // Fancy "ternary" to compute the *other* account type
+                                // if accountTypeForTransfer is savings then accountTypeForDeposit will be checking
+                                //                                 otherwise accountTypeForDeposit will be savings
+                                var accountTypeForDeposit = accountTypeForTransfer == "Savings" ? "Checking" : "Savings";
 
-                                // If going from Checking
-                                if (accountTypeForTransfer == "Checking")
-                                {
-                                    // Then we must be depositing in savings
-                                    MakeDeposit(transactions, "Savings", amountToTransfer);
-                                }
+                                MakeDeposit(transactions, accountTypeForDeposit, amountToTransfer);
                             }
                             else
                             {
