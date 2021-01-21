@@ -51,6 +51,57 @@ namespace SuncoastMovies
                     Console.WriteLine($"- {role.CharacterName} played by {role.TheAssociatedActor.FullName}");
                 }
             }
+
+            // Find the rating from the database who's Description is "PG-13"
+            //
+            // So that we can assign the correct RatingId for the movie we are about to create
+            var rating = context.Ratings.First(rating => rating.Description == "PG-13");
+
+            // Make a new movie
+            var newMovie = new Movie
+            {
+                Title = "SpaceBalls",
+                PrimaryDirector = "Mel Brooks",
+                Genre = "Comedy",
+                YearReleased = 1987,
+                // Use the rating object's `Id` to assing this movie's RatingId
+                RatingId = rating.Id,
+            };
+
+            // // Queues up the addition of this movie to the movies table
+            // context.Movies.Add(newMovie);
+
+            // // DO IT! ACTUALLY ADD THE MOVIE
+            // context.SaveChanges();
+
+
+            var existingMovie = context.Movies.FirstOrDefault(movie => movie.Title == "SpaceBalls");
+            if (existingMovie == null)
+            {
+                Console.WriteLine("Couldn't find the movie. Uh oh!");
+            }
+            else
+            {
+                Console.WriteLine("Updating the movie!");
+
+                // Change the name of the movie 
+                existingMovie.Title = "SpaceBalls - best movie ever";
+
+                // DO IT! (make the change in the database)
+                context.SaveChanges();
+            }
+
+
+            // Find the first movie who's title is Cujo, if not found, existingMovieToDelete will be `null`
+            var existingMovieToDelete = context.Movies.FirstOrDefault(movie => movie.Title == "Cujo");
+
+            // If we found a movie that has the Title Cujo, then...
+            if (existingMovieToDelete != null)
+            {
+                context.Movies.Remove(existingMovieToDelete);
+
+                context.SaveChanges();
+            }
         }
     }
 }
