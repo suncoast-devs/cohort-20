@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace SuncoastMovies
 {
     public class Movie
@@ -18,5 +20,8 @@ namespace SuncoastMovies
         //     |      Name of property
         //     |      |
         public Rating TheRatingAssociatedToTheMovieObject { get; set; }
+
+        // Movie HAS MANY Role
+        public List<Role> Roles { get; set; }
     }
 }

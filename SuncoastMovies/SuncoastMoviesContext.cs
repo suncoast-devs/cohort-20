@@ -17,6 +17,8 @@ namespace SuncoastMovies
         //     |     |         |
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Rating> Ratings { get; set; }
+        public DbSet<Role> Roles { get; set; }
+
         //
         // Eventually this will be a long list of DbSet<things> where we have one
         // property (DbSet) for every table we need to work with
