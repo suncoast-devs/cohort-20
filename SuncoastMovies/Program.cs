@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace SuncoastMovies
 {
@@ -22,6 +23,21 @@ namespace SuncoastMovies
             foreach (var movie in context.Movies)
             {
                 Console.WriteLine($"There is a movie named {movie.Title}");
+            }
+            Console.WriteLine("\n\n\n");
+
+            // Now lets go through the movies *AND* join their Ratings
+            //
+            //                    GET ALL THE MOVIES
+            //                    |            |
+            //                    |            |   Include is like JOIN
+            //                    |            |     |
+            //                    |            |     |            What to join with
+            //                    |            |     |            |
+            //                    v            v     v            v
+            foreach (var movie in context.Movies.Include(movie => movie.Rating))
+            {
+                Console.WriteLine($"There is a movie named {movie.Title} that is rated {movie.Rating.Description}");
             }
         }
     }
