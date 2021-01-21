@@ -16,6 +16,7 @@ namespace SuncoastMovies
         //     Kinda | Like a L|ist<Movie>
         //     |     |         |
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
         //
         // Eventually this will be a long list of DbSet<things> where we have one
         // property (DbSet) for every table we need to work with
