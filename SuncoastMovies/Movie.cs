@@ -17,6 +17,6 @@ namespace SuncoastMovies
         //     |
         //     |      Name of property
         //     |      |
-        public Rating Rating { get; set; }
+        public Rating TheRatingAssociatedToTheMovieObject { get; set; }
     }
 }

@@ -35,9 +35,9 @@ namespace SuncoastMovies
             //                    |            |     |            What to join with
             //                    |            |     |            |
             //                    v            v     v            v
-            foreach (var movie in context.Movies.Include(movie => movie.Rating))
+            foreach (var movie in context.Movies.Include(movie => movie.TheRatingAssociatedToTheMovieObject))
             {
-                Console.WriteLine($"There is a movie named {movie.Title} that is rated {movie.Rating.Description}");
+                Console.WriteLine($"There is a movie named {movie.Title} that is rated {movie.TheRatingAssociatedToTheMovieObject.Description}");
             }
         }
     }
