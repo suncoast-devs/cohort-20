@@ -39,6 +39,18 @@ namespace SuncoastMovies
             {
                 Console.WriteLine($"There is a movie named {movie.Title} that is rated {movie.TheRatingAssociatedToTheMovieObject.Description}");
             }
+
+            Console.WriteLine("\n\n\n");
+            //                                   JOIN TO ROLES                 SECOND JOIN FROM ROLES TO ACTOR
+            foreach (var movie in context.Movies.Include(movie => movie.Roles).ThenInclude(role => role.TheAssociatedActor))
+            {
+                Console.WriteLine($"The movie {movie.Title}");
+
+                foreach (var role in movie.Roles)
+                {
+                    Console.WriteLine($"- {role.CharacterName} played by {role.TheAssociatedActor.FullName}");
+                }
+            }
         }
     }
 }
