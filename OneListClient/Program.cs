@@ -75,15 +75,33 @@ namespace OneListClient
 
             Console.WriteLine($"There are {items.Count()} todo items");
 
-            var table = new ConsoleTable("Description", "Created At", "Completed");
+            var table = new ConsoleTable("Id", "Description", "Created At", "Completed");
 
             foreach (var item in items)
             {
                 // Add one row to our table
-                table.AddRow(item.Text, item.CreatedAt, item.CompletedStatus);
+                table.AddRow(item.Id, item.Text, item.CreatedAt, item.CompletedStatus);
             }
 
             table.Write();
+        }
+
+        static async Task GetOneItemAsync(string tokenToSendToApi, int idToLookup)
+        {
+            var client = new HttpClient();
+
+            // Make a `GET` request to the API and get back a *stream* of data.
+            var responseAsStream = await client.GetStreamAsync($"https://one-list-api.herokuapp.com/items/{idToLookup}?access_token={tokenToSendToApi}");
+
+            Item item = await JsonSerializer.DeserializeAsync<Item>(responseAsStream);
+
+            var table = new ConsoleTable("ID", "Description", "Created At", "Updated At", "Completed");
+
+            // Add one row to our table
+            table.AddRow(item.Id, item.Text, item.CreatedAt, item.UpdatedAt, item.CompletedStatus);
+
+            // Write the table
+            table.Write(Format.Minimal);
         }
 
         static async Task Main(string[] args)
@@ -120,6 +138,17 @@ namespace OneListClient
                         Console.ReadLine();
 
                         break;
+
+                    case "O":
+                        Console.Write("Enter the ID of the item to show: ");
+                        var id = int.Parse(Console.ReadLine());
+
+                        await GetOneItemAsync(token, id);
+
+                        Console.WriteLine("Press ENTER to continue");
+                        Console.ReadLine();
+                        break;
+
                 }
             }
         }
