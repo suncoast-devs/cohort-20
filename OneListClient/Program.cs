@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using ConsoleTables;
 
 namespace OneListClient
 {
@@ -74,11 +75,15 @@ namespace OneListClient
 
             Console.WriteLine($"There are {items.Count()} todo items");
 
+            var table = new ConsoleTable("Description", "Created At", "Completed");
+
             foreach (var item in items)
             {
-                // Output some details on that item
-                Console.WriteLine($"The task {item.Text} was created on {item.CreatedAt} and is {item.CompletedStatus}");
+                // Add one row to our table
+                table.AddRow(item.Text, item.CreatedAt, item.CompletedStatus);
             }
+
+            table.Write();
         }
     }
 }
