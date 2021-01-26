@@ -31,9 +31,9 @@ namespace OneListClient
                 // }
 
                 // Ternary
-                string completedStatusText = complete ? "completed" : "not completed";
+                // string completedStatusText = complete ? "completed" : "not completed";
 
-                return completedStatusText;
+                return complete ? "completed" : "not completed";
             }
         }
     }
