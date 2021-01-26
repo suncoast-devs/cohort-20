@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -111,6 +112,27 @@ namespace OneListClient
             }
         }
 
+
+        static async Task AddOneItemAsync(string tokenToSendToApi, Item newItemToAdd)
+        {
+            var client = new HttpClient();
+
+            // Generate a URL specifically referencing the endpoint for getting a single
+            // todo item and provide the id we were supplied
+            var url = $"https://one-list-api.herokuapp.com/items?access_token={tokenToSendToApi}";
+
+            // Take the `newItem` and serialize it into JSON
+            string jsonBody = JsonSerializer.Serialize(newItemToAdd);
+
+            // We turn this into a StringContent object and indicate we are using JSON
+            // by ensuring there is a media type header of `application/json`
+            StringContent jsonBodyAsContent = new StringContent(jsonBody);
+            jsonBodyAsContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+            await client.PostAsync(url, jsonBodyAsContent);
+        }
+
+
         static async Task Main(string[] args)
         {
             // The token string will be the first "word" that appears after "dotnet run" on the command line
@@ -155,6 +177,22 @@ namespace OneListClient
                         Console.WriteLine("Press ENTER to continue");
                         Console.ReadLine();
                         break;
+
+                    case "C":
+                        Console.Write("Enter the description of your new todo: ");
+                        var text = Console.ReadLine();
+
+                        var newItem = new Item
+                        {
+                            Text = text
+                        };
+
+                        await AddOneItemAsync(token, newItem);
+
+                        Console.WriteLine("Press ENTER to continue");
+                        Console.ReadLine();
+                        break;
+
 
                 }
             }
