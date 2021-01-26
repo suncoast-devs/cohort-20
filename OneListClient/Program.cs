@@ -88,20 +88,27 @@ namespace OneListClient
 
         static async Task GetOneItemAsync(string tokenToSendToApi, int idToLookup)
         {
-            var client = new HttpClient();
+            try
+            {
+                var client = new HttpClient();
 
-            // Make a `GET` request to the API and get back a *stream* of data.
-            var responseAsStream = await client.GetStreamAsync($"https://one-list-api.herokuapp.com/items/{idToLookup}?access_token={tokenToSendToApi}");
+                // Make a `GET` request to the API and get back a *stream* of data.
+                var responseAsStream = await client.GetStreamAsync($"https://one-list-api.herokuapp.com/items/{idToLookup}?access_token={tokenToSendToApi}");
 
-            Item item = await JsonSerializer.DeserializeAsync<Item>(responseAsStream);
+                Item item = await JsonSerializer.DeserializeAsync<Item>(responseAsStream);
 
-            var table = new ConsoleTable("ID", "Description", "Created At", "Updated At", "Completed");
+                var table = new ConsoleTable("ID", "Description", "Created At", "Updated At", "Completed");
 
-            // Add one row to our table
-            table.AddRow(item.Id, item.Text, item.CreatedAt, item.UpdatedAt, item.CompletedStatus);
+                // Add one row to our table
+                table.AddRow(item.Id, item.Text, item.CreatedAt, item.UpdatedAt, item.CompletedStatus);
 
-            // Write the table
-            table.Write(Format.Minimal);
+                // Write the table
+                table.Write(Format.Minimal);
+            }
+            catch (HttpRequestException)
+            {
+                Console.WriteLine("I could not find that item!");
+            }
         }
 
         static async Task Main(string[] args)
