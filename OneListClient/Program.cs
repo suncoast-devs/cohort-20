@@ -3,17 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace OneListClient
 {
     class Item
     {
-        public int id { get; set; }
-        public string text { get; set; }
-        public bool complete { get; set; }
-        public DateTime created_at { get; set; }
-        public DateTime updated_at { get; set; }
+        // Teaching the serializer that the JSON property is called lowercase id
+        // Even though our C# property is named Id
+        [JsonPropertyName("id")]
+        public int Id { get; set; }
+
+        [JsonPropertyName("text")]
+        public string Text { get; set; }
+
+        [JsonPropertyName("complete")]
+        public bool Complete { get; set; }
+
+        [JsonPropertyName("created_at")]
+        public DateTime CreatedAt { get; set; }
+
+        [JsonPropertyName("update_at")]
+        public DateTime UpdatedAt { get; set; }
 
         public string CompletedStatus
         {
@@ -33,7 +45,7 @@ namespace OneListClient
                 // Ternary
                 // string completedStatusText = complete ? "completed" : "not completed";
 
-                return complete ? "completed" : "not completed";
+                return Complete ? "completed" : "not completed";
             }
         }
     }
@@ -65,7 +77,7 @@ namespace OneListClient
             foreach (var item in items)
             {
                 // Output some details on that item
-                Console.WriteLine($"The task {item.text} was created on {item.created_at} and is {item.CompletedStatus}");
+                Console.WriteLine($"The task {item.Text} was created on {item.CreatedAt} and is {item.CompletedStatus}");
             }
         }
     }
