@@ -58,7 +58,17 @@ namespace OneListClient
         static async Task Main(string[] args)
         {
             // The token string will be the first "word" that appears after "dotnet run" on the command line
-            var token = args[0];
+            string token = "";
+
+            if (args.Length == 0)
+            {
+                Console.Write("What list would you like? ");
+                token = Console.ReadLine();
+            }
+            else
+            {
+                token = args[0];
+            }
 
 
             var client = new HttpClient();
