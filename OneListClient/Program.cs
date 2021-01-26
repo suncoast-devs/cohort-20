@@ -14,6 +14,25 @@ namespace OneListClient
         public bool complete { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
+
+        public string CompletedStatus
+        {
+            get
+            {
+                string completedStatusText;
+
+                if (complete == true)
+                {
+                    completedStatusText = "completed";
+                }
+                else
+                {
+                    completedStatusText = "not completed";
+                }
+
+                return completedStatusText;
+            }
+        }
     }
 
 
@@ -43,7 +62,7 @@ namespace OneListClient
             foreach (var item in items)
             {
                 // Output some details on that item
-                Console.WriteLine($"The task {item.text} was created on {item.created_at} and has a completion of: {item.complete}");
+                Console.WriteLine($"The task {item.text} was created on {item.created_at} and is {item.CompletedStatus}");
             }
         }
     }
