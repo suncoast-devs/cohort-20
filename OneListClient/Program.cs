@@ -55,26 +55,12 @@ namespace OneListClient
 
     class Program
     {
-        static async Task Main(string[] args)
+        static async Task ShowAllItems(string tokenToSendToApi)
         {
-            // The token string will be the first "word" that appears after "dotnet run" on the command line
-            string token = "";
-
-            if (args.Length == 0)
-            {
-                Console.Write("What list would you like? ");
-                token = Console.ReadLine();
-            }
-            else
-            {
-                token = args[0];
-            }
-
-
             var client = new HttpClient();
 
             // Make a `GET` request to the API and get back a *stream* of data.
-            var responseAsStream = await client.GetStreamAsync($"https://one-list-api.herokuapp.com/items?access_token={token}");
+            var responseAsStream = await client.GetStreamAsync($"https://one-list-api.herokuapp.com/items?access_token={tokenToSendToApi}");
 
             // Supply that *stream of data* to a Deserialize that will interpret it as a List of Item objects.
             //
@@ -98,6 +84,44 @@ namespace OneListClient
             }
 
             table.Write();
+        }
+
+        static async Task Main(string[] args)
+        {
+            // The token string will be the first "word" that appears after "dotnet run" on the command line
+            string token = "";
+
+            if (args.Length == 0)
+            {
+                Console.Write("What list would you like? ");
+                token = Console.ReadLine();
+            }
+            else
+            {
+                token = args[0];
+            }
+
+            var keepGoing = true;
+            while (keepGoing)
+            {
+                Console.Clear();
+                Console.Write("Get (A)ll todo, or Get (O)ne todo, (C)reate a new item, or (Q)uit: ");
+                var choice = Console.ReadLine().ToUpper();
+
+                switch (choice)
+                {
+                    case "Q":
+                        keepGoing = false;
+                        break;
+
+                    case "A":
+                        await ShowAllItems(token);
+                        Console.WriteLine("Press ENTER to continue");
+                        Console.ReadLine();
+
+                        break;
+                }
+            }
         }
     }
 }
