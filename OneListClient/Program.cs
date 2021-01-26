@@ -39,6 +39,12 @@ namespace OneListClient
             List<Item> items = await JsonSerializer.DeserializeAsync<List<Item>>(responseAsStream);
 
             Console.WriteLine($"There are {items.Count()} todo items");
+
+            foreach (var item in items)
+            {
+                // Output some details on that item
+                Console.WriteLine($"The task {item.text} was created on {item.created_at} and has a completion of: {item.complete}");
+            }
         }
     }
 }
