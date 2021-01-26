@@ -19,16 +19,19 @@ namespace OneListClient
         {
             get
             {
-                string completedStatusText;
+                // string completedStatusText;
 
-                if (complete == true)
-                {
-                    completedStatusText = "completed";
-                }
-                else
-                {
-                    completedStatusText = "not completed";
-                }
+                // if (complete)
+                // {
+                //     completedStatusText = "completed";
+                // }
+                // else
+                // {
+                //     completedStatusText = "not completed";
+                // }
+
+                // Ternary
+                string completedStatusText = complete ? "completed" : "not completed";
 
                 return completedStatusText;
             }
