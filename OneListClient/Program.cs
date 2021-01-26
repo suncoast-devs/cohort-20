@@ -57,10 +57,14 @@ namespace OneListClient
     {
         static async Task Main(string[] args)
         {
+            // The token string will be the first "word" that appears after "dotnet run" on the command line
+            var token = args[0];
+
+
             var client = new HttpClient();
 
             // Make a `GET` request to the API and get back a *stream* of data.
-            var responseAsStream = await client.GetStreamAsync("https://one-list-api.herokuapp.com/items?access_token=illustriousvoyage");
+            var responseAsStream = await client.GetStreamAsync($"https://one-list-api.herokuapp.com/items?access_token={token}");
 
             // Supply that *stream of data* to a Deserialize that will interpret it as a List of Item objects.
             //
