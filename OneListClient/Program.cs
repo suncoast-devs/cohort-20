@@ -129,7 +129,24 @@ namespace OneListClient
             StringContent jsonBodyAsContent = new StringContent(jsonBody);
             jsonBodyAsContent.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            await client.PostAsync(url, jsonBodyAsContent);
+            var response = await client.PostAsync(url, jsonBodyAsContent);
+
+
+            // Get the response as a stream.
+            var responseJson = await response.Content.ReadAsStreamAsync();
+
+            // Supply that *stream of data* to a Deserialize that will interpret it as a *SINGLE* `Item`
+            var item = await JsonSerializer.DeserializeAsync<Item>(responseJson);
+
+            // Make a table to output our new item.
+            var table = new ConsoleTable("ID", "Description", "Created At", "Updated At", "Completed");
+
+            // Add one row to our table
+            table.AddRow(item.Id, item.Text, item.CreatedAt, item.UpdatedAt, item.CompletedStatus);
+
+            // Write the table
+            table.Write(Format.Minimal);
+
         }
 
 
