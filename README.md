@@ -1,5 +1,9 @@
 # Curriculum
 
+---
+
+# Unit 1 - Back End
+
 ## Week 1 - Introduction to C#
 
 - Setup
@@ -28,6 +32,10 @@
 - Writing an API Client
 - Writing an API Server
 - CRUD
+
+---
+
+# Unit 2 - Front End
 
 ## Week 5 - HTML + CSS
 
@@ -58,6 +66,10 @@
 - React Hooks with router
 
 ## Week 9 - React Practice + Review
+
+---
+
+# Unit 3 - Full Stack
 
 ## Week 10, 11 and 12 - Full Stack Apps + Working on Capstone
 
