@@ -17,9 +17,20 @@ namespace BasicAPI.Controllers
         //
         //            This method name can be anything we like, should be meaningful
         [HttpGet]
-        public string TacoTuesdayTheNameHereDoesntMatter()
+        public string TacoTuesdayTheNameHereDoesntMatter(string who)
         {
-            return $"Hello, World. This is my first API! The time is {DateTime.Now}";
+            string whoOrWorld;
+
+            if (who == null)
+            {
+                whoOrWorld = "World";
+            }
+            else
+            {
+                whoOrWorld = who;
+            }
+
+            return $"Hello, {whoOrWorld}. This is my first API! The time is {DateTime.Now}";
         }
     }
 }
