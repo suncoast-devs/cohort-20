@@ -19,16 +19,16 @@ namespace BasicAPI.Controllers
         [HttpGet]
         public string TacoTuesdayTheNameHereDoesntMatter(string who)
         {
-            string whoOrWorld;
+            string whoOrWorld = who == null ? "World" : who;
 
-            if (who == null)
-            {
-                whoOrWorld = "World";
-            }
-            else
-            {
-                whoOrWorld = who;
-            }
+            // if (who == null)
+            // {
+            //     whoOrWorld = "World";
+            // }
+            // else
+            // {
+            //     whoOrWorld = who;
+            // }
 
             return $"Hello, {whoOrWorld}. This is my first API! The time is {DateTime.Now}";
         }
