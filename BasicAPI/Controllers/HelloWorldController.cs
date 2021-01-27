@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BasicAPI.Controllers
@@ -13,5 +14,12 @@ namespace BasicAPI.Controllers
     [ApiController]
     public class HelloWorldController : ControllerBase
     {
+        //
+        //            This method name can be anything we like, should be meaningful
+        [HttpGet]
+        public string TacoTuesdayTheNameHereDoesntMatter()
+        {
+            return $"Hello, World. This is my first API! The time is {DateTime.Now}";
+        }
     }
 }
