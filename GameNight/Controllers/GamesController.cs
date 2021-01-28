@@ -81,6 +81,18 @@ namespace GameNight.Controllers
                 return BadRequest();
             }
 
+
+            // Add logic that checks if the `game` variable is A-OK
+            // if the minimum number of players is less than 2
+            if (game.MinimumPlayers < 2)
+            {
+                //    then ... return some kind of error to user
+                //             and don't do any more of this code.
+                var response = BadRequest(new { Message = $"You need at least 2 players! You specified {game.MinimumPlayers} for your game of {game.Name}" });
+
+                return response;
+            }
+
             // Tell the database to consider everything in game to be _updated_ values. When
             // the save happens the database will _replace_ the values in the database with the ones from game
             _context.Entry(game).State = EntityState.Modified;
@@ -124,6 +136,19 @@ namespace GameNight.Controllers
         [HttpPost]
         public async Task<ActionResult<Game>> PostGame(Game game)
         {
+
+            // Add logic that checks if the `game` variable is A-OK
+            // if the minimum number of players is less than 2
+            if (game.MinimumPlayers < 2)
+            {
+                //    then ... return some kind of error to user
+                //             and don't do any more of this code.
+                var response = BadRequest(new { Message = $"You need at least 2 players! You specified {game.MinimumPlayers} for your game of {game.Name}" });
+
+                return response;
+            }
+
+
             // Indicate to the database context we want to add this new record
             _context.Games.Add(game);
             await _context.SaveChangesAsync();
