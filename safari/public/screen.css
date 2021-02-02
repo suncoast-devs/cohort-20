@@ -25,3 +25,15 @@ body {
   /* Specify a text color */
   color: #2b303a;
 }
+
+header,
+footer {
+  /* Use a different background color for the header */
+  background-color: #2b303a;
+
+  /* And a different font color */
+  color: #eee5e9;
+
+  /* With some padding all the way around */
+  padding: 0.5rem;
+}
