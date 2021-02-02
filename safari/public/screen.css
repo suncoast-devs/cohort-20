@@ -82,3 +82,98 @@ h6 {
   /* and remove the margins */
   margin: 0;
 }
+
+.feature figure {
+  /* Add some margin and padding */
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+
+  /* Specify a background color */
+  background-color: #fffffd;
+  /* Round the corners */
+  border-radius: 0.25rem;
+  /* Add a box shadow */
+  box-shadow: 2px 2px 0.5rem #7c7c7c;
+}
+
+figure img {
+  width: 50%;
+}
+
+/* The images in our list should have some margin and width */
+ul li img {
+  margin: 0.25rem;
+  width: 250px;
+}
+
+article {
+  /* Change the background, with a little bit of opacity */
+  background-color: #ffffffdd;
+  /* Round the corners slightly */
+  border-radius: 0.25rem;
+  /* Add some padding */
+  padding: 0.5rem;
+  /* Set a top/bottom margin but leave the left-right margin auto (centered) */
+  margin: 0.5rem auto;
+  /* Add a neat box-shadow */
+  box-shadow: 2px 2px 0.5rem #7c7c7c;
+}
+
+article h3 {
+  /* Top margin 0, left and right margin automatic (centered), bottom margin half rem */
+  margin: 0 auto 0.5rem;
+}
+
+article p {
+  /* Smaller font size */
+  font-size: 0.75rem;
+  /* Top margin only */
+  margin: 0.5rem 0 0 0;
+}
+
+label {
+  /* Display the label as block so it is on it's own line */
+  display: block;
+  /* UPPERCASE */
+  text-transform: uppercase;
+  /* Increase bold and decrease size */
+  font-weight: bold;
+  font-size: 0.75rem;
+  /* Increase the spacing between letters */
+  letter-spacing: 0.05rem;
+  /* Adjsut the text color */
+  color: #7c7c7c;
+}
+
+input {
+  /* Adjust the text color */
+  color: #2b303a;
+  /* Make the input take 100% of it's available container */
+  width: 100%;
+  /* Round the corners */
+  border-radius: 0.25rem;
+  /* Remove the border */
+  border: none;
+  /* Add some padding */
+  padding: 0.5rem;
+}
+
+input[type='submit'] {
+  width: auto;
+}
+
+input[type='submit'],
+button {
+  /* Use the Calistoga font for the submit button */
+  font-family: 'Calistoga', serif;
+  /* Adjust the background color */
+  background-color: #d64933;
+  /* Adjust the text color */
+  color: #eee5e9;
+  /* remove the border */
+  border: none;
+  /* Adjust the padding, top/bottom and left/right */
+  padding: 0.25rem 0.5rem;
+  /* Round those corners! */
+  border-radius: 0.25rem;
+}
