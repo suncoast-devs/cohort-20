@@ -57,3 +57,14 @@ header a:link,
 header a:visited {
   color: #92dce5;
 }
+
+/* Remove padding and bullet style */
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* Force the header lists to be UPPERCASE */
+header li {
+  text-transform: uppercase;
+}
