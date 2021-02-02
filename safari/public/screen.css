@@ -1,3 +1,9 @@
+/* Normalize to make browsers the same */
+@import url('https://necolas.github.io/normalize.css/latest/normalize.css');
+
+/* Cool fonts from google */
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&family=Lato:wght@400;700&display=swap');
+
 :root {
   font: 16px / 1 sans-serif;
 }
@@ -9,4 +15,13 @@ html {
 body {
   margin: 0;
   min-height: 100%;
+
+  /* Use the Lato font for all the text */
+  font-family: 'Lato', sans-serif;
+
+  /* Specify a background color for the entire body */
+  background-color: #eee5e9;
+
+  /* Specify a text color */
+  color: #2b303a;
 }
