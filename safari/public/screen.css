@@ -37,3 +37,23 @@ footer {
   /* With some padding all the way around */
   padding: 0.5rem;
 }
+
+/* Default style for all unvisited and visited links */
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #d64933;
+}
+
+/* Default style for all focus/hover/active links */
+a:focus,
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+/* Different styles for header links */
+header a:link,
+header a:visited {
+  color: #92dce5;
+}
