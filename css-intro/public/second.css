@@ -1,0 +1,54 @@
+p {
+  /* 3rem (or 3 * 16px) of margin all around */
+  margin: 3rem;
+  padding: 0;
+  border: 5px solid blue;
+
+  /* Top Right Bottom left */
+  /* margin: 4rem 3rem 2rem 1rem; */
+
+  /* 4 rem top and bottom, 2 rem left and right */
+  /* margin: 4rem 2rem; */
+
+  /* Top, left-right, bottom */
+  /* margin: 4rem 2rem 1rem; */
+
+  /* margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1.5rem; */
+}
+
+/* Anything that is a <p> or an <li> or has the class typewriter is styled like this */
+p,
+li,
+.typewriter {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 24px;
+}
+
+/* Any <p> inside of an h1 */
+h1 p {
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Only applies to <p> that are IMMEDIATE children of <h1> */
+h1 > p {
+  border: 3px solid green;
+}
+
+/* Any h2 that follows a ul */
+ul + h2 {
+  text-decoration: underline;
+  text-align: center;
+}
+
+ul + h2 + h2 {
+  color: blue;
+  font-size: 6rem;
+}
+
+p + p {
+  color: sandybrown;
+}

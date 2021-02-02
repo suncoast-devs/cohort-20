@@ -1,0 +1,59 @@
+:root {
+  font: 16px / 1 sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+h1 {
+  color: blue;
+  background-color: yellow;
+
+  /* This is shorthand for the following three */
+  border: 5px solid black;
+  /* border-width: 5px;
+  border-style: solid;
+  border-color: black; */
+}
+
+p {
+  color: red;
+}
+
+/* kebab case */
+.top-of-page {
+  font-size: 5rem;
+}
+
+/* ID selector, there can be only one */
+#important-stuff {
+  text-decoration: underline;
+}
+
+/*
+  Must be an h1 tag
+
+  But also must be hovered by the pointer
+*/
+h1:hover {
+  border-color: rebeccapurple;
+}
+
+li:first-child {
+  /* color: rgb(117, 24, 24); */
+  color: #ef2d2d;
+}
+
+li:nth-child(4) {
+  color: #cccccc;
+}
+
+p::first-letter {
+  font-family: Courier;
+}
