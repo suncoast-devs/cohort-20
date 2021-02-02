@@ -68,3 +68,17 @@ ul {
 header li {
   text-transform: uppercase;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* Use Calistoga font for headers, fallback to serif otherwise */
+  font-family: 'Calistoga', serif;
+  /* Increase the font weight */
+  font-weight: 400;
+  /* and remove the margins */
+  margin: 0;
+}
