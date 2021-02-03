@@ -12,12 +12,22 @@ body {
 }
 
 ul {
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f7f0da;
 
   list-style: none;
   margin: 0;
   padding: 0;
+
+  display: flex;
+
+  /* This is a shortcut for
+  flex-direction: row;
+  flex-wrap: wrap;
+  */
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 /*
