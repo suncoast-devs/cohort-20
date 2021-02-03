@@ -183,3 +183,27 @@ button {
   text-shadow: 0 0 0.5rem #d64933;
   font-size: 1.2rem;
 }
+
+header ul {
+  display: flex;
+  justify-content: center;
+  letter-spacing: 0.02rem;
+}
+
+header li:not(:first-child) {
+  margin-left: 1rem;
+}
+
+header h1 {
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.gallery img {
+  width: 100%;
+}
