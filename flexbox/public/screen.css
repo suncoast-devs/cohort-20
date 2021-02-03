@@ -20,29 +20,7 @@ ul {
   padding: 0;
 
   display: grid;
-  grid-template-columns: 150px 150px 150px 150px;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'header header header header'
-    'main main . sidebar'
-    'footer footer footer footer';
-}
-
-.A {
-  grid-area: footer;
-  border: 5px solid black;
-}
-.B {
-  grid-area: main;
-  border: 5px solid black;
-}
-.C {
-  grid-area: sidebar;
-  border: 5px solid black;
-}
-.D {
-  grid-area: header;
-  border: 5px solid black;
+  grid-template-columns: 1fr 1fr;
 }
 
 /*
@@ -52,7 +30,5 @@ https://stackoverflow.com/a/34952703
 */
 
 img {
-  width: 100%;
-  height: 100px;
   vertical-align: bottom;
 }
