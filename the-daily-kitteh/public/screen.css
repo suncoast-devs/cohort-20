@@ -52,3 +52,14 @@ header a:link,
 header a:visited {
   color: white;
 }
+
+main {
+  display: flex;
+  background-color: rgb(216, 240, 241);
+}
+
+aside {
+  border: 2px solid rgb(0, 127, 151);
+  padding: 0.4rem;
+  margin: 1rem;
+}
