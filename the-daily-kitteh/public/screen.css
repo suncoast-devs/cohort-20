@@ -63,3 +63,19 @@ aside {
   padding: 0.4rem;
   margin: 1rem;
 }
+
+aside h3 {
+  color: rgb(57, 74, 92);
+  font-family: 'Rubik', sans-serif;
+  margin: 0.4rem;
+}
+
+aside ul {
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 1rem;
+  margin: 0.5rem;
+}
+
+aside ul li {
+  padding: 0.1rem;
+}
