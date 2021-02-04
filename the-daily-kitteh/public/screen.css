@@ -79,3 +79,19 @@ aside ul {
 aside ul li {
   padding: 0.1rem;
 }
+
+section h2 {
+  color: rgb(57, 74, 92);
+  font-family: 'Rubik', sans-serif;
+  padding: 1rem;
+  margin-bottom: 0rem;
+  letter-spacing: 0.08rem;
+}
+
+section p {
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 0rem;
+  line-height: 1.3rem;
+}
