@@ -100,15 +100,17 @@ function main() {
   // let newArrayOne = new Array(12)
   // console.log(newArrayOne)
 
-  let people = ['Betty', 'Wilma', 'Fred']
-  let collection = ['Betty', 98, 'Fred', 12, 42]
+  const people = ['Betty', 'Wilma', 'Fred']
+  const collection = ['Betty', 98, 'Fred', 12, 42]
   console.log(collection)
 
-  let colors = ['red', 'green', 'blue']
+  const colors = ['red', 'green', 'blue']
   // C# for(var index = 0; index < colors.Length; index++)
   for (let index = 0; index < colors.length; index++) {
     // C#   var currentColor = colors[index]
-    let currentColor = colors[index]
+    const currentColor = colors[index]
+
+    // currentColor = 'rebeccapurple'
 
     // C#    Console.WriteLine(currentColor)
     console.log(currentColor)
