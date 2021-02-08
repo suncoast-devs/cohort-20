@@ -117,6 +117,13 @@ function main() {
     // C#    Console.WriteLine(currentColor)
     console.log(currentColor)
   }
+
+  // Asking the user for information
+  // C#    Console.WriteLine("What is your name?")
+  // C#:   var currentUserName = Console.ReadLine()
+  const currentUserName = window.prompt('What is your name?')
+
+  console.log(currentUserName)
 }
 
 document.addEventListener('DOMContentLoaded', main)
