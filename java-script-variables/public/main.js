@@ -1,3 +1,5 @@
+// @ts-check
+
 function main() {
   // Write all of our code here
   // inside these braces {       }
