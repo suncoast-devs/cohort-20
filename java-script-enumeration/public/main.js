@@ -5,8 +5,8 @@ function main() {
   //
   // for(let index = 0; ...)
 
-  function logSomeColor(currentColor) {
-    console.log(`The color is ${currentColor}`)
+  const logSomeColor = function (currentColor, colorIndex) {
+    console.log(`The color at index ${colorIndex} is ${currentColor}`)
   }
 
   // C#:  foreach(var color in colors)
@@ -19,6 +19,9 @@ function main() {
   //   |     |       work to do
   //   |     |        |
   //   |     |        V
+  colors.forEach(function (currentColor, colorIndex) {
+    console.log(`The color at index ${colorIndex} is ${currentColor}`)
+  })
   colors.forEach(logSomeColor)
 
   // length is a property of the array that tells us how long the array is
@@ -37,6 +40,41 @@ function main() {
     // behavior
     loggingFunction: logSomeColor,
   }
+
+  const lengths = []
+
+  colors.forEach(function (color) {
+    const lengthOfColor = color.length
+
+    lengths.push(lengthOfColor)
+  })
+
+  console.log(lengths) // [ 3, 5, 4 ]
+
+  const colorsMapped = colors.map(
+    // The function to do for each element in the array
+    //
+    // The function receives each element of the array
+    // we call that color here
+    function (color) {
+      // Do the work
+      const lengthOfColor = color.length
+
+      return lengthOfColor
+    }
+  )
+
+  const colorsUpperCased = colors.map(
+    // Function to do upper casing
+    function (color) {
+      const uppercase = color.toUpperCase()
+
+      return uppercase
+    }
+  )
+
+  console.log(colorsMapped)
+  console.log(colorsUpperCased)
 }
 
 document.addEventListener('DOMContentLoaded', main)
