@@ -9,6 +9,10 @@ function main() {
     console.log(`The color at index ${colorIndex} is ${currentColor}`)
   }
 
+  // Same as above, but using arrow syntax
+  const logSomeColorArrow = (currentColor, colorIndex) =>
+    console.log(`The color at index ${colorIndex} is ${currentColor}`)
+
   // C#:  foreach(var color in colors)
 
   //
@@ -56,9 +60,12 @@ function main() {
     //
     // The function receives each element of the array
     // we call that color here
-    function (color) {
-      return color.length
-    }
+    // function (color) {
+    //   return color.length
+    // }
+
+    // Introducing ARROW FUNCTIONS
+    color => color.length
   )
 
   const colorsUpperCased = colors.map(
@@ -70,6 +77,29 @@ function main() {
 
   console.log(colorsMapped)
   console.log(colorsUpperCased)
+
+  // Style 1 - function keyword, passing function to map
+
+  function colorLengthStyle1(color) {
+    return color.length
+  }
+  const colorsMappedStyle1 = colors.map(colorLengthStyle1)
+
+  // Style 2 - function as variable, passing function to map
+
+  const colorLengthStyle2 = function (color) {
+    return color.length
+  }
+  const colorsMappedStyle2 = colors.map(colorLengthStyle2)
+
+  // Style 3 - function inline
+
+  const colorLengthStyle3 = colors.map(function (color) {
+    return color.length
+  })
+
+  // Style 4 - arrow function inline
+  const colorLengthStyle4 = colors.map(color => color.length)
 }
 
 document.addEventListener('DOMContentLoaded', main)
