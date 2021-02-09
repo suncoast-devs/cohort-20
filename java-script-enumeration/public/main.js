@@ -57,19 +57,14 @@ function main() {
     // The function receives each element of the array
     // we call that color here
     function (color) {
-      // Do the work
-      const lengthOfColor = color.length
-
-      return lengthOfColor
+      return color.length
     }
   )
 
   const colorsUpperCased = colors.map(
     // Function to do upper casing
     function (color) {
-      const uppercase = color.toUpperCase()
-
-      return uppercase
+      return color.toUpperCase()
     }
   )
 
