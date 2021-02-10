@@ -8,6 +8,7 @@ function main() {
     const thingClickedOn = eventThatHappened.target
 
     // If we already are marked as taken
+    // if (thingClickedOn.textContent !== '') {
     if (thingClickedOn.classList.contains('taken')) {
       // Log a message to anyone looking
       console.log('NOPES....')
