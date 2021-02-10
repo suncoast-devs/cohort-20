@@ -1,7 +1,15 @@
 function main() {
-  if (document.querySelector('h1.hello-world')) {
-    document.querySelector('h1.hello-world').textContent = 'Hello, World!'
+  const allSquares = document.querySelectorAll('li')
+
+  function handleClickSquare(eventThatHappened) {
+    const thingClickedOn = eventThatHappened.target
+
+    thingClickedOn.textContent = 'X'
   }
+
+  allSquares.forEach(listItem =>
+    listItem.addEventListener('click', handleClickSquare)
+  )
 }
 
 document.addEventListener('DOMContentLoaded', main)
