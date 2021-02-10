@@ -8,6 +8,12 @@ function main() {
   function handleClickSquare(eventThatHappened) {
     const thingClickedOn = eventThatHappened.target
 
+    console.log(thingClickedOn.nodeName)
+    if (thingClickedOn.nodeName !== 'LI') {
+      console.log('Nopes, we did not click on an LI')
+      return
+    }
+
     // If we already are marked as taken
     // if (thingClickedOn.textContent !== '') {
     if (thingClickedOn.classList.contains('taken')) {
@@ -36,9 +42,13 @@ function main() {
     }
   }
 
-  allSquares.forEach(listItem =>
-    listItem.addEventListener('click', handleClickSquare)
-  )
+  // allSquares.forEach(listItem =>
+  //   listItem.addEventListener('click', handleClickSquare)
+  // )
+
+  const gameBoard = document.querySelector('ul')
+
+  gameBoard.addEventListener('click', handleClickSquare)
 }
 
 document.addEventListener('DOMContentLoaded', main)
