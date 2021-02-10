@@ -1,6 +1,7 @@
 // @ts-check
 function main() {
   let currentPlayer = 'X'
+  let moveCounter = 0
 
   const allSquares = document.querySelectorAll('li')
 
@@ -19,6 +20,11 @@ function main() {
 
     thingClickedOn.textContent = currentPlayer
     thingClickedOn.classList.add('taken')
+
+    moveCounter++
+
+    const header = document.querySelector('h1')
+    header.textContent = `Move ${moveCounter} of Tic Tac Toe`
 
     // If the currentPlayer is exactly the text 'X'
     if (currentPlayer === 'X') {
