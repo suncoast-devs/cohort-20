@@ -8,6 +8,7 @@ function main() {
     const thingClickedOn = eventThatHappened.target
 
     thingClickedOn.textContent = currentPlayer
+    thingClickedOn.classList.add('taken')
 
     // If the currentPlayer is exactly the text 'X'
     if (currentPlayer === 'X') {
