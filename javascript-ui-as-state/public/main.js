@@ -1,18 +1,31 @@
 // let teamOneName = 'SDG JavaScripters'
 // let teamOneScore = 12
-let teamOne = {
-  id: 1,
-  name: 'SDG JavaScripters',
-  score: 12,
-}
+// let teamOne = {
+//   id: 1,
+//   name: 'SDG JavaScripters',
+//   score: 12,
+// }
 
 // let teamTwoName = 'SDG SeeSharpers'
 // let teamTwoScore = 15
-let teamTwo = {
-  id: 2,
-  name: 'SDG SeeSharpers',
-  score: 15,
-}
+// let teamTwo = {
+//   id: 2,
+//   name: 'SDG SeeSharpers',
+//   score: 15,
+// }
+
+let teams = [
+  {
+    id: 1,
+    name: 'SDG JavaScripters',
+    score: 12,
+  },
+  {
+    id: 2,
+    name: 'SDG SeeSharpers',
+    score: 15,
+  },
+]
 
 function renderTeam(teamToRender) {
   const html = `
@@ -62,15 +75,17 @@ function render() {
     <h1>My Score Board</h1>
   </header>
   <main>
-    ${renderTeam(teamOne)}
-    ${renderTeam(teamTwo)}
+    ${teams.map(function (team) {
+      return renderTeam(team)
+    })}
   </main>
 `
 
   document.body.innerHTML = html
 
-  setupListeners(teamOne)
-  setupListeners(teamTwo)
+  teams.forEach(function (team) {
+    setupListeners(team)
+  })
 }
 
 function main() {
