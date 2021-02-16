@@ -25,6 +25,16 @@ let teams = [
     name: 'SDG SeeSharpers',
     score: 15,
   },
+  {
+    id: 3,
+    name: 'SDG Reactors',
+    score: 42,
+  },
+  {
+    id: 4,
+    name: 'SDG CodeWarriors',
+    score: 100000,
+  },
 ]
 
 function renderTeam(teamToRender) {
