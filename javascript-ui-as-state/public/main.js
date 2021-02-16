@@ -32,6 +32,30 @@ function renderTeam(teamToRender) {
   return html
 }
 
+function setupListeners(teamToListen) {
+  document
+    .querySelector(`.team${teamToListen.id} .add`)
+    .addEventListener('click', function (event) {
+      teamToListen.score++
+
+      render()
+    })
+  document
+    .querySelector(`.team${teamToListen.id} .subtract`)
+    .addEventListener('click', function (event) {
+      teamToListen.score--
+
+      render()
+    })
+  document
+    .querySelector(`.team${teamToListen.id} input`)
+    .addEventListener('input', function (event) {
+      teamToListen.name = event.target.value
+
+      render()
+    })
+}
+
 function render() {
   const html = `
   <header>
@@ -45,49 +69,8 @@ function render() {
 
   document.body.innerHTML = html
 
-  document
-    .querySelector('.team1 .add')
-    .addEventListener('click', function (event) {
-      teamOne.score++
-
-      render()
-    })
-  document
-    .querySelector('.team1 .subtract')
-    .addEventListener('click', function (event) {
-      teamOne.score--
-
-      render()
-    })
-  document
-    .querySelector('.team1 input')
-    .addEventListener('input', function (event) {
-      teamOne.name = event.target.value
-
-      render()
-    })
-
-  document
-    .querySelector('.team2 .add')
-    .addEventListener('click', function (event) {
-      teamTwo.score++
-
-      render()
-    })
-  document
-    .querySelector('.team2 .subtract')
-    .addEventListener('click', function (event) {
-      teamTwo.score--
-
-      render()
-    })
-  document
-    .querySelector('.team2 input')
-    .addEventListener('input', function (event) {
-      teamTwo.name = event.target.value
-
-      render()
-    })
+  setupListeners(teamOne)
+  setupListeners(teamTwo)
 }
 
 function main() {
