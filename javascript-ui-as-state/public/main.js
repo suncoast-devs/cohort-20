@@ -1,7 +1,12 @@
+let counter = 0
+
 function main() {
-  if (document.querySelector('h1.hello-world')) {
-    document.querySelector('h1.hello-world').textContent = 'Hello, World!'
-  }
+  document.querySelector('button').addEventListener('click', function (event) {
+    counter++
+
+    const counterElement = document.querySelector('p')
+    counterElement.textContent = counter
+  })
 }
 
 document.addEventListener('DOMContentLoaded', main)
