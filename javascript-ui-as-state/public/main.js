@@ -18,22 +18,22 @@ let teams = [
   {
     id: 1,
     name: 'SDG JavaScripters',
-    score: 12,
+    score: 0,
   },
   {
     id: 2,
     name: 'SDG SeeSharpers',
-    score: 15,
+    score: 0,
   },
   {
     id: 3,
     name: 'SDG Reactors',
-    score: 42,
+    score: 0,
   },
   {
     id: 4,
     name: 'SDG CodeWarriors',
-    score: 100000,
+    score: 0,
   },
 ]
 
@@ -91,6 +91,10 @@ function render() {
       })
       .join('')}
   </main>
+  <footer>
+  <button class='reset'>reset</button>
+  <button class='add'>add</button>
+  </footer>
 `
 
   document.body.innerHTML = html
@@ -98,6 +102,50 @@ function render() {
   teams.forEach(function (team) {
     setupListeners(team)
   })
+
+  document
+    .querySelector('button.add')
+    .addEventListener('click', function (event) {
+      const newTeam = {
+        id: teams.length + 1,
+        name: '',
+        score: 0,
+      }
+
+      // Append the new team
+      teams.push(newTeam)
+
+      render()
+    })
+
+  document
+    .querySelector('button.reset')
+    .addEventListener('click', function (event) {
+      teams = [
+        {
+          id: 1,
+          name: 'SDG JavaScripters',
+          score: 0,
+        },
+        {
+          id: 2,
+          name: 'SDG SeeSharpers',
+          score: 0,
+        },
+        {
+          id: 3,
+          name: 'SDG Reactors',
+          score: 0,
+        },
+        {
+          id: 4,
+          name: 'SDG CodeWarriors',
+          score: 0,
+        },
+      ]
+
+      render()
+    })
 }
 
 function main() {
