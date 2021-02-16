@@ -85,9 +85,11 @@ function render() {
     <h1>My Score Board</h1>
   </header>
   <main>
-    ${teams.map(function (team) {
-      return renderTeam(team)
-    })}
+    ${teams
+      .map(function (team) {
+        return renderTeam(team)
+      })
+      .join('')}
   </main>
 `
 
