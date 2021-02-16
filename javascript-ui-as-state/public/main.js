@@ -1,35 +1,42 @@
-let counter = 99
-
 function render() {
   const html = `
-  <p>${counter}</p>
-  <button>Increment</button>
+  <header>
+    <h1>My Score Board</h1>
+  </header>
+  <main>
+    <section class="team1">
+      <h2>Team 1</h2>
+      <h3>0</h3>
+      <fieldset>
+        <input type="text" placeholder="Name" />
+      </fieldset>
+
+      <fieldset>
+        <i class="add fas fa-2x fa-plus-circle"></i>
+        <i class="subtract fas fa-2x fa-minus-circle"></i>
+      </fieldset>
+    </section>
+
+    <section class="team2">
+      <h2>Team 2</h2>
+      <h3>0</h3>
+      <fieldset>
+        <input type="text" placeholder="Name" />
+      </fieldset>
+
+      <fieldset>
+        <i class="add fas fa-2x fa-plus-circle"></i>
+        <i class="subtract fas fa-2x fa-minus-circle"></i>
+      </fieldset>
+    </section>
+  </main>
 `
 
   document.body.innerHTML = html
-
-  document.querySelector('button').addEventListener('click', function (event) {
-    counter++
-
-    // This is no longer needed...
-    // const counterElement = document.querySelector('p')
-    // counterElement.textContent = counter
-
-    // What I need is to re-render the page
-    render()
-  })
 }
 
 function main() {
   render()
-
-  // This isn't needed
-  // document.querySelector('button').addEventListener('click', function (event) {
-  //   counter++
-
-  //   const counterElement = document.querySelector('p')
-  //   counterElement.textContent = counter
-  // })
 }
 
 document.addEventListener('DOMContentLoaded', main)
