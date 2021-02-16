@@ -1,8 +1,36 @@
-let teamOneName = 'SDG JavaScripters'
-let teamOneScore = 12
+// let teamOneName = 'SDG JavaScripters'
+// let teamOneScore = 12
+let teamOne = {
+  id: 1,
+  name: 'SDG JavaScripters',
+  score: 12,
+}
 
-let teamTwoName = 'SDG SeeSharpers'
-let teamTwoScore = 15
+// let teamTwoName = 'SDG SeeSharpers'
+// let teamTwoScore = 15
+let teamTwo = {
+  id: 2,
+  name: 'SDG SeeSharpers',
+  score: 15,
+}
+
+function renderTeam(teamToRender) {
+  const html = `
+<section class="team${teamToRender.id}">
+   <h2>${teamToRender.name}</h2>
+   <h3>${teamToRender.score}</h3>
+   <fieldset>
+     <input type="text" placeholder="Name" value="${teamToRender.name}" />
+   </fieldset>
+
+   <fieldset>
+     <i class="add fas fa-2x fa-plus-circle"></i>
+     <i class="subtract fas fa-2x fa-minus-circle"></i>
+   </fieldset>
+ </section>
+`
+  return html
+}
 
 function render() {
   const html = `
@@ -10,31 +38,8 @@ function render() {
     <h1>My Score Board</h1>
   </header>
   <main>
-    <section class="team1">
-      <h2>${teamOneName}</h2>
-      <h3>${teamOneScore}</h3>
-      <fieldset>
-        <input type="text" placeholder="Name" value="${teamOneName}" />
-      </fieldset>
-
-      <fieldset>
-        <i class="add fas fa-2x fa-plus-circle"></i>
-        <i class="subtract fas fa-2x fa-minus-circle"></i>
-      </fieldset>
-    </section>
-
-    <section class="team2">
-      <h2>${teamTwoName}</h2>
-      <h3>${teamTwoScore}</h3>
-      <fieldset>
-        <input type="text" placeholder="Name" value="${teamTwoName}" />
-      </fieldset>
-
-      <fieldset>
-        <i class="add fas fa-2x fa-plus-circle"></i>
-        <i class="subtract fas fa-2x fa-minus-circle"></i>
-      </fieldset>
-    </section>
+    ${renderTeam(teamOne)}
+    ${renderTeam(teamTwo)}
   </main>
 `
 
@@ -43,21 +48,21 @@ function render() {
   document
     .querySelector('.team1 .add')
     .addEventListener('click', function (event) {
-      teamOneScore++
+      teamOne.score++
 
       render()
     })
   document
     .querySelector('.team1 .subtract')
     .addEventListener('click', function (event) {
-      teamOneScore--
+      teamOne.score--
 
       render()
     })
   document
     .querySelector('.team1 input')
     .addEventListener('input', function (event) {
-      teamOneName = event.target.value
+      teamOne.name = event.target.value
 
       render()
     })
@@ -65,21 +70,21 @@ function render() {
   document
     .querySelector('.team2 .add')
     .addEventListener('click', function (event) {
-      teamTwoScore++
+      teamTwo.score++
 
       render()
     })
   document
     .querySelector('.team2 .subtract')
     .addEventListener('click', function (event) {
-      teamTwoScore--
+      teamTwo.score--
 
       render()
     })
   document
     .querySelector('.team2 input')
     .addEventListener('input', function (event) {
-      teamTwoName = event.target.value
+      teamTwo.name = event.target.value
 
       render()
     })
