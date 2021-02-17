@@ -21,6 +21,10 @@ export class App extends Component {
             title="SDG Standardizes on React"
             body="React is the best library for learning front end Web"
           />
+          <NewsArticle
+            title="Gavin Keeps Giving Homework"
+            body="The pace is relentless"
+          />
           {/* <article className="intro-article">
             <h2 className="article-title">SDG Announces Hackathon!</h2>
             <p>
