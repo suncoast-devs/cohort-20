@@ -3,10 +3,33 @@ import React, { Component } from 'react'
 export class App extends Component {
   render() {
     return (
-      <p>
-        Hello, World! <a href="sunocast.io">Hello</a>{' '}
-        <span>Hello, here is more text that I want </span> React is neat!!
-      </p>
+      <div className="all-main-content">
+        <main>
+          <article className="intro-article">
+            <h2 className="article-title">SDG Announces Hackathon!</h2>
+            <p>
+              SDG announces the 2020 Summer Hackathon. Join us for an exciting
+              weekend
+            </p>
+            <a className="read-more" href="#here">
+              read more about SDG Announces Hackathon!
+            </a>
+          </article>
+
+          <article className="intro-article">
+            <h2 className="article-title">
+              Student Graduation is Right Around the Corner
+            </h2>
+            <p>
+              Our next cohort of students will be graduating in just over a
+              week.
+            </p>
+            <a className="read-more" href="#here">
+              read more about Student Graduation is Right Around the Corner
+            </a>
+          </article>
+        </main>
+      </div>
     )
   }
 }
