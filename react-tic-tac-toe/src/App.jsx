@@ -9,10 +9,10 @@ export class App extends Component {
     ],
   }
 
-  handleClickOnCell = (theClickedRowIndex, theClickedColumnIndex) => {
-    console.log(
-      `I did it! clicked on ${theClickedRowIndex} and ${theClickedColumnIndex}`
-    )
+  handleClickOnCell = async (theClickedRowIndex, theClickedColumnIndex) => {
+    // console.log(
+    //   `I did it! clicked on ${theClickedRowIndex} and ${theClickedColumnIndex}`
+    // )
     // What I want to do is update the board!
     //
     // I need to know the row and the column index
@@ -21,8 +21,30 @@ export class App extends Component {
     // Not the best way, but saving time.
     const newState = this.state
     newState.data[theClickedRowIndex][theClickedColumnIndex] = 'x'
-
     this.setState(newState)
+
+    // console.log(newState)
+    // Send this new state to the tic-tac-toe api to find out where
+    // the computer wants to move
+    const response = await fetch(
+      'https://thingproxy.freeboard.io/fetch/https://tictactoe-api-server.herokuapp.com/api/bestMove',
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(newState),
+      }
+    )
+    const json = await response.json()
+
+    const bestMove = json.bestMove
+    if (bestMove < 9) {
+      const rowIndexForComputerMove = Math.floor(bestMove / 3)
+      const columnIndexForComputerMove = bestMove % 3
+
+      // console.log(rowIndexForComputerMove, columnIndexForComputerMove)
+      newState.data[rowIndexForComputerMove][columnIndexForComputerMove] = 'o'
+      this.setState(newState)
+    }
   }
 
   render() {
