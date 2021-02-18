@@ -13,20 +13,22 @@ export class Counter extends Component {
     //
     // Get the current value of the counter from the state
 
-    let currentCounterValue = this.state.counter
+    // let currentCounterValue = this.state.counter
 
-    // Increment it by 1
-    currentCounterValue = currentCounterValue + 1
+    // // Increment it by 1
+    // currentCounterValue = currentCounterValue + 1
 
-    // Update the state
-    // Never, ever, never ever, directly change this.state
-    // this.state.counter = currentCounterValue
+    // // Update the state
+    // // Never, ever, never ever, directly change this.state
+    // // this.state.counter = currentCounterValue
 
-    // React gives us a *special* way to update state so that it knows
-    const newState = {
-      counter: currentCounterValue,
-    }
-    this.setState(newState)
+    // // React gives us a *special* way to update state so that it knows
+    // const newState = {
+    //   counter: currentCounterValue,
+    // }
+    // this.setState(newState)
+
+    this.setState({ counter: this.state.counter + 1 })
   }
 
   render() {
