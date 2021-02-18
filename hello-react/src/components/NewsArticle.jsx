@@ -17,7 +17,7 @@ export class NewsArticle extends React.Component {
   // Our one and only absolute requirement is a `render` method
   // that `return`s some JSX
   render() {
-    console.log(this.props)
+    // console.log(this.props)
 
     return (
       <article className="intro-article">

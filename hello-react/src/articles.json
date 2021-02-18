@@ -1,0 +1,22 @@
+[
+  {
+    "id": 42,
+    "title": "SDG Announces Hackathon!",
+    "body": "SDG announces the 2020 Summer Hackathon. Join us for an exciting weekend"
+  },
+  {
+    "id": 99,
+    "title": "Wow, Student Graduation is Right Around the Corner",
+    "body": "Our next cohort of students will be graduating in just over a week."
+  },
+  {
+    "id": 100,
+    "title": "Suncoast Developers Guild Standardizes on React",
+    "body": "React is the best library for learning front end Web"
+  },
+  {
+    "id": 101,
+    "title": "This data comes from JSON!",
+    "body": "React works with data using tools we already know!"
+  }
+]
