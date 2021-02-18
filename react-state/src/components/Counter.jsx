@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class Counter extends Component {
   // The current state of the counter component
   state = {
-    counter: 42,
+    counter: this.props.initialValue,
   }
 
   handleClickButton = () => {
