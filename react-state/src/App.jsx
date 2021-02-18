@@ -6,8 +6,10 @@ export class App extends Component {
       <div>
         <header>Welcome to my Counter</header>
 
-        <p>Current Value: 0</p>
-        <button>Increment</button>
+        <section>
+          <p>Current Value: 0</p>
+          <button>Increment</button>
+        </section>
 
         <footer>Thanks for using my app!</footer>
       </div>
