@@ -9,14 +9,26 @@ export class App extends Component {
     ],
   }
 
+  handleClickOnCell = () => {
+    console.log('I did it!')
+    // What I want to do is update the board!
+    //
+    // I need to know the row and the column index
+    // where I was clicked!
+  }
+
   render() {
     return (
       <div>
         <h1>Tic Tac Toe</h1>
         <ul>
-          {this.state.data.map(function (row) {
-            return row.map(function (cell, columnIndex) {
-              return <li key={columnIndex}>{cell}</li>
+          {this.state.data.map(row => {
+            return row.map((cell, columnIndex) => {
+              return (
+                <li key={columnIndex} onClick={this.handleClickOnCell}>
+                  {cell}
+                </li>
+              )
             })
           })}
 
