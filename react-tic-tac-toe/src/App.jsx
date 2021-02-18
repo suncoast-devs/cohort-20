@@ -9,12 +9,20 @@ export class App extends Component {
     ],
   }
 
-  handleClickOnCell = () => {
-    console.log('I did it!')
+  handleClickOnCell = (theClickedRowIndex, theClickedColumnIndex) => {
+    console.log(
+      `I did it! clicked on ${theClickedRowIndex} and ${theClickedColumnIndex}`
+    )
     // What I want to do is update the board!
     //
     // I need to know the row and the column index
     // where I was clicked!
+
+    // Not the best way, but saving time.
+    const newState = this.state
+    newState.data[theClickedRowIndex][theClickedColumnIndex] = 'x'
+
+    this.setState(newState)
   }
 
   render() {
@@ -22,10 +30,16 @@ export class App extends Component {
       <div>
         <h1>Tic Tac Toe</h1>
         <ul>
-          {this.state.data.map(row => {
+          {this.state.data.map((row, rowIndex) => {
             return row.map((cell, columnIndex) => {
               return (
-                <li key={columnIndex} onClick={this.handleClickOnCell}>
+                <li
+                  key={columnIndex}
+                  // If you have a handler function and need to pass data to it
+                  // like the current row and column index, make a little arrow
+                  // function -- OTHERWISE You'll be calling the handler AS YOU ARE RENDERING.
+                  onClick={() => this.handleClickOnCell(rowIndex, columnIndex)}
+                >
                   {cell}
                 </li>
               )
