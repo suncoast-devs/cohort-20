@@ -18,7 +18,13 @@ export class App extends Component {
     // console.log(articlesTitles)
 
     const newsArticlesFromData = articles.map(function (article) {
-      return <NewsArticle title={article.title} body={article.body} />
+      return (
+        <NewsArticle
+          key={article.id}
+          title={article.title}
+          body={article.body}
+        />
+      )
     })
 
     return (
