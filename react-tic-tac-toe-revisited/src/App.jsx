@@ -43,10 +43,29 @@ export class App extends Component {
   }
 
   render() {
+    // dynamic
+    // let header = 'Tic Tac Toe'
+
+    // if (this.state.winner === 'O') {
+    //   header = 'Tic Tac Toe - Winner is O'
+    // }
+
+    // if (this.state.winner === 'X') {
+    //   header = 'Tic Tac Toe - Winner is X'
+    // }
+
+    // if (this.state.winner === 'TIE') {
+    //   header = 'Tic Tac Toe - Winner is TIE'
+    // }
+
+    const header = this.state.winner
+      ? `Winner is ${this.state.winner}`
+      : 'Tic Tac Toe'
+
     return (
       <div>
         <h1>
-          Tic Tac Toe - <button onClick={this.handleNewGame}>NEW GAME</button>
+          {header} - <button onClick={this.handleNewGame}>NEW GAME</button>
         </h1>
         <ul>
           <li onClick={() => this.handleClickCell(0, 0)}>
