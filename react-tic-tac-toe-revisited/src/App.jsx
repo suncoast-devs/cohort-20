@@ -10,8 +10,22 @@ export class App extends Component {
     winner: null,
   }
 
-  handleClickCell = (row, column) => {
+  handleClickCell = async (row, column) => {
     console.log(`I clicked on row ${row} and column ${column}`)
+
+    const url = `https://sdg-tic-tac-toe-api.herokuapp.com/game/${this.state.id}`
+
+    const body = { row: row, column: column }
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+
+    const game = await response.json()
+
+    this.setState(game)
   }
 
   handleNewGame = async () => {
