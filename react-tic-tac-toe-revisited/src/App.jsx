@@ -11,6 +11,14 @@ export class App extends Component {
   }
 
   handleClickCell = async (row, column) => {
+    if (
+      this.state.id === undefined ||
+      this.state.winner ||
+      this.state.board[row][column] !== ' '
+    ) {
+      return
+    }
+
     console.log(`I clicked on row ${row} and column ${column}`)
 
     const url = `https://sdg-tic-tac-toe-api.herokuapp.com/game/${this.state.id}`
