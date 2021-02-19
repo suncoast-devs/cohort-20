@@ -76,7 +76,10 @@ export class App extends Component {
           {header} - <button onClick={this.handleNewGame}>NEW GAME</button>
         </h1>
         <ul>
-          <li onClick={() => this.handleClickCell(0, 0)}>
+          <li
+            className={this.state.board[0][0] === ' ' ? '' : 'taken'}
+            onClick={() => this.handleClickCell(0, 0)}
+          >
             {this.state.board[0][0]}
           </li>
           <li onClick={() => this.handleClickCell(0, 1)}>
