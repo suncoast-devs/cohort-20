@@ -31,11 +31,32 @@ export class App extends Component {
     this.setState(game)
   }
 
-  handleClickCell = async (rowIndex, colIndex) => {
+  handleClickCell = async (event, rowIndex, colIndex) => {
+    event.preventDefault()
+
     const body = { row: rowIndex, col: colIndex }
 
     const response = await fetch(
       `https://minesweeper-api.herokuapp.com/games/${this.state.id}/check`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    )
+
+    const game = await response.json()
+
+    this.setState(game)
+  }
+
+  handleRightClickCell = async (event, rowIndex, colIndex) => {
+    event.preventDefault()
+
+    const body = { row: rowIndex, col: colIndex }
+
+    const response = await fetch(
+      `https://minesweeper-api.herokuapp.com/games/${this.state.id}/flag`,
       {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
@@ -66,7 +87,12 @@ export class App extends Component {
               return (
                 <li
                   key={colIndex}
-                  onClick={() => this.handleClickCell(rowIndex, colIndex)}
+                  onClick={() =>
+                    this.handleClickCell(event, rowIndex, colIndex)
+                  }
+                  onContextMenu={event =>
+                    this.handleRightClickCell(event, rowIndex, colIndex)
+                  }
                 >
                   {cell}
                 </li>
