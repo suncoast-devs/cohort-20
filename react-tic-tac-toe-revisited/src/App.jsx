@@ -1,5 +1,27 @@
 import React, { Component } from 'react'
 
+export class Cell extends Component {
+  handleClickCell = () => {
+    console.log(`clicked on ${this.props.row} ${this.props.column}`)
+
+    // this.props.recordMove is a function!
+    // we were passed that function when we were created!
+    // it expects a row and column to be passed
+    this.props.recordMove(this.props.row, this.props.column)
+  }
+
+  render() {
+    return (
+      <li
+        className={this.props.value === ' ' ? '' : 'taken'}
+        onClick={this.handleClickCell}
+      >
+        {this.props.value}
+      </li>
+    )
+  }
+}
+
 export class App extends Component {
   state = {
     board: [
@@ -10,7 +32,7 @@ export class App extends Component {
     winner: null,
   }
 
-  handleClickCell = async (row, column) => {
+  recordMove = async (row, column) => {
     if (
       this.state.id === undefined ||
       this.state.winner ||
@@ -76,38 +98,62 @@ export class App extends Component {
           {header} - <button onClick={this.handleNewGame}>NEW GAME</button>
         </h1>
         <ul>
-          <li
-            className={this.state.board[0][0] === ' ' ? '' : 'taken'}
-            onClick={() => this.handleClickCell(0, 0)}
-          >
-            {this.state.board[0][0]}
-          </li>
-          <li onClick={() => this.handleClickCell(0, 1)}>
-            {this.state.board[0][1]}
-          </li>
-          <li onClick={() => this.handleClickCell(0, 2)}>
-            {this.state.board[0][2]}
-          </li>
+          <Cell
+            row={0}
+            column={0}
+            value={this.state.board[0][0]}
+            recordMove={this.recordMove}
+          />
+          <Cell
+            row={0}
+            column={1}
+            value={this.state.board[0][1]}
+            recordMove={this.recordMove}
+          />
+          <Cell
+            row={0}
+            column={2}
+            value={this.state.board[0][2]}
+            recordMove={this.recordMove}
+          />
 
-          <li onClick={() => this.handleClickCell(1, 0)}>
-            {this.state.board[1][0]}
-          </li>
-          <li onClick={() => this.handleClickCell(1, 1)}>
-            {this.state.board[1][1]}
-          </li>
-          <li onClick={() => this.handleClickCell(1, 2)}>
-            {this.state.board[1][2]}
-          </li>
+          <Cell
+            row={1}
+            column={0}
+            value={this.state.board[1][0]}
+            recordMove={this.recordMove}
+          />
+          <Cell
+            row={1}
+            column={1}
+            value={this.state.board[1][1]}
+            recordMove={this.recordMove}
+          />
+          <Cell
+            row={1}
+            column={2}
+            value={this.state.board[1][2]}
+            recordMove={this.recordMove}
+          />
 
-          <li onClick={() => this.handleClickCell(2, 0)}>
-            {this.state.board[2][0]}
-          </li>
-          <li onClick={() => this.handleClickCell(2, 1)}>
-            {this.state.board[2][1]}
-          </li>
-          <li onClick={() => this.handleClickCell(2, 2)}>
-            {this.state.board[2][2]}
-          </li>
+          <Cell
+            row={2}
+            column={0}
+            value={this.state.board[2][0]}
+            recordMove={this.recordMove}
+          />
+          <Cell
+            row={2}
+            column={1}
+            value={this.state.board[2][1]}
+            recordMove={this.recordMove}
+          />
+          <Cell
+            row={2}
+            column={2}
+            value={this.state.board[2][2]}
+            recordMove={this.recordMove}
+          />
         </ul>
       </div>
     )
