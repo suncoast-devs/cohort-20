@@ -3,87 +3,30 @@ import React, { Component } from 'react'
 export class App extends Component {
   state = {
     board: [
-      ['*', '1', '4', ' ', ' ', ' ', ' ', ' '],
+      ['*', '1', '4', ' ', ' ', ' ', ' ', '3'],
       [' ', 'F', ' ', ' ', '2', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      ['1', ' ', ' ', ' ', ' ', ' ', ' ', '8'],
     ],
   }
 
   render() {
+    // Nested MAP loop (kind of like our old friend the nested for loop
+    // ... all the way back to week 1 with suits and faces)
+    const boardGrid = this.state.board.map((row, rowIndex) => {
+      return row.map((cell, colIndex) => {
+        return <li key={colIndex}>{cell}</li>
+      })
+    })
+
     return (
       <main>
         <h1>Mine Sweeper</h1>
-        <ul>
-          <li>{this.state.board[0][0]}</li>
-          <li>{this.state.board[0][1]}</li>
-          <li>{this.state.board[0][2]}</li>
-          <li>{this.state.board[0][3]}</li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        <ul>{boardGrid}</ul>
       </main>
     )
   }
