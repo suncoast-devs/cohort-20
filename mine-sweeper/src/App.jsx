@@ -17,16 +17,17 @@ export class App extends Component {
   render() {
     // Nested MAP loop (kind of like our old friend the nested for loop
     // ... all the way back to week 1 with suits and faces)
-    const boardGrid = this.state.board.map((row, rowIndex) => {
-      return row.map((cell, colIndex) => {
-        return <li key={colIndex}>{cell}</li>
-      })
-    })
 
     return (
       <main>
         <h1>Mine Sweeper</h1>
-        <ul>{boardGrid}</ul>
+        <ul>
+          {this.state.board.map((row, rowIndex) => {
+            return row.map((cell, colIndex) => {
+              return <li key={colIndex}>{cell}</li>
+            })
+          })}
+        </ul>
       </main>
     )
   }
