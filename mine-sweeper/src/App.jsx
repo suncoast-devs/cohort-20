@@ -31,6 +31,23 @@ export class App extends Component {
     this.setState(game)
   }
 
+  handleClickCell = async (rowIndex, colIndex) => {
+    const body = { row: rowIndex, col: colIndex }
+
+    const response = await fetch(
+      `https://minesweeper-api.herokuapp.com/games/${this.state.id}/check`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    )
+
+    const game = await response.json()
+
+    this.setState(game)
+  }
+
   render() {
     // Nested MAP loop (kind of like our old friend the nested for loop
     // ... all the way back to week 1 with suits and faces)
@@ -46,7 +63,14 @@ export class App extends Component {
         <ul>
           {this.state.board.map((row, rowIndex) => {
             return row.map((cell, colIndex) => {
-              return <li key={colIndex}>{cell}</li>
+              return (
+                <li
+                  key={colIndex}
+                  onClick={() => this.handleClickCell(rowIndex, colIndex)}
+                >
+                  {cell}
+                </li>
+              )
             })
           })}
         </ul>
