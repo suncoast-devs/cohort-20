@@ -24,7 +24,8 @@ export class App extends Component {
 
     const url = `https://sdg-tic-tac-toe-api.herokuapp.com/game/${this.state.id}`
 
-    const body = { row: row, column: column }
+    // const body = { row: row, column: column }
+    const body = { row, column }
 
     const response = await fetch(url, {
       method: 'POST',
