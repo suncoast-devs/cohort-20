@@ -3,15 +3,32 @@ import React, { Component } from 'react'
 export class App extends Component {
   state = {
     board: [
-      ['*', '1', '4', ' ', ' ', ' ', ' ', '3'],
-      [' ', 'F', ' ', ' ', '2', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-      ['1', ' ', ' ', ' ', ' ', ' ', ' ', '8'],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+      [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     ],
+  }
+
+  handleNewGame = async () => {
+    const body = { difficulty: 0 }
+
+    const response = await fetch(
+      `https://minesweeper-api.herokuapp.com/games`,
+      {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    )
+
+    const game = await response.json()
+
+    this.setState(game)
   }
 
   render() {
@@ -21,6 +38,11 @@ export class App extends Component {
     return (
       <main>
         <h1>Mine Sweeper</h1>
+        <h2>
+          <button onClick={this.handleNewGame}>New Easy Game</button>
+        </h2>
+        <h3>Mines: {this.state.mines}</h3>
+        <h3>Game #: {this.state.id}</h3>
         <ul>
           {this.state.board.map((row, rowIndex) => {
             return row.map((cell, colIndex) => {
