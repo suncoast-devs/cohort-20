@@ -66,6 +66,21 @@ li {
   font-family: 'Courier New', Courier, monospace;
 }
 
+ul.difficulty-0 li {
+  width: var(--easy-cell-size);
+  height: var(--easy-cell-size);
+}
+
+ul.difficulty-1 li {
+  width: var(--intermediate-cell-size);
+  height: var(--intermediate-cell-size);
+}
+
+ul.difficulty-2 li {
+  width: var(--expert-cell-size);
+  height: var(--expert-cell-size);
+}
+
 li.cell-number {
   color: white;
 }
