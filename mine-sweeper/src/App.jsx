@@ -69,6 +69,22 @@ export class App extends Component {
     this.setState(game)
   }
 
+  // transform a cell
+  // e.g. 'F', or ' ', or '1' or '_'
+  // into an `<i>` icon or any other value.
+  turnCellValueIntoTheCorrectElement = cell => {
+    switch (cell) {
+      case 'F':
+        return <i className="fas fa-flag"></i>
+      case '*':
+        return <i className="fas fa-bomb"></i>
+      case '_':
+        return ' '
+      default:
+        return cell
+    }
+  }
+
   render() {
     // Nested MAP loop (kind of like our old friend the nested for loop
     // ... all the way back to week 1 with suits and faces)
@@ -94,7 +110,7 @@ export class App extends Component {
                     this.handleRightClickCell(event, rowIndex, colIndex)
                   }
                 >
-                  {cell}
+                  {this.turnCellValueIntoTheCorrectElement(cell)}
                 </li>
               )
             })
