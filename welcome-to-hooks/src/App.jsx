@@ -10,6 +10,24 @@ import React from 'react'
 //   }
 // }
 
+class CounterClassStyle extends React.Component {
+  state = {
+    count: 0,
+  }
+
+  handleButtonClick = () => {
+    this.setState({ count: this.state.count + 1 })
+  }
+
+  render() {
+    return (
+      <div>
+        The count is: {this.state.count}
+        <button onClick={this.handleButtonClick}>Increment</button>
+      </div>
+    )
+  }
+}
 export function HelloWorld() {
   function onClickWorld(event) {
     console.log('you clicked!')
@@ -18,6 +36,7 @@ export function HelloWorld() {
   return (
     <div>
       Hello, <span onClick={onClickWorld}>World</span> from function component
+      <CounterClassStyle />
     </div>
   )
 }
