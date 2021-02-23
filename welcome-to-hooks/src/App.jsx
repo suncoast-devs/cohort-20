@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 // export class App extends React.Component {
 //   onClickWorld = () => {
@@ -29,10 +29,22 @@ class CounterClassStyle extends React.Component {
   }
 }
 
+// Handlers and useState *CANT* go here, outside of the function
+
 function CounterFunctionStyle() {
+  // useState and click handlers go inside the function
+  // but *BEFORE* the return
+  const counterValueAndSetMethod = useState(0)
+
+  // The current state, which we will call `counter` is in the first element of the array
+  const counter = counterValueAndSetMethod[0]
+
+  // The function that can change the counter, which we will call `setCounter` is in the second element of the array
+  const setCounter = counterValueAndSetMethod[1]
+
   return (
     <div>
-      The count is:
+      The count is: {counter}
       <button>Increment</button>
     </div>
   )
