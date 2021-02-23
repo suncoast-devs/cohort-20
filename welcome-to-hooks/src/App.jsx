@@ -56,10 +56,20 @@ function CounterFunctionStyle() {
     setCounter(newCounterValue)
   }
 
+  function handleNameChange(event) {
+    console.log('Called!')
+    const newPersonName = event.target.value
+    console.log(`New person name is ${newPersonName}`)
+    setPersonName(newPersonName)
+  }
+
   return (
     <div>
       <p>The count is: {counter}</p>
-      <p>The name is: {personName}</p>
+      <p>
+        The name is:{' '}
+        <input type="text" value={personName} onChange={handleNameChange} />
+      </p>
       <button onClick={handleButtonClick}>Increment</button>
     </div>
   )
