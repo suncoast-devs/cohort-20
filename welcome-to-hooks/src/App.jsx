@@ -57,10 +57,7 @@ function CounterFunctionStyle() {
   }
 
   function handleNameChange(event) {
-    console.log('Called!')
-    const newPersonName = event.target.value
-    console.log(`New person name is ${newPersonName}`)
-    setPersonName(newPersonName)
+    setPersonName(event.target.value)
   }
 
   return (
