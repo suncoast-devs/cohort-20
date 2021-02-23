@@ -50,22 +50,22 @@ function CounterFunctionStyle() {
 
   const [personName, setPersonName] = useState('Pierce')
 
-  function handleNameChange(event) {
-    setPersonName(event.target.value)
-  }
-
   return (
     <div>
       <p>The count is: {counter}</p>
+      <p>The name is: {personName}</p>
       <p>
-        The name is:{' '}
-        <input type="text" value={personName} onChange={handleNameChange} />
+        <input
+          type="text"
+          value={personName}
+          onChange={function (event) {
+            setPersonName(event.target.value)
+          }}
+        />
       </p>
       <button
-        onClick={function handleButtonClick() {
-          // This is much like `this.setState`
-          const newCounterValue = counter + 1
-          setCounter(newCounterValue)
+        onClick={function () {
+          setCounter(counter + 1)
         }}
       >
         Increment
