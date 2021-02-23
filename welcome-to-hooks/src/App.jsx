@@ -28,6 +28,16 @@ class CounterClassStyle extends React.Component {
     )
   }
 }
+
+function CounterFunctionStyle() {
+  return (
+    <div>
+      The count is:
+      <button>Increment</button>
+    </div>
+  )
+}
+
 export function HelloWorld() {
   function onClickWorld(event) {
     console.log('you clicked!')
@@ -37,6 +47,7 @@ export function HelloWorld() {
     <div>
       Hello, <span onClick={onClickWorld}>World</span> from function component
       <CounterClassStyle />
+      <CounterFunctionStyle />
     </div>
   )
 }
