@@ -13,7 +13,7 @@ import React, { useState } from 'react'
 class CounterClassStyle extends React.Component {
   state = {
     count: 0,
-    name: 'Pierce',
+    personName: 'Pierce',
   }
 
   handleButtonClick = () => {
@@ -24,7 +24,7 @@ class CounterClassStyle extends React.Component {
     return (
       <div>
         <p>The count is: {this.state.count}</p>
-        <p>The name is {this.state.name}</p>
+        <p>The name is {this.state.personName}</p>
         <button onClick={this.handleButtonClick}>Increment</button>
       </div>
     )
@@ -48,7 +48,7 @@ function CounterFunctionStyle() {
   // const [person, setPerson] = useState(... initial value ...)
   // const [name, setName] = useState(... initial value ...)
 
-  const [name, setName] = useState('Pierce')
+  const [personName, setPersonName] = useState('Pierce')
 
   function handleButtonClick() {
     // This is much like `this.setState`
@@ -59,7 +59,7 @@ function CounterFunctionStyle() {
   return (
     <div>
       <p>The count is: {counter}</p>
-      <p>The name is: {name}</p>
+      <p>The name is: {personName}</p>
       <button onClick={handleButtonClick}>Increment</button>
     </div>
   )
