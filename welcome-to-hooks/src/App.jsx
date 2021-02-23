@@ -50,12 +50,6 @@ function CounterFunctionStyle() {
 
   const [personName, setPersonName] = useState('Pierce')
 
-  function handleButtonClick() {
-    // This is much like `this.setState`
-    const newCounterValue = counter + 1
-    setCounter(newCounterValue)
-  }
-
   function handleNameChange(event) {
     setPersonName(event.target.value)
   }
@@ -67,7 +61,15 @@ function CounterFunctionStyle() {
         The name is:{' '}
         <input type="text" value={personName} onChange={handleNameChange} />
       </p>
-      <button onClick={handleButtonClick}>Increment</button>
+      <button
+        onClick={function handleButtonClick() {
+          // This is much like `this.setState`
+          const newCounterValue = counter + 1
+          setCounter(newCounterValue)
+        }}
+      >
+        Increment
+      </button>
     </div>
   )
 }
