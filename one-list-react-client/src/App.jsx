@@ -53,19 +53,7 @@ export function App() {
   }
 
   useEffect(
-    async function () {
-      console.log('Run once when the app mounts')
-
-      // Right here is where we want our API fetching code to go
-      const response = await axios.get(
-        'https://one-list-api.herokuapp.com/items?access_token=cohort20'
-      )
-
-      // Don't even need to do   const json = await response.json()
-      // axios does it for us automatically, we just ask for `data`
-
-      setTodoItems(response.data)
-    },
+    loadAllTodoItems,
     // Because the second argument here is an empty array, there is nothing to watch
     []
   )
@@ -102,10 +90,7 @@ export function App() {
     // setTodoItems(newTodoItems)
 
     // This code REPLACES the list
-    const responseWhenReplacingList = await axios.get(
-      'https://one-list-api.herokuapp.com/items?access_token=cohort20'
-    )
-    setTodoItems(responseWhenReplacingList.data)
+    loadAllTodoItems()
 
     // Clear out the input so we can accept new text
     setNewTodoText('')
