@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react'
 import sdgLogo from './images/sdg-logo.png'
 
 export function TodoItemComponent(props) {
+  const { id, text, complete, reloadItems } = props
+
   async function toggleCompleteStatus() {
-    console.log(`I clicked on an item with id ${props.id}!`)
+    console.log(`I clicked on an item with id ${id}!`)
     // Call the API HERE to tell it that an item is complete (or incomplete)
 
     const response = await axios.put(
-      `https://one-list-api.herokuapp.com/items/${props.id}?access_token=cohort20`,
-      { item: { complete: !props.complete } }
+      `https://one-list-api.herokuapp.com/items/${id}?access_token=cohort20`,
+      { item: { complete: !complete } }
     )
 
     console.log(response.data)
@@ -17,15 +19,12 @@ export function TodoItemComponent(props) {
     // reloadItems is a prop
     // -- but it is a function the parent is giving me
     // -- so I can call it here, the appropriate time to reload the items
-    props.reloadItems()
+    reloadItems()
   }
 
   return (
-    <li
-      onClick={toggleCompleteStatus}
-      className={props.complete ? 'completed' : ''}
-    >
-      {props.text}
+    <li onClick={toggleCompleteStatus} className={complete ? 'completed' : ''}>
+      {text}
     </li>
   )
 }
