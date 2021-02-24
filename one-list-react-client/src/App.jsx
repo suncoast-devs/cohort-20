@@ -50,15 +50,22 @@ export function App() {
       }
     )
 
-    const newTodoItem = response.data
+    // This code APPENDS to the list
+    //
+    // // Make a new array by taking all the elements of our current state
+    // // (todoItems) and put them in the new array, FOLLOWED BY our new
+    // // todo item
+    // const newTodoItem = response.data
+    // const newTodoItems = [...todoItems, newTodoItem]
 
-    // Make a new array by taking all the elements of our current state
-    // (todoItems) and put them in the new array, FOLLOWED BY our new
-    // todo item
-    const newTodoItems = [...todoItems, newTodoItem]
+    // // Put that new array back in the todoItems state
+    // setTodoItems(newTodoItems)
 
-    // Put that new array back in the todoItems state
-    setTodoItems(newTodoItems)
+    // This code REPLACES the list
+    const responseWhenReplacingList = await axios.get(
+      'https://one-list-api.herokuapp.com/items?access_token=cohort20'
+    )
+    setTodoItems(responseWhenReplacingList.data)
 
     // Clear out the input so we can accept new text
     setNewTodoText('')
