@@ -36,6 +36,23 @@ export function App() {
 
   // No API fetching here, otherwise it would happen on ever render
 
+  async function handleNewTodoItem(event) {
+    event.preventDefault()
+
+    // Use the API to create a new item
+
+    const response = await axios.post(
+      'https://one-list-api.herokuapp.com/items?access_token=cohort20',
+      {
+        item: {
+          text: newTodoText,
+        },
+      }
+    )
+
+    console.log(response.data)
+  }
+
   return (
     <div className="app">
       <header>
@@ -54,7 +71,7 @@ export function App() {
             )
           })}
         </ul>
-        <form>
+        <form onSubmit={handleNewTodoItem}>
           <input
             type="text"
             placeholder="Whats up?"
