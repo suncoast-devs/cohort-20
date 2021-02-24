@@ -17,7 +17,7 @@ export function App() {
 
       // Right here is where we want our API fetching code to go
       const response = await axios.get(
-        'https://one-list-api.herokuapp.com/items?access_token=illustriousvoyage'
+        'https://one-list-api.herokuapp.com/items?access_token=cohort20'
       )
 
       // Don't even need to do   const json = await response.json()
