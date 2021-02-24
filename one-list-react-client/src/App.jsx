@@ -13,7 +13,13 @@ export function TodoItemComponent(props) {
     )
 
     console.log(response.data)
+
+    // reloadItems is a prop
+    // -- but it is a function the parent is giving me
+    // -- so I can call it here, the appropriate time to reload the items
+    props.reloadItems()
   }
+
   return (
     <li
       onClick={toggleCompleteStatus}
@@ -33,6 +39,18 @@ export function App() {
   // - The function is also called when the array's contents change
   //
   // But alas, our array is empty so we are called only once
+
+  async function loadAllTodoItems() {
+    // Right here is where we want our API fetching code to go
+    const response = await axios.get(
+      'https://one-list-api.herokuapp.com/items?access_token=cohort20'
+    )
+
+    // Don't even need to do   const json = await response.json()
+    // axios does it for us automatically, we just ask for `data`
+
+    setTodoItems(response.data)
+  }
 
   useEffect(
     async function () {
@@ -107,6 +125,7 @@ export function App() {
                 id={todoItem.id}
                 complete={todoItem.complete}
                 text={todoItem.text}
+                reloadItems={loadAllTodoItems}
               />
               // <li
               //   key={todoItem.id}
