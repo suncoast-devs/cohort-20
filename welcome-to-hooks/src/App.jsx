@@ -50,15 +50,30 @@ function CounterFunctionStyle() {
 
   const [personName, setPersonName] = useState('Pierce')
 
-  // Function for useEffect to call
-  function theCountChanged() {
-    console.log(`Hooray, the count has changed is now - ${counter}`)
-  }
+  // useEffect
+  useEffect(
+    // Will this function
+    function () {
+      console.log(`Hooray, the count has changed is now - ${counter}`)
+    },
+    // Any time the data in this array changes, so whenever counter changes
+    [counter]
+  )
 
-  // ... when any of these variables changes!
-  const listOfDataToWatchForChanges = [counter]
+  // This will only run our function ONCE because the watch array is empty
+  useEffect(function () {
+    console.log(
+      'This runs once when the component is first rendered on the page'
+    )
+    // because this array is empty
+    //  |
+    //  v
+  }, [])
 
-  useEffect(theCountChanged, listOfDataToWatchForChanges)
+  // This runs every time
+  console.log(
+    'This code is run every time we render, regardless of what caused us to re-render'
+  )
 
   return (
     <div>
