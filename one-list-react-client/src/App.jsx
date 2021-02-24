@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import sdgLogo from './images/sdg-logo.png'
 
@@ -24,9 +25,21 @@ export function App() {
   // - The function is also called when the array's contents change
   //
   // But alas, our array is empty so we are called only once
-  useEffect(function () {
+  useEffect(async function () {
     console.log('Run once when the app mounts')
+
+    // Right here is where we want our API fetching code to go
+    const response = await axios.get(
+      'https://one-list-api.herokuapp.com/items?access_token=cohort20'
+    )
+
+    // Don't even need to do   const json = await response.json()
+    // axios does it for us automatically, we just ask for `data`
+
+    setTodoItems(response.data)
   }, [])
+
+  // No API fetching here, otherwise it would happen on ever render
 
   return (
     <div className="app">
