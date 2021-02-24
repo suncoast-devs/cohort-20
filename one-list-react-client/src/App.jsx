@@ -7,21 +7,12 @@ export function TodoItemComponent(props) {
     console.log(`I clicked on an item with id ${props.id}!`)
     // Call the API HERE to tell it that an item is complete (or incomplete)
 
-    if (props.complete) {
-      const response = await axios.put(
-        `https://one-list-api.herokuapp.com/items/${props.id}?access_token=cohort20`,
-        { item: { complete: false } }
-      )
+    const response = await axios.put(
+      `https://one-list-api.herokuapp.com/items/${props.id}?access_token=cohort20`,
+      { item: { complete: !props.complete } }
+    )
 
-      console.log(response.data)
-    } else {
-      const response = await axios.put(
-        `https://one-list-api.herokuapp.com/items/${props.id}?access_token=cohort20`,
-        { item: { complete: true } }
-      )
-
-      console.log(response.data)
-    }
+    console.log(response.data)
   }
   return (
     <li
