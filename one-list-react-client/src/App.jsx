@@ -2,6 +2,37 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import sdgLogo from './images/sdg-logo.png'
 
+export function TodoItemComponent(props) {
+  async function toggleCompleteStatus() {
+    console.log(`I clicked on an item with id ${props.id}!`)
+    // Call the API HERE to tell it that an item is complete (or incomplete)
+
+    if (props.complete) {
+      const response = await axios.put(
+        `https://one-list-api.herokuapp.com/items/${props.id}?access_token=cohort20`,
+        { item: { complete: false } }
+      )
+
+      console.log(response.data)
+    } else {
+      const response = await axios.put(
+        `https://one-list-api.herokuapp.com/items/${props.id}?access_token=cohort20`,
+        { item: { complete: true } }
+      )
+
+      console.log(response.data)
+    }
+  }
+  return (
+    <li
+      onClick={toggleCompleteStatus}
+      className={props.complete ? 'completed' : ''}
+    >
+      {props.text}
+    </li>
+  )
+}
+
 export function App() {
   const [todoItems, setTodoItems] = useState([])
   const [newTodoText, setNewTodoText] = useState('')
@@ -80,12 +111,18 @@ export function App() {
         <ul>
           {todoItems.map(function (todoItem) {
             return (
-              <li
+              <TodoItemComponent
                 key={todoItem.id}
-                className={todoItem.complete ? 'completed' : ''}
-              >
-                {todoItem.text}
-              </li>
+                id={todoItem.id}
+                complete={todoItem.complete}
+                text={todoItem.text}
+              />
+              // <li
+              //   key={todoItem.id}
+              //   className={todoItem.complete ? 'completed' : ''}
+              // >
+              //   {todoItem.text}
+              // </li>
             )
           })}
         </ul>
