@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import sdgLogo from './images/sdg-logo.png'
 
 export function App() {
@@ -18,6 +18,15 @@ export function App() {
       complete: false,
     },
   ])
+
+  // useEffect takes two arguments, a function and an array
+  // - The function is called ONCE at start
+  // - The function is also called when the array's contents change
+  //
+  // But alas, our array is empty so we are called only once
+  useEffect(function () {
+    console.log('Run once when the app mounts')
+  }, [])
 
   return (
     <div className="app">
