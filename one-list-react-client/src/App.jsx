@@ -50,7 +50,18 @@ export function App() {
       }
     )
 
-    console.log(response.data)
+    const newTodoItem = response.data
+
+    // Make a new array by taking all the elements of our current state
+    // (todoItems) and put them in the new array, FOLLOWED BY our new
+    // todo item
+    const newTodoItems = [...todoItems, newTodoItem]
+
+    // Put that new array back in the todoItems state
+    setTodoItems(newTodoItems)
+
+    // Clear out the input so we can accept new text
+    setNewTodoText('')
   }
 
   return (
