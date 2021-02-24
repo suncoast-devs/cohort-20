@@ -2,9 +2,13 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import sdgLogo from './images/sdg-logo.png'
 
-export function TodoItemComponent(props) {
-  const { id, text, complete, reloadItems } = props
-
+// This kinda looks like arguments to a function
+// function(name) { console.log(name) }
+//
+// Except they are wrapped in a `{    }` -- that means destructuring
+//
+// Since props is the first argument, we are automatically destructuring props
+export function TodoItemComponent({ id, text, complete, reloadItems }) {
   async function toggleCompleteStatus() {
     console.log(`I clicked on an item with id ${id}!`)
     // Call the API HERE to tell it that an item is complete (or incomplete)
