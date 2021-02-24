@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 // export class App extends React.Component {
 //   onClickWorld = () => {
@@ -49,6 +49,16 @@ function CounterFunctionStyle() {
   // const [name, setName] = useState(... initial value ...)
 
   const [personName, setPersonName] = useState('Pierce')
+
+  // Function for useEffect to call
+  function theCountChanged() {
+    console.log(`Hooray, the count has changed is now - ${counter}`)
+  }
+
+  // ... when any of these variables changes!
+  const listOfDataToWatchForChanges = [counter]
+
+  useEffect(theCountChanged, listOfDataToWatchForChanges)
 
   return (
     <div>
