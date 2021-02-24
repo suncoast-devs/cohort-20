@@ -4,6 +4,7 @@ import sdgLogo from './images/sdg-logo.png'
 
 export function App() {
   const [todoItems, setTodoItems] = useState([])
+  const [newTodoText, setNewTodoText] = useState('')
 
   // useEffect takes two arguments, a function and an array
   // - The function is called ONCE at start
@@ -54,7 +55,14 @@ export function App() {
           })}
         </ul>
         <form>
-          <input type="text" placeholder="Whats up?" />
+          <input
+            type="text"
+            placeholder="Whats up?"
+            value={newTodoText}
+            onChange={function (event) {
+              setNewTodoText(event.target.value)
+            }}
+          />
         </form>
       </main>
       <footer>
