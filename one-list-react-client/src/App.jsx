@@ -10,7 +10,7 @@ export function App() {
     {
       id: 5,
       text: 'The important things are the important things',
-      complete: false,
+      complete: true,
     },
     {
       id: 6,
@@ -27,7 +27,14 @@ export function App() {
       <main>
         <ul>
           {todoItems.map(function (todoItem) {
-            return <li key={todoItem.id}>{todoItem.text}</li>
+            return (
+              <li
+                key={todoItem.id}
+                className={todoItem.complete ? 'completed' : ''}
+              >
+                {todoItem.text}
+              </li>
+            )
           })}
         </ul>
         <form>
