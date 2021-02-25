@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Route, Switch, useHistory, useParams } from 'react-router'
+import { Link } from 'react-router-dom'
 import sdgLogo from './images/sdg-logo.png'
 import { TodoListPage } from './pages/TodoListPage'
 
@@ -41,6 +42,9 @@ export function TodoItemPage() {
 
   return (
     <div>
+      <p>
+        <Link to="/">Home</Link>
+      </p>
       <p className={todoItem.complete ? 'completed' : ''}>{todoItem.text}</p>
       <p>{todoItem.created_at}</p>
       <p>{todoItem.updated_at}</p>
