@@ -1,11 +1,31 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import { Route, Switch, useParams } from 'react-router'
 import sdgLogo from './images/sdg-logo.png'
 import { TodoListPage } from './pages/TodoListPage'
 
 export function TodoItemPage() {
+  const [todoItem, setTodoItem] = useState({
+    id: undefined,
+    text: '',
+    complete: false,
+  })
+
   // this gives us back an *OBJECT* with neat properties
   const params = useParams()
+
+  useEffect(
+    async function () {
+      // load the specific item from the API
+
+      const response = await axios.get(
+        `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort20`
+      )
+
+      setTodoItem(response.data)
+    },
+    [params.id]
+  )
 
   return <p>This would be the details of item {params.id}!</p>
 }
