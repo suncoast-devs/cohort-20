@@ -1,10 +1,13 @@
 import React from 'react'
-import { Route, Switch } from 'react-router'
+import { Route, Switch, useParams } from 'react-router'
 import sdgLogo from './images/sdg-logo.png'
 import { TodoListPage } from './pages/TodoListPage'
 
 export function TodoItemPage() {
-  return <p>This would be the details of item 42!</p>
+  // this gives us back an *OBJECT* with neat properties
+  const params = useParams()
+
+  return <p>This would be the details of item {params.id}!</p>
 }
 
 export function App() {
