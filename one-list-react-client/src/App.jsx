@@ -17,6 +17,10 @@ export function App() {
           <Route exact path="/">
             <TodoListPage />
           </Route>
+          {/* this is like a default: <Route path="*"> */}
+          <Route path="*">
+            <p>Ooops, nothing found here</p>
+          </Route>
         </Switch>
       </main>
       <footer>
