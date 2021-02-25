@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route, Switch } from 'react-router'
 import sdgLogo from './images/sdg-logo.png'
 import { TodoListPage } from './pages/TodoListPage'
 
@@ -9,7 +10,14 @@ export function App() {
         <h1>One List</h1>
       </header>
       <main>
-        <TodoListPage />
+        {/* switch(what url?) */}
+        <Switch>
+          {/* case "/" */}
+          {/* this matches EVERYTHING: <Route path="/"> */}
+          <Route exact path="/">
+            <TodoListPage />
+          </Route>
+        </Switch>
       </main>
       <footer>
         <p>
