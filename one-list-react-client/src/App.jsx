@@ -27,12 +27,20 @@ export function TodoItemPage() {
     [params.id]
   )
 
+  async function deleteTodoItem() {
+    const response = await axios.delete(
+      `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort20`
+    )
+
+    // But now we want to redirect to the home page
+  }
+
   return (
     <div>
       <p className={todoItem.complete ? 'completed' : ''}>{todoItem.text}</p>
       <p>{todoItem.created_at}</p>
       <p>{todoItem.updated_at}</p>
-      <button>Delete</button>
+      <button onClick={deleteTodoItem}>Delete</button>
     </div>
   )
 }
