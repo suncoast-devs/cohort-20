@@ -17,6 +17,10 @@ export function App() {
           <Route exact path="/">
             <TodoListPage />
           </Route>
+          {/* This matches /items/42 and /items/9876 and anything else that starts with /items/ and has one part afterwards */}
+          <Route path="/items/:id">
+            <p>This would be the details of item 42!</p>
+          </Route>
           {/* this is like a default: <Route path="*"> */}
           <Route path="*">
             <p>Ooops, nothing found here</p>
