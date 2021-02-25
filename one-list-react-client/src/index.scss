@@ -49,6 +49,14 @@ input:focus {
   opacity: 1;
 }
 
+a:link,
+a:visited {
+  font-size: 0.7rem;
+  color: #fff;
+  line-height: 1rem;
+  padding-left: 1rem;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -56,6 +64,8 @@ ul {
 
   li {
     margin: 0.7em;
+    display: flex;
+    justify-content: space-between;
 
     &.completed {
       text-decoration: line-through;

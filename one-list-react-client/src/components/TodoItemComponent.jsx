@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 // This kinda looks like arguments to a function
 // function(name) { console.log(name) }
@@ -28,6 +29,7 @@ export function TodoItemComponent({ id, text, complete, reloadItems }) {
   return (
     <li onClick={toggleCompleteStatus} className={complete ? 'completed' : ''}>
       {text}
+      <Link to={`/items/${id}`}>Show</Link>
     </li>
   )
 }
