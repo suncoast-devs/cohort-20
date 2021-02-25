@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Route, Switch, useParams } from 'react-router'
+import { Route, Switch, useHistory, useParams } from 'react-router'
 import sdgLogo from './images/sdg-logo.png'
 import { TodoListPage } from './pages/TodoListPage'
 
@@ -10,6 +10,9 @@ export function TodoItemPage() {
     text: '',
     complete: false,
   })
+
+  // This gives us the ability to navigate the browser
+  const history = useHistory()
 
   // this gives us back an *OBJECT* with neat properties
   const params = useParams()
@@ -33,6 +36,7 @@ export function TodoItemPage() {
     )
 
     // But now we want to redirect to the home page
+    history.push('/')
   }
 
   return (
