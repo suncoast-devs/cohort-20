@@ -14,24 +14,21 @@ export function TodoItemPage() {
   const history = useHistory()
 
   // this gives us back an *OBJECT* with neat properties
-  const params = useParams()
+  const { id } = useParams()
+  const apiURL = `https://one-list-api.herokuapp.com/items/${id}?access_token=cohort20`
 
   useEffect(
     async function () {
       // load the specific item from the API
-      const response = await axios.get(
-        `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort20`
-      )
+      const response = await axios.get(apiURL)
 
       setTodoItem(response.data)
     },
-    [params.id]
+    [id]
   )
 
   async function deleteTodoItem() {
-    const response = await axios.delete(
-      `https://one-list-api.herokuapp.com/items/${params.id}?access_token=cohort20`
-    )
+    const response = await axios.delete(apiURL)
 
     // But now we want to redirect to the home page
     history.push('/')
