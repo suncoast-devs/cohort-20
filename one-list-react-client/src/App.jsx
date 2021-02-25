@@ -3,6 +3,10 @@ import { Route, Switch } from 'react-router'
 import sdgLogo from './images/sdg-logo.png'
 import { TodoListPage } from './pages/TodoListPage'
 
+export function TodoItemPage() {
+  return <p>This would be the details of item 42!</p>
+}
+
 export function App() {
   return (
     <div className="app">
@@ -19,7 +23,7 @@ export function App() {
           </Route>
           {/* This matches /items/42 and /items/9876 and anything else that starts with /items/ and has one part afterwards */}
           <Route path="/items/:id">
-            <p>This would be the details of item 42!</p>
+            <TodoItemPage />
           </Route>
           {/* this is like a default: <Route path="*"> */}
           <Route path="*">
