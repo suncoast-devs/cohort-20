@@ -27,7 +27,14 @@ export function TodoItemPage() {
     [params.id]
   )
 
-  return <p>This would be the details of item {params.id}!</p>
+  return (
+    <div>
+      <p className={todoItem.complete ? 'completed' : ''}>{todoItem.text}</p>
+      <p>{todoItem.created_at}</p>
+      <p>{todoItem.updated_at}</p>
+      <button>Delete</button>
+    </div>
+  )
 }
 
 export function App() {
