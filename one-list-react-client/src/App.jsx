@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import sdgLogo from './images/sdg-logo.png'
 import { TodoItemComponent } from './components/TodoItemComponent'
 
-export function App() {
+export function TodoList() {
   const [todoItems, setTodoItems] = useState([])
   const [newTodoText, setNewTodoText] = useState('')
 
@@ -70,40 +70,48 @@ export function App() {
   }
 
   return (
+    <>
+      <ul>
+        {todoItems.map(function (todoItem) {
+          return (
+            <TodoItemComponent
+              key={todoItem.id}
+              id={todoItem.id}
+              complete={todoItem.complete}
+              text={todoItem.text}
+              reloadItems={loadAllTodoItems}
+            />
+            // <li
+            //   key={todoItem.id}
+            //   className={todoItem.complete ? 'completed' : ''}
+            // >
+            //   {todoItem.text}
+            // </li>
+          )
+        })}
+      </ul>
+      <form onSubmit={handleNewTodoItem}>
+        <input
+          type="text"
+          placeholder="Whats up?"
+          value={newTodoText}
+          onChange={function (event) {
+            setNewTodoText(event.target.value)
+          }}
+        />
+      </form>
+    </>
+  )
+}
+
+export function App() {
+  return (
     <div className="app">
       <header>
         <h1>One List</h1>
       </header>
       <main>
-        <ul>
-          {todoItems.map(function (todoItem) {
-            return (
-              <TodoItemComponent
-                key={todoItem.id}
-                id={todoItem.id}
-                complete={todoItem.complete}
-                text={todoItem.text}
-                reloadItems={loadAllTodoItems}
-              />
-              // <li
-              //   key={todoItem.id}
-              //   className={todoItem.complete ? 'completed' : ''}
-              // >
-              //   {todoItem.text}
-              // </li>
-            )
-          })}
-        </ul>
-        <form onSubmit={handleNewTodoItem}>
-          <input
-            type="text"
-            placeholder="Whats up?"
-            value={newTodoText}
-            onChange={function (event) {
-              setNewTodoText(event.target.value)
-            }}
-          />
-        </form>
+        <TodoList />
       </main>
       <footer>
         <p>
