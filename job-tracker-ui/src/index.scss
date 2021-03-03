@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Rubik:ital,wght@0,400;0,700;1,400&display=swap');
 
-$text-color: #222;
-
+$text-color: #26242c;
+$border-color: #38b6ba;
+$link-color: #1fb5b4;
+$panel-header-bg: #83c6d1;
 body {
   font-family: 'Rubik', sans-serif;
   font-size: 20px;
   color: $text-color;
+  background-color: #76c1cc;
 }
 
 h1 {
@@ -20,12 +23,12 @@ h3 {
 a {
   &:link {
     text-decoration: none;
-    color: dodgerblue;
+    color: $link-color;
     font-weight: 700;
   }
 
   &:visited {
-    color: dodgerblue;
+    color: $link-color;
   }
 
   &:focus,
@@ -35,6 +38,21 @@ a {
   }
 }
 
+.container {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.home {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(2, min-content) auto min-content;
+  border-left: thin solid $border-color;
+  border-right: thin solid $border-color;
+  background-color: white;
+}
+
 .header {
   background-color: pink;
   grid-column: 1 / span 2;
@@ -42,7 +60,7 @@ a {
   text-align: center;
   font-weight: bold;
   font-size: 3rem;
-  background-image: url(https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3150&q=80);
+  background-image: url(https://images.unsplash.com/photo-1614521185607-c374b6c5609c?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=scott-webb-DrpKaw3vWGI-unsplash.jpg&w=1920);
   background-size: cover;
   height: 16rem;
   display: flex;
@@ -50,35 +68,12 @@ a {
   align-items: center;
   color: white;
   text-shadow: 0 0 8px black;
-}
+  border-bottom: thin solid $border-color;
 
-.panel {
-  header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #dedede;
-    padding: 0.5rem;
-    text-transform: uppercase;
-    font-size: 1rem;
-    letter-spacing: 0.025rem;
-    color: lighten($text-color, 20%);
-  }
-
-  li {
-    padding: 1rem 0.5rem;
-    & + li {
-      border-top: thin solid #3333;
-    }
-  }
-}
-
-.notification {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  h3 {
-    margin-bottom: 0.25rem;
+  sup {
+    font-size: 0.8rem;
+    vertical-align: super;
+    margin-left: 0.25rem;
   }
 }
 
@@ -115,29 +110,76 @@ a {
 }
 
 .companies {
-  background-color: goldenrod;
   grid-row: 2 / span 2;
+  border-right: thin solid $border-color;
 }
 
 .interactions {
-  background-color: seagreen;
-  padding: 1rem;
+  border-top: thin solid $border-color;
+  background-color: goldenrod;
 }
 
 .footer {
   grid-column: 1 / span 2;
+  border-top: thin solid $border-color;
+  text-transform: uppercase;
+  font-size: 1rem;
+  background-color: lighten($border-color, 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 
   .love {
     color: darkmagenta;
   }
 }
 
-.container {
-  max-width: 64rem;
-  margin: 0 auto;
+.panel {
+  & > header {
+    display: flex;
+    justify-content: space-between;
+    background-color: $panel-header-bg;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0.025rem;
+    color: darken($panel-header-bg, 40%);
+  }
+
+  li {
+    padding: 1rem 0.5rem;
+    & + li {
+      border-top: thin solid $border-color;
+    }
+  }
 }
 
-.home {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+.notification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin-bottom: 0.25rem;
+  }
+}
+
+.company {
+  header {
+    display: flex;
+    align-items: center;
+
+    h3 {
+      margin-right: 0.5rem;
+    }
+
+    a {
+      font-size: 0.8rem;
+    }
+  }
+
+  .actions {
+    text-align: right;
+  }
 }

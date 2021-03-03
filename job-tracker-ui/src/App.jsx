@@ -17,6 +17,27 @@ function Notification({ title, detail, done }) {
   )
 }
 
+function Company({ name, url, description }) {
+  return (
+    <div className="company">
+      <header>
+        <h3>{name}</h3>
+        <a href={url}>
+          <Icon name="link" />
+        </a>
+      </header>
+      <div className="content">
+        <p>{description}</p>
+      </div>
+      <p className="actions">
+        <a href="#edit">
+          <Icon name="edit" />
+        </a>
+      </p>
+    </div>
+  )
+}
+
 function Panel({ title, headerAction, children }) {
   return (
     <div className="panel">
@@ -37,7 +58,12 @@ export function App() {
   return (
     <div className="home container">
       <header className="header">
-        <h1>Job Trackr&trade;</h1>
+        <h1>
+          Job Trackr
+          <sup>
+            <Icon name="trademark" />
+          </sup>
+        </h1>
       </header>
 
       <aside className="notifications">
@@ -71,66 +97,41 @@ export function App() {
       </aside>
 
       <main className="companies">
-        <h2>Companies</h2>
-        <a href="#new">
-          <Icon name="plus" />
-        </a>
-        <ul>
-          <li>
-            <h3>PetCo</h3>
-            <a href="https://pet.co">https://pet.co</a>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
-              porro rem alias tempore.
-            </p>
-            <p>
-              <a href="#edit">
-                <Icon name="edit" />
-              </a>
-            </p>
-          </li>
-          <li>
-            <h3>ACME Inc.</h3>
-            <a href="https://pet.co">https://pet.co</a>
-            <p>
-              Consequuntur repellendus, in eaque dolores aliquid accusantium
+        <Panel
+          title="Companies"
+          headerAction={
+            <a href="#new">
+              <Icon name="plus" />
+            </a>
+          }
+        >
+          <PanelItem>
+            <Company
+              name="PetCo"
+              url="https://pet.co"
+              description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
+              porro rem alias tempore."
+            ></Company>
+          </PanelItem>
+          <PanelItem>
+            <Company
+              name="ACME Inc."
+              url="https://pet.co"
+              description="Consequuntur repellendus, in eaque dolores aliquid accusantium
               illo iusto quis consectetur, excepturi necessitatibus ullam labore
-              velit ex!
-            </p>
-            <p>
-              <a href="#edit">
-                <Icon name="edit" />
-              </a>
-            </p>
-          </li>
-          <li>
-            <h3>PetCo</h3>
-            <a href="https://pet.co">https://pet.co</a>
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
-              porro rem alias tempore.
-            </p>
-            <p>
-              <a href="#edit">
-                <Icon name="edit" />
-              </a>
-            </p>
-          </li>
-          <li>
-            <h3>ACME Inc.</h3>
-            <a href="https://pet.co">https://pet.co</a>
-            <p>
-              Consequuntur repellendus, in eaque dolores aliquid accusantium
+              velit ex!"
+            ></Company>
+          </PanelItem>
+          <PanelItem>
+            <Company
+              name="ACME Inc."
+              url="https://pet.co"
+              description="Consequuntur repellendus, in eaque dolores aliquid accusantium
               illo iusto quis consectetur, excepturi necessitatibus ullam labore
-              velit ex!
-            </p>
-            <p>
-              <a href="#edit">
-                <Icon name="edit" />
-              </a>
-            </p>
-          </li>
-        </ul>
+              velit ex!"
+            ></Company>
+          </PanelItem>
+        </Panel>
       </main>
 
       <aside className="interactions">
