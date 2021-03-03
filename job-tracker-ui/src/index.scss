@@ -52,16 +52,7 @@ a {
   text-shadow: 0 0 8px black;
 }
 
-.notifications {
-  grid-column: 2;
-
-  &::before {
-    content: '';
-    background-color: red;
-    width: 4rem;
-    height: 4rem;
-  }
-
+.panel {
   header {
     display: flex;
     justify-content: space-between;
@@ -73,11 +64,28 @@ a {
     color: lighten($text-color, 20%);
   }
 
+  li {
+    padding: 1rem 0.5rem;
+    & + li {
+      border-top: thin solid #3333;
+    }
+  }
+}
+
+.notification {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   h3 {
     margin-bottom: 0.25rem;
   }
+}
 
-  ul {
+.notifications {
+  grid-column: 2;
+
+  .panel ul {
     max-height: 12rem;
     overflow-y: scroll;
     position: relative;
@@ -96,23 +104,13 @@ a {
     }
   }
 
-  li {
-    padding: 1rem 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    & + li {
-      border-top: thin solid #3333;
-    }
+  p {
+    color: lighten($text-color, 33%);
+    font-size: 0.9rem;
+  }
 
-    p {
-      color: lighten($text-color, 33%);
-      font-size: 0.9rem;
-    }
-
-    .toggle {
-      margin-right: 1rem;
-    }
+  .toggle {
+    margin-right: 1rem;
   }
 }
 

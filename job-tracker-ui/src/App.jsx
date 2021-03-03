@@ -3,7 +3,7 @@ import { Icon } from './Icon'
 
 function Notification({ title, detail, done }) {
   return (
-    <li>
+    <div className="notification">
       <div className="content">
         <h3>{title}</h3>
         <p>{detail}</p>
@@ -13,8 +13,24 @@ function Notification({ title, detail, done }) {
           {done ? <Icon name="check" /> : <Icon name="circle" style="far" />}
         </a>
       </div>
-    </li>
+    </div>
   )
+}
+
+function Panel({ title, headerAction, children }) {
+  return (
+    <div className="panel">
+      <header>
+        <h2>{title}</h2>
+        {headerAction}
+      </header>
+      <ul>{children}</ul>
+    </div>
+  )
+}
+
+function PanelItem({ children }) {
+  return <li className="panel-item">{children}</li>
 }
 
 export function App() {
@@ -25,41 +41,33 @@ export function App() {
       </header>
 
       <aside className="notifications">
-        <header>
-          <h2>Notifications</h2>
-          <a href="#new">
-            <Icon name="plus" />
-          </a>
-        </header>
-        <ul>
-          <Notification title="Email ACME, Inc." detail="Foo Bar" done={true} />
-          <Notification
-            title="Email ACME, Inc."
-            detail="Foo Bar"
-            done={false}
-          />
-          <Notification
-            title="Apply to ACME, Inc."
-            detail="Foo Bar"
-            done={true}
-          />
-          <Notification
-            title="Email ACME, Inc."
-            detail="Foo Bar"
-            done={false}
-          />
-          <Notification
-            title="Email ACME, Inc."
-            detail="Foo Bar"
-            done={false}
-          />
-          <Notification
-            title="Email ACME, Inc."
-            detail="Foo Bar"
-            done={false}
-          />
+        <Panel
+          title="Notification"
+          headerAction={
+            <a href="#new">
+              <Icon name="plus" />
+            </a>
+          }
+        >
+          <PanelItem>
+            <Notification
+              title="Email ACME, Inc."
+              detail="Foo Bar"
+              done={true}
+            />
+          </PanelItem>
+          <PanelItem>
+            <Notification
+              title="Apply at ACME, Inc."
+              detail="Foo Bar"
+              done={false}
+            />
+          </PanelItem>
+          <PanelItem>
+            <Notification title="Email PetCo" detail="Foo Bar" done={false} />
+          </PanelItem>
           <li className="hack"></li>
-        </ul>
+        </Panel>
       </aside>
 
       <main className="companies">
