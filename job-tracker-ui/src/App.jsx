@@ -8,12 +8,26 @@ export function App() {
       </header>
 
       <aside className="notifications">
-        <h2>Notifications</h2>
-        <a href="#new">New</a>
+        <header>
+          <h2>Notifications</h2>
+          <a href="#new">New</a>
+        </header>
         <ul>
           <li>
             <h3>Follow up with Petco</h3>
             <p>You applied 3 days ago.</p>
+          </li>
+          <li>
+            <h3>Interview with ACME Inc.</h3>
+            <p>Monday at 2 pm</p>
+          </li>
+          <li>
+            <h3>Interview with ACME Inc.</h3>
+            <p>Monday at 2 pm</p>
+          </li>
+          <li>
+            <h3>Interview with ACME Inc.</h3>
+            <p>Monday at 2 pm</p>
           </li>
           <li>
             <h3>Interview with ACME Inc.</h3>
