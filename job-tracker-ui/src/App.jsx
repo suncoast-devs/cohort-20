@@ -1,4 +1,21 @@
 import React from 'react'
+import { Icon } from './Icon'
+
+function Notification({ title, detail, done }) {
+  return (
+    <li>
+      <div className="content">
+        <h3>{title}</h3>
+        <p>{detail}</p>
+      </div>
+      <div className="toggle">
+        <a href="#toggle">
+          {done ? <Icon name="check" /> : <Icon name="circle" style="far" />}
+        </a>
+      </div>
+    </li>
+  )
+}
 
 export function App() {
   return (
@@ -10,35 +27,46 @@ export function App() {
       <aside className="notifications">
         <header>
           <h2>Notifications</h2>
-          <a href="#new">New</a>
+          <a href="#new">
+            <Icon name="plus" />
+          </a>
         </header>
         <ul>
-          <li>
-            <h3>Follow up with Petco</h3>
-            <p>You applied 3 days ago.</p>
-          </li>
-          <li>
-            <h3>Interview with ACME Inc.</h3>
-            <p>Monday at 2 pm</p>
-          </li>
-          <li>
-            <h3>Interview with ACME Inc.</h3>
-            <p>Monday at 2 pm</p>
-          </li>
-          <li>
-            <h3>Interview with ACME Inc.</h3>
-            <p>Monday at 2 pm</p>
-          </li>
-          <li>
-            <h3>Interview with ACME Inc.</h3>
-            <p>Monday at 2 pm</p>
-          </li>
+          <Notification title="Email ACME, Inc." detail="Foo Bar" done={true} />
+          <Notification
+            title="Email ACME, Inc."
+            detail="Foo Bar"
+            done={false}
+          />
+          <Notification
+            title="Apply to ACME, Inc."
+            detail="Foo Bar"
+            done={true}
+          />
+          <Notification
+            title="Email ACME, Inc."
+            detail="Foo Bar"
+            done={false}
+          />
+          <Notification
+            title="Email ACME, Inc."
+            detail="Foo Bar"
+            done={false}
+          />
+          <Notification
+            title="Email ACME, Inc."
+            detail="Foo Bar"
+            done={false}
+          />
+          <li className="hack"></li>
         </ul>
       </aside>
 
       <main className="companies">
         <h2>Companies</h2>
-        <a href="#new">New</a>
+        <a href="#new">
+          <Icon name="plus" />
+        </a>
         <ul>
           <li>
             <h3>PetCo</h3>
@@ -48,7 +76,9 @@ export function App() {
               porro rem alias tempore.
             </p>
             <p>
-              <a href="#edit">Edit</a>
+              <a href="#edit">
+                <Icon name="edit" />
+              </a>
             </p>
           </li>
           <li>
@@ -60,7 +90,9 @@ export function App() {
               velit ex!
             </p>
             <p>
-              <a href="#edit">Edit</a>
+              <a href="#edit">
+                <Icon name="edit" />
+              </a>
             </p>
           </li>
           <li>
@@ -71,7 +103,9 @@ export function App() {
               porro rem alias tempore.
             </p>
             <p>
-              <a href="#edit">Edit</a>
+              <a href="#edit">
+                <Icon name="edit" />
+              </a>
             </p>
           </li>
           <li>
@@ -83,7 +117,9 @@ export function App() {
               velit ex!
             </p>
             <p>
-              <a href="#edit">Edit</a>
+              <a href="#edit">
+                <Icon name="edit" />
+              </a>
             </p>
           </li>
         </ul>
@@ -91,7 +127,9 @@ export function App() {
 
       <aside className="interactions">
         <h2>Interactions</h2>
-        <a href="#new">New</a>
+        <a href="#new">
+          <Icon name="plus" />
+        </a>
         <ul>
           <li>
             <h3>Emailed PetCo</h3>
@@ -112,7 +150,13 @@ export function App() {
       </aside>
 
       <footer className="footer">
-        <p>&copy; 2021 Cohort 20. Made with &hearts; in St. Petersburg, FL.</p>
+        <p>
+          &copy; 2021 Cohort 20. Made with{' '}
+          <span className="love">
+            <Icon name="heart" />
+          </span>{' '}
+          in St. Petersburg, FL.
+        </p>
       </footer>
     </div>
   )
