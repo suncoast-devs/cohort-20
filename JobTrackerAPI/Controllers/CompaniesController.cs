@@ -35,7 +35,7 @@ namespace JobTrackerAPI.Controllers
         {
             // Uses the database context in `_context` to request all of the Companies, sort
             // them by row id and return them as a JSON array.
-            return await _context.Companies.OrderBy(row => row.Id).ToListAsync();
+            return await _context.Companies.OrderByDescending(row => row.Id).ToListAsync();
         }
 
         // GET: api/Companies/5
