@@ -1,58 +1,9 @@
 import React from 'react'
+import { Company } from './components/Company'
 import { Icon } from './Icon'
-
-function Notification({ title, detail, done }) {
-  return (
-    <div className="notification">
-      <div className="content">
-        <h3>{title}</h3>
-        <p>{detail}</p>
-      </div>
-      <div className="toggle">
-        <a href="#toggle">
-          {done ? <Icon name="check" /> : <Icon name="circle" style="far" />}
-        </a>
-      </div>
-    </div>
-  )
-}
-
-function Company({ name, url, description }) {
-  return (
-    <div className="company">
-      <header>
-        <h3>{name}</h3>
-        <a href={url}>
-          <Icon name="link" />
-        </a>
-      </header>
-      <div className="content">
-        <p>{description}</p>
-      </div>
-      <p className="actions">
-        <a href="#edit">
-          <Icon name="edit" />
-        </a>
-      </p>
-    </div>
-  )
-}
-
-function Panel({ title, headerAction, children }) {
-  return (
-    <div className="panel">
-      <header>
-        <h2>{title}</h2>
-        {headerAction}
-      </header>
-      <ul>{children}</ul>
-    </div>
-  )
-}
-
-function PanelItem({ children }) {
-  return <li className="panel-item">{children}</li>
-}
+import { Notification } from './components/Notification'
+import { Panel } from './components/Panel'
+import { PanelItem } from './components/PanelItem'
 
 export function App() {
   return (
