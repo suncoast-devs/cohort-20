@@ -5,6 +5,8 @@ $modal-color: #25242c99;
 $border-color: #38b6ba;
 $link-color: #1fb5b4;
 $panel-header-bg: #83c6d1;
+$button-color: $panel-header-bg;
+
 body {
   font-family: 'Rubik', sans-serif;
   font-size: 20px;
@@ -195,4 +197,34 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.new-company {
+  background-color: white;
+  width: 50vw;
+  height: 60vh;
+  border-radius: 0.5rem;
+  padding: 2rem;
+
+  fieldset {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header {
+    text-align: center;
+  }
+
+  .submit {
+    margin: 2rem 0;
+    justify-content: center;
+
+    a {
+      display: block;
+      padding: 1rem;
+      background-color: $button-color;
+      color: $text-color;
+    }
+  }
 }
