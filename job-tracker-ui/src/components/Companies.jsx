@@ -4,7 +4,7 @@ import { Icon } from '../Icon'
 import { Panel } from './Panel'
 import { PanelItem } from './PanelItem'
 
-function NewCompanyModal() {
+function NewCompanyModal(props) {
   const [name, setName] = useState('')
   const [url, setUrl] = useState('')
   const [description, setDescription] = useState('')
@@ -29,6 +29,10 @@ function NewCompanyModal() {
     })
 
     // Do something afterward...
+
+    // Call whatever function our PARENT gave us
+    // that we should do after we have added a company
+    props.whenDoneWithAddingCompany()
   }
 
   return (
@@ -84,7 +88,7 @@ function NewCompanyModal() {
 export function Companies() {
   const [companiesAreLoaded, setCompaniesAreLoaded] = useState(false)
   const [companies, setCompanies] = useState([])
-  const [userPressedNew, setUserPressedNew] = useState(true)
+  const [userPressedNew, setUserPressedNew] = useState(false)
 
   // What would be nice is...
   //
@@ -111,6 +115,15 @@ export function Companies() {
     ]
   )
 
+  async function clearsTheUserPressedNewAndReloadsTheCompanies() {
+    setUserPressedNew(false)
+
+    const response = await fetch('http://localhost:5000/api/Companies')
+    const json = await response.json()
+
+    setCompanies(json)
+  }
+
   // Until companies are loaded, show a spinner
   if (companiesAreLoaded === false) {
     return <Icon name="spinner" />
@@ -122,7 +135,15 @@ export function Companies() {
 
   return (
     <main className="companies">
-      {userPressedNew ? <NewCompanyModal /> : <></>}
+      {userPressedNew ? (
+        <NewCompanyModal
+          whenDoneWithAddingCompany={
+            clearsTheUserPressedNewAndReloadsTheCompanies
+          }
+        />
+      ) : (
+        <></>
+      )}
       <Panel
         title="Companies"
         headerAction={
