@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "position": null,
+    "technology": null,
+    "contactName": "Gavin Stark",
+    "contactEmail": "gavin@suncoast.io",
+    "remote": true,
+    "contactCount": 0,
+    "companyName": "SDG",
+    "salary": 1000000,
+    "benefits": false,
+    "companyLogo": null,
+    "url": "https://suncoast.io",
+    "description": "Code School in St. Petersburg, FL"
+  },
+  {
+    "id": 2,
+    "position": null,
+    "technology": null,
+    "contactName": "Bill Gates",
+    "contactEmail": "gates@microsoft.com",
+    "remote": false,
+    "contactCount": 0,
+    "companyName": "Microsoft",
+    "salary": 2000000,
+    "benefits": false,
+    "companyLogo": null,
+    "url": "https://microsoft.com",
+    "description": "Home of Windows and C#"
+  },
+  {
+    "id": 3,
+    "position": null,
+    "technology": null,
+    "contactName": "Tim Cook",
+    "contactEmail": "tim@apple.com",
+    "remote": true,
+    "contactCount": 0,
+    "companyName": "Apple",
+    "salary": 3000000,
+    "benefits": false,
+    "companyLogo": null,
+    "url": "https://apple.com",
+    "description": "All things that start with an i"
+  }
+]
