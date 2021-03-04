@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Company } from './Company'
 import { Icon } from '../Icon'
 import { Panel } from './Panel'
@@ -7,6 +7,30 @@ import sampleFakeCompanies from './sampleFakeCompanies.json'
 
 export function Companies() {
   const [companies, setCompanies] = useState(sampleFakeCompanies)
+
+  // What would be nice is...
+  //
+  // Right here, before the render to *FETCH* the data from the API
+  // but we want the data to be fetched ONCE, regardless of how many
+  // times this component renders and re-renders
+
+  // Enter useEffect
+
+  useEffect(
+    async function () {
+      // Work
+      // API Fetch
+
+      const response = await fetch('http://localhost:5000/api/Companies')
+      const json = await response.json()
+
+      setCompanies(json)
+    },
+    [
+      /* array of things to watch for changes */
+      /* for now, this is left empty */
+    ]
+  )
 
   return (
     <main className="companies">
