@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Rubik:ital,wght@0,400;0,700;1,400&display=swap');
 
 $text-color: #26242c;
+$modal-color: #25242c99;
 $border-color: #38b6ba;
 $link-color: #1fb5b4;
 $panel-header-bg: #83c6d1;
@@ -182,4 +183,16 @@ a {
   .actions {
     text-align: right;
   }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $modal-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

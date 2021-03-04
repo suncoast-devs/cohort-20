@@ -3,11 +3,15 @@ import { Company } from './Company'
 import { Icon } from '../Icon'
 import { Panel } from './Panel'
 import { PanelItem } from './PanelItem'
-import sampleFakeCompanies from './sampleFakeCompanies.json'
+
+function NewCompanyModal() {
+  return <div className="modal"></div>
+}
 
 export function Companies() {
   const [companiesAreLoaded, setCompaniesAreLoaded] = useState(false)
   const [companies, setCompanies] = useState([])
+  const [userPressedNew, setUserPressedNew] = useState(true)
 
   // What would be nice is...
   //
@@ -45,10 +49,18 @@ export function Companies() {
 
   return (
     <main className="companies">
+      {userPressedNew ? <NewCompanyModal /> : <></>}
       <Panel
         title="Companies"
         headerAction={
-          <a href="#new">
+          <a
+            href="#new"
+            onClick={function (event) {
+              event.preventDefault()
+
+              setUserPressedNew(true)
+            }}
+          >
             <Icon name="plus" />
           </a>
         }
