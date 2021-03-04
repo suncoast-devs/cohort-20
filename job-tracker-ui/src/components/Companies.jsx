@@ -9,11 +9,26 @@ function NewCompanyModal() {
   const [url, setUrl] = useState('')
   const [description, setDescription] = useState('')
 
-  function submitNewCompany(event) {
+  async function submitNewCompany(event) {
     event.preventDefault()
 
-    console.log(`Make a new company with ${name} ${url} ${description}`)
     // Code to run to make a new company
+
+    // use fetch to POST to the API to make a new company
+
+    const newCompanyToSendToAPI = {
+      companyName: name,
+      url: url,
+      description: description,
+    }
+
+    await fetch('http://localhost:5000/api/Companies', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newCompanyToSendToAPI),
+    })
+
+    // Do something afterward...
   }
 
   return (
