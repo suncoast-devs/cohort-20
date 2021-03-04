@@ -6,7 +6,8 @@ import { PanelItem } from './PanelItem'
 import sampleFakeCompanies from './sampleFakeCompanies.json'
 
 export function Companies() {
-  const [companies, setCompanies] = useState(sampleFakeCompanies)
+  const [companiesAreLoaded, setCompaniesAreLoaded] = useState(false)
+  const [companies, setCompanies] = useState([])
 
   // What would be nice is...
   //
@@ -25,12 +26,22 @@ export function Companies() {
       const json = await response.json()
 
       setCompanies(json)
+      setCompaniesAreLoaded(true)
     },
     [
       /* array of things to watch for changes */
       /* for now, this is left empty */
     ]
   )
+
+  // Until companies are loaded, show a spinner
+  if (companiesAreLoaded === false) {
+    return <Icon name="spinner" />
+  }
+
+  if (companies.length === 0) {
+    return <div className="null-state">Get Working!</div>
+  }
 
   return (
     <main className="companies">
