@@ -35,6 +35,12 @@ function NewCompanyModal(props) {
     props.whenDoneWithAddingCompany()
   }
 
+  function handleCancel(event) {
+    event.preventDefault()
+
+    props.whenDoneWithAddingCompany()
+  }
+
   return (
     <div className="modal">
       <form className="new-company">
@@ -78,6 +84,9 @@ function NewCompanyModal(props) {
         <fieldset className="submit">
           <a href="#" onClick={submitNewCompany}>
             Submit
+          </a>
+          <a href="#" onClick={handleCancel}>
+            Cancel
           </a>
         </fieldset>
       </form>

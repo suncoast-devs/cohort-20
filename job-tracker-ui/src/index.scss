@@ -225,6 +225,10 @@ a {
       padding: 1rem;
       background-color: $button-color;
       color: $text-color;
+
+      & + a {
+        margin-left: 1rem;
+      }
     }
   }
 }
