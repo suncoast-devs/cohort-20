@@ -8,8 +8,6 @@ import sampleFakeCompanies from './sampleFakeCompanies.json'
 export function Companies() {
   const [companies, setCompanies] = useState(sampleFakeCompanies)
 
-  console.log(companies)
-
   return (
     <main className="companies">
       <Panel
@@ -20,32 +18,21 @@ export function Companies() {
           </a>
         }
       >
-        <PanelItem>
-          <Company
-            name="PetCo Fake Data"
-            url="https://pet.co"
-            description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae,
-              porro rem alias tempore."
-          ></Company>
-        </PanelItem>
-        <PanelItem>
-          <Company
-            name="ACME Inc. Fake Data"
-            url="https://pet.co"
-            description="Consequuntur repellendus, in eaque dolores aliquid accusantium
-              illo iusto quis consectetur, excepturi necessitatibus ullam labore
-              velit ex!"
-          ></Company>
-        </PanelItem>
-        <PanelItem>
-          <Company
-            name="ACME Inc."
-            url="https://pet.co"
-            description="Consequuntur repellendus, in eaque dolores aliquid accusantium
-              illo iusto quis consectetur, excepturi necessitatibus ullam labore
-              velit ex!"
-          ></Company>
-        </PanelItem>
+        {
+          // Loop over the companies array and make new panelitem/company elements
+
+          companies.map(function (company) {
+            return (
+              <PanelItem key={company.id}>
+                <Company
+                  name={company.companyName}
+                  url={company.url}
+                  description={company.description}
+                ></Company>
+              </PanelItem>
+            )
+          })
+        }
       </Panel>
     </main>
   )
