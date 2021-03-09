@@ -3,6 +3,23 @@ import avatar from '../images/avatar.png'
 import tacoTuesday from '../images/taco-tuesday.svg'
 import map from '../images/map.png'
 
+function SingleRestaurantFromList(props) {
+  return (
+    <li>
+      <h2>{props.name}</h2>
+      <p>
+        <span
+          className="stars"
+          style={{ '--rating': 4.7 }}
+          aria-label="Star rating of this location is 4.7 out of 5."
+        ></span>
+        (2,188)
+      </p>
+      <address>{props.address}</address>
+    </li>
+  )
+}
+
 export function Restaurants() {
   const [restaurants, setRestaurants] = useState([])
 
@@ -62,18 +79,11 @@ export function Restaurants() {
         <ul className="results">
           {restaurants.map(function (restaurant) {
             return (
-              <li key={restaurant.id}>
-                <h2>{restaurant.name}</h2>
-                <p>
-                  <span
-                    className="stars"
-                    style={{ '--rating': 4.7 }}
-                    aria-label="Star rating of this location is 4.7 out of 5."
-                  ></span>
-                  (2,188)
-                </p>
-                <address>{restaurant.address}</address>
-              </li>
+              <SingleRestaurantFromList
+                key={restaurant.id}
+                name={restaurant.name}
+                address={restaurant.address}
+              />
             )
           })}
         </ul>
