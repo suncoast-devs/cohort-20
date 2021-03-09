@@ -1,16 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import avatar from '../images/avatar.png'
 import tacoTuesday from '../images/taco-tuesday.svg'
 import map from '../images/map.png'
 
 export function Restaurants() {
+  const [restaurants, setRestaurants] = useState([])
+
+  // BEFORE:
+  // useEffect(async function () {
+  //   // Perfect place to load our restaurants from the API!
+  //   const response = await fetch('/api/Restaurants')
+  //   const json = await response.json()
+
+  //   setRestaurants(json)
+  // }, [])
+
+  // CORRECT:
+  useEffect(function () {
+    // This function runs ONCE when the component first appears on the screen
+
+    async function fetchRestaurants() {
+      // Perfect place to load our restaurants from the API!
+      const response = await fetch('/api/Restaurants')
+      const json = await response.json()
+
+      setRestaurants(json)
+    }
+
+    fetchRestaurants()
+  }, [])
+
   return (
     <>
       <header>
         <ul>
           <li>
             <nav>
-              <a href="#">
+              <a href="/">
                 <i className="fa fa-plus"></i> Restaurant
               </a>
               <p>Welcome back, Steve!</p>
@@ -34,30 +60,22 @@ export function Restaurants() {
         </section>
 
         <ul className="results">
-          <li>
-            <h2>Loli's Mexican Cravings</h2>
-            <p>
-              <span
-                className="stars"
-                style={{ '--rating': 4.7 }}
-                aria-label="Star rating of this location is 4.7 out of 5."
-              ></span>
-              (2,188)
-            </p>
-            <address>8005 Benjamin Rd, Tampa, FL 33634</address>
-          </li>
-          <li>
-            <h2>La Hacienda Mexicana</h2>
-            <p>
-              <span
-                className="stars"
-                style={{ '--rating': 2.3 }}
-                aria-label="Star rating of this location is 2.3 out of 5."
-              ></span>
-              (245)
-            </p>
-            <address>5537 Sheldon Rd, Tampa, FL 33615</address>
-          </li>
+          {restaurants.map(function (restaurant) {
+            return (
+              <li key={restaurant.id}>
+                <h2>{restaurant.name}</h2>
+                <p>
+                  <span
+                    className="stars"
+                    style={{ '--rating': 4.7 }}
+                    aria-label="Star rating of this location is 4.7 out of 5."
+                  ></span>
+                  (2,188)
+                </p>
+                <address>{restaurant.address}</address>
+              </li>
+            )
+          })}
         </ul>
       </main>
       <footer>
