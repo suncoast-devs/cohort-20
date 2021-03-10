@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import avatar from '../images/avatar.png'
 
 export function NewRestaurant() {
@@ -8,6 +9,7 @@ export function NewRestaurant() {
     address: '',
     telephone: '',
   })
+  const history = useHistory()
 
   function handleStringFieldChange(event) {
     const value = event.target.value
@@ -28,7 +30,8 @@ export function NewRestaurant() {
     })
 
     const json = await response.json()
-    console.log(json)
+
+    history.push('/')
   }
 
   return (
@@ -37,9 +40,9 @@ export function NewRestaurant() {
         <ul>
           <li>
             <nav>
-              <a href="#">
+              <Link to="/new">
                 <i className="fa fa-plus"></i> Restaurant
-              </a>
+              </Link>
               <p>Welcome back, Steve!</p>
             </nav>
           </li>
