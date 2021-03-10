@@ -9,6 +9,7 @@ export function NewRestaurant() {
     address: '',
     telephone: '',
   })
+  const [message, setMessage] = useState('')
   const history = useHistory()
 
   function handleStringFieldChange(event) {
@@ -32,6 +33,15 @@ export function NewRestaurant() {
     const json = await response.json()
 
     history.push('/')
+
+    // This version clears the restaurant and sets a message
+    // setNewRestaurant({
+    //   name: '',
+    //   description: '',
+    //   address: '',
+    //   telephone: '',
+    // })
+    // setMessage('Submitted! Add another?')
   }
 
   return (
@@ -53,9 +63,9 @@ export function NewRestaurant() {
       </header>
       <main className="page">
         <nav>
-          <a href="/">
+          <Link to="/">
             <i className="fa fa-home"></i>
-          </a>
+          </Link>
           <h2>Add a Restaurant</h2>
         </nav>
         <form action="#" onSubmit={handleFormSubmit}>
@@ -102,6 +112,7 @@ export function NewRestaurant() {
           </p>
           <p>
             <input type="submit" value="Submit" />
+            <span>{message}</span>
           </p>
         </form>
       </main>
