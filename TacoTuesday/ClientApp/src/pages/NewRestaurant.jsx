@@ -10,6 +10,7 @@ export function NewRestaurant() {
     telephone: '',
   })
   const [message, setMessage] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   const history = useHistory()
 
   function handleStringFieldChange(event) {
@@ -32,7 +33,11 @@ export function NewRestaurant() {
 
     const json = await response.json()
 
-    history.push('/')
+    if (response.status === 400) {
+      setErrorMessage(Object.values(json.errors).join(' '))
+    } else {
+      history.push('/')
+    }
 
     // This version clears the restaurant and sets a message
     // setNewRestaurant({
@@ -69,6 +74,7 @@ export function NewRestaurant() {
           <h2>Add a Restaurant</h2>
         </nav>
         <form action="#" onSubmit={handleFormSubmit}>
+          {errorMessage && <p className="error">{errorMessage}</p>}
           <p className="form-input">
             <label htmlFor="name">Name</label>
             <input

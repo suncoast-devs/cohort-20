@@ -412,3 +412,14 @@ label[for]:hover {
   label:nth-of-type(5) {
   color: darkorange;
 }
+
+.error {
+  background-color: darkorange;
+  color: white;
+  padding: 1rem;
+}
+
+input:invalid,
+textarea:invalid {
+  outline: darkorange;
+}
