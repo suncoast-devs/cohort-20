@@ -1,12 +1,13 @@
-import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router'
+import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
 import avatar from '../images/avatar.png'
 
 export function Restaurant() {
-  const history = useHistory()
+  // Uncomment this to use the `setTimeout` example down below
+  // const history = useHistory()
+
   const params = useParams()
   const [restaurant, setRestaurant] = useState({
     name: '',
@@ -61,7 +62,7 @@ export function Restaurant() {
     //   data: newReview,
     // })
 
-    const response = await fetch(`/api/Reviews`, {
+    await fetch(`/api/Reviews`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newReview),
@@ -125,7 +126,7 @@ export function Restaurant() {
         <ul className="reviews">
           {restaurant.reviews.map(function (review) {
             return (
-              <li>
+              <li key={review.id}>
                 <div className="author">
                   Gavin said: <em>{review.summary}</em>
                 </div>
