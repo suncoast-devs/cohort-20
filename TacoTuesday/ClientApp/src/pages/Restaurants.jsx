@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom'
 function SingleRestaurantFromList(props) {
   return (
     <li>
-      <h2>{props.name}</h2>
+      <h2>
+        <Link to={`/restaurants/${props.id}`}>{props.name}</Link>
+      </h2>
       <p>
         <span
           className="stars"
@@ -101,6 +103,7 @@ export function Restaurants() {
             return (
               <SingleRestaurantFromList
                 key={restaurant.id}
+                id={restaurant.id}
                 name={restaurant.name}
                 address={restaurant.address}
               />

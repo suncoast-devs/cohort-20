@@ -25,6 +25,8 @@ export function NewRestaurant() {
   async function handleFormSubmit(event) {
     event.preventDefault()
 
+    // const response = await axios({ method: 'POST', url: '/api/Restaurants', data: newRestaurant})
+
     const response = await fetch('/api/Restaurants', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
