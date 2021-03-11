@@ -9,7 +9,6 @@ export function NewRestaurant() {
     address: '',
     telephone: '',
   })
-  const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const history = useHistory()
 
@@ -48,7 +47,6 @@ export function NewRestaurant() {
     //   address: '',
     //   telephone: '',
     // })
-    // setMessage('Submitted! Add another?')
   }
 
   return (
@@ -120,7 +118,6 @@ export function NewRestaurant() {
           </p>
           <p>
             <input type="submit" value="Submit" />
-            <span>{message}</span>
           </p>
         </form>
       </main>
