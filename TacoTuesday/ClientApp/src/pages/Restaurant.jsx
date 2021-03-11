@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import format from 'date-fns/format'
 import avatar from '../images/avatar.png'
 
 export function Restaurant() {
@@ -84,6 +85,8 @@ export function Restaurant() {
     setRestaurant(apiData)
   }
 
+  const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
+
   return (
     <>
       <header>
@@ -135,7 +138,7 @@ export function Restaurant() {
                     style={{ '--rating': review.stars }}
                     aria-label={`Star rating of this location is ${review.stars} out of 5.`}
                   ></span>
-                  <time>{review.createdAt}</time>
+                  <time>{format(new Date(review.createdAt), dateFormat)}</time>
                 </div>
               </li>
             )
