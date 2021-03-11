@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TacoTuesday.Models
@@ -15,5 +16,8 @@ namespace TacoTuesday.Models
         public string Address { get; set; }
 
         public string Telephone { get; set; }
+
+        // Teaches the Restaurant model(class) that it can see the associated Reviews
+        public List<Review> Reviews { get; set; }
     }
 }

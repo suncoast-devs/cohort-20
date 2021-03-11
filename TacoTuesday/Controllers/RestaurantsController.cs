@@ -37,7 +37,11 @@ namespace TacoTuesday.Controllers
             {
                 // Uses the database context in `_context` to request all of the Restaurants, sort
                 // them by row id and return them as a JSON array.
-                return await _context.Restaurants.OrderBy(row => row.Id).ToListAsync();
+                return await _context.
+                                Restaurants.
+                                OrderBy(row => row.Id).
+                                Include(restaurant => restaurant.Reviews).
+                                ToListAsync();
             }
             else
             {
@@ -45,6 +49,7 @@ namespace TacoTuesday.Controllers
                                 Restaurants.
                                 Where(restaurant => restaurant.Name.ToLower().Contains(filter.ToLower())).
                                 OrderBy(row => row.Id).
+                                Include(restaurant => restaurant.Reviews).
                                 ToListAsync();
             }
         }
@@ -59,7 +64,10 @@ namespace TacoTuesday.Controllers
         public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
         {
             // Find the restaurant in the database using `FindAsync` to look it up by id
-            var restaurant = await _context.Restaurants.FindAsync(id);
+            // var restaurant = await _context.Restaurants.FindAsync(id);
+
+            // Find the restaurant in the database using Include to ensure we have the associated reviews
+            var restaurant = await _context.Restaurants.Include(restaurant => restaurant.Reviews).Where(restaurant => restaurant.Id == id).FirstOrDefaultAsync();
 
             // If we didn't find anything, we receive a `null` in return
             if (restaurant == null)

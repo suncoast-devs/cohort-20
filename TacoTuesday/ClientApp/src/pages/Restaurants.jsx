@@ -16,7 +16,7 @@ function SingleRestaurantFromList(props) {
           style={{ '--rating': 4.7 }}
           aria-label="Star rating of this location is 4.7 out of 5."
         ></span>
-        (2,188)
+        ({props.reviewCount})
       </p>
       <address>{props.address}</address>
     </li>
@@ -106,6 +106,7 @@ export function Restaurants() {
                 id={restaurant.id}
                 name={restaurant.name}
                 address={restaurant.address}
+                reviewCount={restaurant.reviews.length}
               />
             )
           })}
