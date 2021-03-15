@@ -50,82 +50,60 @@ export function NewRestaurant() {
   }
 
   return (
-    <>
-      <header>
-        <ul>
-          <li>
-            <nav>
-              <Link to="/new">
-                <i className="fa fa-plus"></i> Restaurant
-              </Link>
-              <p>Welcome back, Steve!</p>
-            </nav>
-          </li>
-          <li className="avatar">
-            <img src={avatar} alt="Steve's Avatar" height="64" width="64" />
-          </li>
-        </ul>
-      </header>
-      <main className="page">
-        <nav>
-          <Link to="/">
-            <i className="fa fa-home"></i>
-          </Link>
-          <h2>Add a Restaurant</h2>
-        </nav>
-        <form action="#" onSubmit={handleFormSubmit}>
-          {errorMessage && <p className="error">{errorMessage}</p>}
-          <p className="form-input">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              onChange={handleStringFieldChange}
-              value={newRestaurant.name}
-            />
-          </p>
-          <p className="form-input">
-            <label htmlFor="description">Description</label>
-            <textarea
-              name="description"
-              value={newRestaurant.description}
-              onChange={handleStringFieldChange}
-            ></textarea>
-            <span className="note">
-              Enter a brief description of the restaurant.
-            </span>
-          </p>
-          <p className="form-input">
-            <label htmlFor="name">Address</label>
-            <textarea
-              name="address"
-              onChange={handleStringFieldChange}
-              value={newRestaurant.address}
-            ></textarea>
-          </p>
-          <p className="form-input">
-            <label htmlFor="name">Telephone</label>
-            <input
-              type="tel"
-              name="telephone"
-              onChange={handleStringFieldChange}
-              value={newRestaurant.telephone}
-            />
-          </p>
-          <p className="form-input">
-            <label htmlFor="picture">Picture</label>
-            <input type="file" name="picture" />
-          </p>
-          <p>
-            <input type="submit" value="Submit" />
-          </p>
-        </form>
-      </main>
-      <footer>
-        <p>
-          Built with <i className="fa fa-heart"></i> in St Petersburg, Florida.
+    <main className="page">
+      <nav>
+        <Link to="/">
+          <i className="fa fa-home"></i>
+        </Link>
+        <h2>Add a Restaurant</h2>
+      </nav>
+      <form action="#" onSubmit={handleFormSubmit}>
+        {errorMessage && <p className="error">{errorMessage}</p>}
+        <p className="form-input">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            onChange={handleStringFieldChange}
+            value={newRestaurant.name}
+          />
         </p>
-      </footer>
-    </>
+        <p className="form-input">
+          <label htmlFor="description">Description</label>
+          <textarea
+            name="description"
+            value={newRestaurant.description}
+            onChange={handleStringFieldChange}
+          ></textarea>
+          <span className="note">
+            Enter a brief description of the restaurant.
+          </span>
+        </p>
+        <p className="form-input">
+          <label htmlFor="name">Address</label>
+          <textarea
+            name="address"
+            onChange={handleStringFieldChange}
+            value={newRestaurant.address}
+          ></textarea>
+        </p>
+        <p className="form-input">
+          <label htmlFor="name">Telephone</label>
+          <input
+            type="tel"
+            name="telephone"
+            onChange={handleStringFieldChange}
+            value={newRestaurant.telephone}
+          />
+        </p>
+        <p className="form-input">
+          <label htmlFor="picture">Picture</label>
+          <input type="file" name="picture" />
+        </p>
+        <p>
+          <input type="submit" value="Submit" />
+        </p>
+      </form>
+    </main>
   )
 }
