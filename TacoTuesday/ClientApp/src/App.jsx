@@ -8,6 +8,7 @@ import { Restaurants } from './pages/Restaurants'
 import { Restaurant } from './pages/Restaurant'
 import { WithHeaderAndFooter } from './components/WithHeaderAndFooter'
 import { SignUp } from './pages/SignUp'
+import { SignIn } from './pages/SignIn'
 
 export function App() {
   return (
@@ -31,6 +32,11 @@ export function App() {
         <Route exact path="/signup">
           <WithHeaderAndFooter>
             <SignUp />
+          </WithHeaderAndFooter>
+        </Route>
+        <Route exact path="/signin">
+          <WithHeaderAndFooter>
+            <SignIn />
           </WithHeaderAndFooter>
         </Route>
       </Switch>
