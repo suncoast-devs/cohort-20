@@ -17,6 +17,8 @@ namespace TacoTuesday.Models
 
         public string Telephone { get; set; }
 
+        public int UserId { get; set; }
+
         // Teaches the Restaurant model(class) that it can see the associated Reviews
         public List<Review> Reviews { get; set; }
     }

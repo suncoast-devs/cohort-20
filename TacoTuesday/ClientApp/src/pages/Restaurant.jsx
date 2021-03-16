@@ -3,7 +3,7 @@ import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
 import format from 'date-fns/format'
 import avatar from '../images/avatar.png'
-import { isLoggedIn } from '../auth'
+import { authHeader, isLoggedIn } from '../auth'
 
 export function Restaurant() {
   // Uncomment this to use the `setTimeout` example down below
@@ -65,9 +65,13 @@ export function Restaurant() {
 
     await fetch(`/api/Reviews`, {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', ...authHeader() },
       body: JSON.stringify(newReview),
     })
+
+    // if (response.status === 401) {
+    //   setErrorMessage("Not Authorized");
+    // }
 
     // setTimeout(function () {
     //   // Do this after a break
