@@ -2,22 +2,21 @@ import React, { useEffect, useState } from 'react'
 import tacoTuesday from '../images/taco-tuesday.svg'
 import map from '../images/map.png'
 import { Link } from 'react-router-dom'
+import { Stars } from '../components/Stars'
 
 function SingleRestaurantFromList(props) {
   return (
     <li>
       <h2>
-        <Link to={`/restaurants/${props.id}`}>{props.name}</Link>
+        <Link to={`/restaurants/${props.restaurant.id}`}>
+          {props.restaurant.name}
+        </Link>
       </h2>
       <p>
-        <span
-          className="stars"
-          style={{ '--rating': 4.7 }}
-          aria-label="Star rating of this location is 4.7 out of 5."
-        ></span>
-        ({props.reviewCount})
+        <Stars restaurant={props.restaurant} /> (
+        {props.restaurant.reviews.length})
       </p>
-      <address>{props.address}</address>
+      <address>{props.restaurant.address}</address>
     </li>
   )
 }
@@ -86,10 +85,7 @@ export function Restaurants() {
           return (
             <SingleRestaurantFromList
               key={restaurant.id}
-              id={restaurant.id}
-              name={restaurant.name}
-              address={restaurant.address}
-              reviewCount={restaurant.reviews.length}
+              restaurant={restaurant}
             />
           )
         })}
