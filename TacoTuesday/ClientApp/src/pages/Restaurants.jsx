@@ -27,8 +27,6 @@ export function Restaurants() {
   const [restaurants, setRestaurants] = useState([])
   const [filterText, setFilterText] = useState('')
   const [viewport, setViewport] = useState({
-    width: '100%',
-    height: '100%',
     latitude: 27.77101804911986,
     longitude: -82.66090611749074,
     zoom: 9.8,
@@ -90,6 +88,8 @@ export function Restaurants() {
         <ReactMapGL
           style={{ position: 'absolute' }}
           {...viewport}
+          width="100%"
+          height="100%"
           onViewportChange={setViewport}
           mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         >
@@ -129,7 +129,7 @@ export function Restaurants() {
             </Marker>
           ))}
 
-          <div style={{ position: 'absolute', right: 0 }}>
+          <div style={{ position: 'absolute', left: 10 }}>
             <NavigationControl />
           </div>
         </ReactMapGL>
