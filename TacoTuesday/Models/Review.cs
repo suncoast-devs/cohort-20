@@ -11,5 +11,8 @@ namespace TacoTuesday.Models
         public DateTime CreatedAt { get; private set; } = DateTime.Now;
         public int RestaurantId { get; set; }
         public int UserId { get; set; }
+
+        // The user associated to this review (uses UserId column)
+        public User User { get; set; }
     }
 }
