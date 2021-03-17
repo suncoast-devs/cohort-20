@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { useDropzone } from 'react-dropzone'
 import { authHeader } from '../auth'
 import avatar from '../images/avatar.png'
 
@@ -9,8 +10,10 @@ export function NewRestaurant() {
     description: '',
     address: '',
     telephone: '',
+    photoURL: '',
   })
   const [errorMessage, setErrorMessage] = useState('')
+  const [isUploading, setIsUploading] = useState(false)
   const history = useHistory()
 
   function handleStringFieldChange(event) {
@@ -50,6 +53,63 @@ export function NewRestaurant() {
     //   address: '',
     //   telephone: '',
     // })
+  }
+
+  async function onDropFile(acceptedFiles) {
+    // Do something with the files
+    const fileToUpload = acceptedFiles[0]
+    console.log(fileToUpload)
+
+    // Create a formData object so we can send this
+    // to the API that is expecting som form data.
+    const formData = new FormData()
+    // Append a field that is the form upload itself
+    formData.append('file', fileToUpload)
+
+    setIsUploading(true)
+
+    try {
+      // Use fetch to send an authorization header and
+      // a body containing the form data with the file
+      const response = await fetch('/api/Uploads', {
+        method: 'POST',
+        headers: {
+          ...authHeader(),
+        },
+        body: formData,
+      })
+
+      // If we receive a 200 OK response, set the
+      // URL of the photo in our state so that it is
+      // sent along when creating the restaurant,
+      // otherwise show an error
+      if (response.status === 200) {
+        const apiResponse = await response.json()
+        const url = apiResponse.url
+        setNewRestaurant({ ...newRestaurant, photoURL: url })
+      } else {
+        setErrorMessage('Unable to upload image')
+      }
+    } catch {
+      // Catch any network errors and show the user we could not process their upload
+      setErrorMessage('Unable to upload image')
+    }
+
+    setIsUploading(false)
+  }
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: onDropFile,
+  })
+
+  let dropZoneMessage = 'Drag a picture of the restaurant here to upload!'
+
+  if (isUploading) {
+    dropZoneMessage = 'Uploading...'
+  }
+
+  if (isDragActive) {
+    dropZoneMessage = 'Drop the files here ...'
   }
 
   return (
@@ -99,10 +159,24 @@ export function NewRestaurant() {
             value={newRestaurant.telephone}
           />
         </p>
-        <p className="form-input">
-          <label htmlFor="picture">Picture</label>
-          <input type="file" name="picture" />
-        </p>
+
+        {newRestaurant.photoURL && (
+          <p>
+            <img
+              alt="Restaurant Photo"
+              width={200}
+              src={newRestaurant.photoURL}
+            />
+          </p>
+        )}
+
+        <div className="file-drop-zone">
+          <div {...getRootProps()}>
+            <input {...getInputProps()} />
+            {dropZoneMessage}
+          </div>
+        </div>
+
         <p>
           <input type="submit" value="Submit" />
         </p>

@@ -16,6 +16,7 @@ export function Restaurant() {
     description: '',
     address: '',
     telephone: '',
+    photoURL: '',
     reviews: [],
   })
 
@@ -106,6 +107,9 @@ export function Restaurant() {
         <Stars restaurant={restaurant} />({restaurant.reviews.length}){' '}
       </p>
       <address>{restaurant.address}</address>
+      {restaurant.photoURL && (
+        <img alt="Restaurant Photo" width={200} src={restaurant.photoURL} />
+      )}
       <hr />
       <h3>Reviews for {restaurant.name}</h3>
       <ul className="reviews">

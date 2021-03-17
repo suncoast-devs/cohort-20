@@ -21,6 +21,8 @@ namespace TacoTuesday.Models
 
         public int UserId { get; set; }
 
+        public string PhotoURL { get; set; }
+
         // Teaches the Restaurant model(class) that it can see the associated Reviews
         public List<Review> Reviews { get; set; }
     }
