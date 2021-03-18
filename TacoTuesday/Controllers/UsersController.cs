@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +26,17 @@ namespace TacoTuesday.Controllers
         public UsersController(DatabaseContext context)
         {
             _context = context;
+        }
+
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<ActionResult<User>> GetMyUserProfile()
+        {
+            var myId = GetCurrentUserId();
+
+            var user = await _context.Users.FindAsync(myId);
+
+            return user;
         }
 
         // POST: api/Users
@@ -60,6 +73,13 @@ namespace TacoTuesday.Controllers
                 // Return our error with the custom response
                 return BadRequest(response);
             }
+        }
+
+        // Private helper method to get the JWT claim related to the user ID
+        private int GetCurrentUserId()
+        {
+            // Get the User Id from the claim and then parse it as an integer.
+            return int.Parse(User.Claims.FirstOrDefault(claim => claim.Type == "Id").Value);
         }
     }
 }

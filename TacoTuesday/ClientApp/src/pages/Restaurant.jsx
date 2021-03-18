@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import format from 'date-fns/format'
 import avatar from '../images/avatar.png'
-import { authHeader, isLoggedIn } from '../auth'
+import { authHeader, getUser, getUserId, isLoggedIn } from '../auth'
 import { Stars } from '../components/Stars'
 
 export function Restaurant() {
+  const history = useHistory()
+
   // Uncomment this to use the `setTimeout` example down below
   // const history = useHistory()
 
@@ -93,6 +95,19 @@ export function Restaurant() {
     setRestaurant(apiData)
   }
 
+  async function handleDelete(event) {
+    event.preventDefault()
+
+    const response = await fetch(`/api/Restaurants/${id}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json', ...authHeader() },
+    })
+
+    if (response.status === 200 || response.status === 204) {
+      history.push('/')
+    }
+  }
+
   const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
 
   return (
@@ -109,6 +124,9 @@ export function Restaurant() {
       <address>{restaurant.address}</address>
       {restaurant.photoURL && (
         <img alt="Restaurant Photo" width={200} src={restaurant.photoURL} />
+      )}
+      {restaurant.userId === getUserId() && (
+        <button onClick={handleDelete}>Delete</button>
       )}
       <hr />
       <h3>Reviews for {restaurant.name}</h3>
