@@ -142,6 +142,13 @@ export function Restaurant() {
       {restaurant.userId === getUserId() && (
         <button onClick={handleDelete}>Delete</button>
       )}
+      {restaurant.userId === getUserId() && (
+        <p>
+          <Link className="button" to={`/restaurants/${id}/edit`}>
+            Edit
+          </Link>
+        </p>
+      )}
       <hr />
       <h3>Reviews for {restaurant.name}</h3>
       <ul className="reviews">
