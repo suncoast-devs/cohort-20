@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link, useHistory } from 'react-router-dom'
 import format from 'date-fns/format'
-import avatar from '../images/avatar.png'
-import { authHeader, getUser, getUserId, isLoggedIn } from '../auth'
+import { authHeader, getUserId, isLoggedIn } from '../auth'
 import { Stars } from '../components/Stars'
 
 export function Restaurant() {
@@ -137,7 +136,7 @@ export function Restaurant() {
       </p>
       <address>{restaurant.address}</address>
       {restaurant.photoURL && (
-        <img alt="Restaurant Photo" width={200} src={restaurant.photoURL} />
+        <img alt="Restaurant" width={200} src={restaurant.photoURL} />
       )}
       {restaurant.userId === getUserId() && (
         <button onClick={handleDelete}>Delete</button>

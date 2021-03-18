@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { recordAuthentication } from '../auth'
-import avatar from '../images/avatar.png'
 
 export function SignIn() {
   const [errorMessage, setErrorMessage] = useState()

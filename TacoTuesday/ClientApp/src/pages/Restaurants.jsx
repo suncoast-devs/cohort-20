@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import ReactMapGL, { Marker, NavigationControl, Popup } from 'react-map-gl'
 
 import tacoTuesday from '../images/taco-tuesday.svg'
-import map from '../images/map.png'
 import { Link } from 'react-router-dom'
 import { Stars } from '../components/Stars'
 

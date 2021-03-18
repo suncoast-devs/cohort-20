@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 import { authHeader } from '../auth'
-import avatar from '../images/avatar.png'
 
 export function NewRestaurant() {
   const [newRestaurant, setNewRestaurant] = useState({
@@ -162,11 +161,7 @@ export function NewRestaurant() {
 
         {newRestaurant.photoURL && (
           <p>
-            <img
-              alt="Restaurant Photo"
-              width={200}
-              src={newRestaurant.photoURL}
-            />
+            <img alt="Restaurant" width={200} src={newRestaurant.photoURL} />
           </p>
         )}
 

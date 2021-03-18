@@ -58,7 +58,7 @@ export function EditRestaurant() {
     if (response.status === 401) {
       setErrorMessage('Not Authorized')
     } else {
-      if (response.status == 400) {
+      if (response.status === 400) {
         const json = await response.json()
 
         setErrorMessage(Object.values(json.errors).join(' '))
@@ -181,7 +181,7 @@ export function EditRestaurant() {
 
         {restaurant.photoURL && (
           <p>
-            <img alt="Restaurant Photo" width={200} src={restaurant.photoURL} />
+            <img alt="Restaurant" width={200} src={restaurant.photoURL} />
           </p>
         )}
 
