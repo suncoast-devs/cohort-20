@@ -108,6 +108,20 @@ export function Restaurant() {
     }
   }
 
+  async function handleDeleteReview(event, reviewId) {
+    event.preventDefault()
+
+    await fetch(`/api/Reviews/${reviewId}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json', ...authHeader() },
+    })
+
+    const response = await fetch(`/api/Restaurants/${id}`)
+    const apiData = await response.json()
+
+    setRestaurant(apiData)
+  }
+
   const dateFormat = `EEEE, MMMM do, yyyy 'at' h:mm aaa`
 
   return (
@@ -148,6 +162,18 @@ export function Restaurant() {
                 ></span>
                 <time>{format(new Date(review.createdAt), dateFormat)}</time>
               </div>
+              {review.user.id === getUserId() && (
+                <div>
+                  <button
+                    className="small"
+                    onClick={function (event) {
+                      handleDeleteReview(event, review.id)
+                    }}
+                  >
+                    Delete
+                  </button>
+                </div>
+              )}
             </li>
           )
         })}
